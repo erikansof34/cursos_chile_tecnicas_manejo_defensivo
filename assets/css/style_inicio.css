@@ -1,0 +1,285 @@
+body {
+    background-color: #f8fafcfd;
+}
+
+.container {
+    max-width: 100%;
+    margin: auto;
+    padding: 20px;
+    font-family: "Montserrat", sans-serif;
+}
+
+.content {
+    border-radius: 1%;
+    background-color: #ffffff;
+    box-shadow: 0 5px 10px rgba(0, 0, 0, 0.185);
+}
+
+
+.tabs {
+    display: flex;
+    justify-content: space-around;
+    margin: 20px 0;
+    padding: 0.5%;
+    background-color: #EEEEEE;
+}
+
+.tab {
+    padding: 10px 20px;
+    border: none;
+    background: #eee;
+    cursor: pointer;
+    border-radius: 5px;
+    width: 100%;
+    font-size: 15px;
+    font-weight: 600;
+    font-family: "Montserrat", sans-serif;
+    border-left: 0.5px solid #c7c7c7;
+}
+
+.tab:hover {
+    background: #6e3cd2;
+    color: white;
+}
+
+.tab.active {
+    background: #6e3cd2;
+    color: white;
+}
+
+.tab-content {
+    display: none;
+    margin-top: 1%;
+    padding: 1% 2.5%;
+}
+
+.progress-container {
+    width: 100%;
+    background-color: #ddd;
+    border-radius: 20px;
+    height: 20px;
+    margin: 1rem 0;
+}
+
+.progress-bar {
+    height: 100%;
+    width: 0%;
+    background-color: #C0185D;
+    border-radius: 20px;
+    transition: width 0.5s ease;
+}
+
+.check-icon {
+    font-size: 18px;
+    color: #00ff4d; /* Blanco inicialmente */
+    display: inline-block;
+    margin-left: 10px; /* Espacio al lado del texto */
+}
+
+.check-icon.active {
+    color: #00ff4d; /* Cuando está activo, se pone verde */
+}
+
+.check-icon.inactive {
+    color:#00ff4d; /* Si no está activo, permanece blanco */
+}
+
+
+.start-btn {
+    cursor: not-allowed;
+    transition: background-color 0.3s ease;
+    display: block;
+    background: inherit;
+    border: none;
+    margin: 10px auto;
+    font-size: 16px;
+    font-family: 'Montserrat', sans-serif;
+    font-weight: 500; 
+    position: relative;
+    background: #6b6b6b;  /* Color gris cuando está deshabilitado */
+    padding: 10px 20px;
+    border-radius: 30px;
+    border: 1px solid #6b6b6b;
+    color: #fff;
+    box-shadow: rgba(46, 46, 46, 0.5) 4px 4px 10px;
+}
+
+/* Estilo cuando el botón está habilitado (con clase 'enabled') */
+.start-btn.enabled {
+    background-color: #4CAF50;  /* Color verde cuando está habilitado */
+    border: 1px solid #4CAF50;
+    cursor: pointer;  /* Cambio de cursor para indicar que está habilitado */
+    box-shadow: rgba(46, 46, 46, 0.5) 4px 4px 10px;
+    transition: background-color 0.3s ease;
+}
+
+.start-btn.enabled:hover {
+    background-color: #fff;  /* Color verde cuando está habilitado */
+    color:#4CAF50 ;
+    border: 1px solid #4CAF50;
+    cursor: pointer;  /* Cambio de cursor para indicar que está habilitado */
+    box-shadow: rgba(46, 46, 46, 0.5) 4px 4px 10px;
+    transition: background-color 0.3s ease;
+}
+
+.warning-msg {
+    color: #c0392b;
+    font-weight: 500;
+    margin-top: 10px;
+    text-align: center;
+    font-size: 16px;
+    display: block;
+  }
+  .warning-msg.hidden {
+    display: none;
+  }
+
+  .success-msg {
+    color: #0ea14b;
+    font-weight: 600;
+    margin-top: 10px;
+    text-align: center;
+    font-size: 16px;
+    display: block;
+  }
+  
+  .success-msg.hidden {
+    display: none;
+  }
+
+/*Guia del usuario*/
+.guia-container {
+    background: #fff;
+    border-radius: 12px;
+    padding: 30px;
+    box-shadow: 0 5px 15px rgba(0, 0, 0, 0.08);
+    max-width: 1000px;
+    margin: auto;
+}
+
+h2 {
+    font-size: 24px;
+    margin-bottom: 20px;
+    color: #222;
+}
+
+.guia-section {
+    display: flex;
+    flex-wrap: wrap;
+    gap: 20px;
+}
+
+.item-1-row {
+    flex-direction: column;
+    flex-wrap: nowrap;
+    gap: 40px;
+}
+
+.item-2-row {
+    display: flex;
+    gap: 40px;
+    display: grid;
+    grid-template-columns: 1fr 1fr;
+    /* dos columnas iguales */
+}
+
+.item-glorasio {
+    display: flex;
+    gap: 40px;
+    display: grid;
+    grid-template-columns: repeat(3, 1fr);
+    align-items: end;
+}
+
+.item-ats {
+    grid-column: span 2;
+}
+
+.item-1-row,
+.item-2-row p {
+    text-align: justify;
+}
+
+.item-2-row li {
+    margin-left: 5%;
+    text-align: justify;
+}
+
+.icon-title {
+    display: flex;
+    align-items: center;
+    gap: 10px;
+    font-weight: 600;
+    font-size: 17px;
+    margin-top: 25px;
+    margin-bottom: 10px;
+}
+
+.icon {
+    background-color: #f1e4ff;
+    border-radius: 50%;
+    width: 32px;
+    height: 32px;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    color: #9b59b6;
+    font-size: 16px;
+}
+
+
+.bullet {
+    display: flex;
+    align-items: flex-start;
+    gap: 10px;
+    margin-top: 10px;
+}
+
+.bullet .icon {
+    font-size: 14px;
+    background-color: #f4e9ff;
+    color: #9b59b6;
+    min-width: 24px;
+    height: 24px;
+}
+
+
+@media (max-width: 768px) {
+    .tabs {
+      flex-direction: column;
+      gap: 10px;
+    }
+  
+    .tab {
+      width: 100%;
+      text-align: center;
+    }
+  
+    .item-2-row,
+    .item-glorasio {
+      grid-template-columns: 1fr;
+    }
+  
+    .guia-section {
+      flex-direction: column;
+    }
+  
+    .icon-title {
+      font-size: 16px;
+      flex-direction: row;
+      align-items: center;
+    }
+  
+    h2 {
+      font-size: 20px;
+      text-align: center;
+    }
+  
+    .guia-container {
+      padding: 20px;
+    }
+  
+    .item-2-row li {
+      margin-left: 5%;
+    }
+  }

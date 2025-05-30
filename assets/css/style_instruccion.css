@@ -1,0 +1,178 @@
+html, body {
+    -webkit-font-smoothing: antialiased; /* Mejora el renderizado en Safari */
+    -moz-osx-font-smoothing: grayscale;  /* Mejora el renderizado en Firefox */
+    height: 100%; /* Asegura que el body ocupe toda la altura de la ventana */
+    margin: 0; /* Elimina el margen por defecto */
+    overflow:auto; /* Evita el scroll */
+}
+
+.container-fluid {
+    /* height: calc(100vh - 50px); /* Resta la altura del header */
+    overflow-y: auto; /* Agrega scroll solo al contenedor del contenido si es necesario */
+    position: relative;
+    height: 100vh; 
+    margin-top: 0px;
+}
+
+
+.course-container_inst {
+    display: flex;
+    justify-content: space-between;
+    gap: 5px;
+    padding: 1% 8%;
+    flex-direction: row;
+    flex-wrap: wrap;
+}
+
+.course-box_inst {
+    background-color: white;
+    border-radius: 10px;
+    box-shadow: 0 4px 8px rgba(0, 0, 0, 0.1);
+    flex: 1 1 45%; /* Crece y se encoge con un tamaño base del 45% */
+    margin: 10px; /* Espacio entre los bloques */
+    box-shadow: 0 4px 8px rgba(0, 0, 0, 0.1); /* Sombra opcional */
+    min-height: 40vh; /* Altura mínima para igualar */
+}
+
+.course-box_inst:hover{
+    background-color: #2b4568;
+}
+
+.course-box_inst:hover p,
+.course-box_inst:hover span,
+.course-box_inst:hover li {
+    color: #fff; 
+}
+
+.header_inst {
+    background-color:#64748b;
+    color: white; 
+    display: flex;
+    align-items: center;
+    padding: 15px; /* Espaciado */
+    border-top-left-radius: 10px;
+    border-top-right-radius: 10px;
+}
+
+.icon-container_inst {
+    margin-right: 20px; /* Espacio entre el ícono y el título */
+}
+
+.icon_inst {
+    width: 100%;
+    transform: scale(2);
+}
+
+.content_inst {
+    padding: 10px; 
+    max-height: 50vh; 
+    overflow-y: auto; 
+}
+
+
+.course-box_inst h2 {
+    font-size: 20px;
+    color: #fff;
+    margin: 0; 
+}
+
+.course-box_inst p, .course-box_inst li {
+    font-size: 16px;
+    color:  #8f8f8f;
+    font-family: 'Montserrat', sans-serif;
+}
+
+.course-box_inst p span {
+    font-weight: bold;
+    color:  #8f8f8f;
+    font-family: 'Montserrat', sans-serif;
+}
+
+.course-box_inst ul {
+    padding-left: 20px; /* Sangría para la lista */
+}
+
+/* Adaptaciones para dispositivos móviles */
+@media (max-width: 768px) {
+    .course-container_inst {
+        flex-direction: column;
+        gap: 15px;
+    }
+
+    .course-box_inst {
+        width: 100%;
+    }
+}
+
+.titulo {
+    font-family: 'Alata', sans-serif;
+    font-size: 30px;
+    font-weight: 800;
+    line-height: 1.3;
+    white-space: normal; 
+    word-wrap: break-word;
+    overflow-wrap: break-word;
+}
+
+.titulo-glosario{
+    font-family: 'Alata', sans-serif;
+    font-size: 30px;
+    font-weight: 800;
+    line-height: 1.3;
+    white-space: normal; 
+    word-wrap: break-word;
+    overflow-wrap: break-word;
+    color: white;
+}
+
+.parrafo-ins p{
+    margin-bottom: .5rem;
+    line-height: 1.2rem;
+}
+
+.white{
+    color: #FBFBFB;
+ }
+
+ .img-20{
+    width: 10%;
+ }
+ .img-40{
+    width: 30%;
+ }
+/*botones*/
+button.btn {
+    display: block;
+    background: inherit;
+    border: none;
+    cursor: pointer;
+    margin: 5px auto;
+    font-size: 16px;
+    font-family: 'Montserrat', sans-serif;
+    font-weight: 500; 
+    position: relative;
+    background: var(--white);
+    color: var(--purple);
+    padding: 10px 20px;
+    border-radius: 30px;
+    border: 1px solid var(--purple);
+    box-shadow: rgba(46, 46, 46, 0.5) 4px 4px 10px;
+}
+button.btn:hover {
+    background: var(--purple);
+    color: var(--white);
+    border: 1px solid var(--purple);
+}
+
+.bg-instrucciones {
+    background: 
+        linear-gradient(
+            rgba(15, 23, 42, 0.8),  
+            rgba(20, 32, 59, 0.7)  
+        ),
+        url(../img/fondo_instruccion.png); /* Imagen de fondo */
+    background-repeat: no-repeat;
+    background-size: cover;
+    z-index: 0;
+    min-height: 100vh;
+}

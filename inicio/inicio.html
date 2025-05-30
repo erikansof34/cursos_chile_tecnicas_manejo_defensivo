@@ -1,0 +1,446 @@
+<!DOCTYPE html>
+<html lang="es">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Guía del Usuario</title>
+    <link rel="stylesheet" type="text/css" href="../assets/css/style.css">
+    <link rel="stylesheet" type="text/css" href="../assets/css/style_inicio.css">
+    <link rel="stylesheet" type="text/css" href="../assets/css/style_personalizado.css">
+    <link rel="stylesheet" type="text/css" href="../assets/css/cards_slides.css">
+
+    <!--iconos-->
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.5.0/css/all.min.css">
+    <!-- Estilos del widget -->
+    <link rel="stylesheet" href="../assetsWidget/css/widget.css">
+</head>
+
+<body>
+    <div class="container">
+        <h1 class="titulo text-center">Bienvenido/a a nuestra <span class="purple">plataforma de aprendizaje</span>
+            en línea </h1>
+
+        <div class="instruccion-center p-1rem">
+            <i class="instruccion-bg-light">Haz clic sobre los botones y a medida que avanzas podras presentar el
+                curso<span class="icono-inst"><i class="fa-solid fa-arrow-turn-down"></i></span> </i>
+        </div>
+
+        <!-- Barra de progreso -->
+        <div class="progress-container">
+            <div class="progress-bar" id="progress-bar"></div>
+        </div>
+
+        <!-- Tabs -->
+
+        <div class="tabs">
+            <button class="tab" id="tab1" onclick="changeTab(1)">
+                <i class="fas fa-book-open"></i> Guía del Usuario
+                <span class="check-icon" id="check1"></span> <!-- Este es el ícono del check -->
+            </button>
+            <button class="tab" id="tab2" onclick="changeTab(2)">
+                <i class="fas fa-user-graduate"></i> Guía del Participante
+                <span class="check-icon" id="check2"></span>
+            </button>
+            <button class="tab" id="tab3" onclick="changeTab(3)">
+                <i class="fas fa-brain"></i> Glosario
+                <span class="check-icon" id="check3"></span>
+            </button>
+            <button class="tab" id="tab4" onclick="changeTab(4)">
+                <i class="fas fa-folder-tree"></i> Estructura Temática
+                <span class="check-icon" id="check4"></span>
+            </button>
+        </div>
+
+
+
+        <!-- Contenido de cada tab -->
+        <div class="content">
+            <div class="tab-content" id="content1">
+                <h1 class="titulo text-center p-1rem">Guía del <span class="purple">Usuario</span>
+                </h1>
+                <div class="guia-section">
+                    <!-- Requisitos técnicos -->
+                    <div class="item-2-row">
+                        <div class="card_item">
+                            <div class="icon-title">
+                                <div class="icon"><i class="fas fa-desktop"></i></div>
+                                <span>Requisitos técnicos</span>
+                            </div>
+                            <p>Para aprovechar al máximo tu experiencia, te recomendamos acceder al curso desde un
+                                navegador actualizado (como Google Chrome o Mozilla Firefox), preferiblemente desde un
+                                computador o tablet. Usa una conexión estable a internet para evitar interrupciones al
+                                visualizar videos o realizar actividades.</p>
+                        </div>
+                        <!-- Navegación del curso -->
+                        <div class="card_item">
+                            <div class="icon-title">
+                                <div class="icon"><i class="fas fa-globe"></i></div>
+                                <span>Navegación del curso</span>
+                            </div>
+                            <ul>
+                                <li>Navega utilizando los botones de avance y retroceso para recorrer el contenido.</li>
+                                <li>Puedes
+                                    pausar o repetir los videos y audios cuantas veces necesites.</li>
+                                <li>Antes de iniciar, debes
+                                    realizar la evaluación diagnóstica para validar qué conocimientos previos ya traes y
+                                    te van a ayudar a comprender mejor los contenidos del curso. </li>
+                                <li>Debes revisar cada lección y sus contenidos, asegúrate de completar cada una antes
+                                    de pasar a la siguiente.</li>
+                                <li>Recuerda marcar como completadas las lecciones que vayas terminando.</li>
+                            </ul>
+
+                        </div>
+                    </div>
+
+                    <div class="item-1-row">
+                        <div class="card_item">
+                            <div class="icon-title">
+                                <div class="icon"><i class="fas fa-globe"></i></div>
+                                <span>Importante</span>
+                            </div>
+                            <div class="bullet">
+                                <div class="icon"><i class="fas fa-arrow-right"></i></div>
+                                <p>Es muy importante que <strong>completes al menos el 80% de la revisión de contenidos
+                                        y
+                                        recursos del curso,</strong> para poder presentar la evaluación sumativa, de lo
+                                    contrario no
+                                    podrás presentarla.</p>
+                            </div>
+                        </div>
+                        <div class="card_item">
+                            <div class="bullet">
+                                <div class="icon"><i class="fas fa-arrow-right"></i></div>
+                                <p>Para mayor facilidad de uso, todos nuestros recursos de audio cuentan con la
+                                    transcripción en texto para ser leídos, y todos nuestros videos tienen subtítulos
+                                    para poder acceder al contenido de forma multicanal (Visual, Oído).
+                                </p>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+
+        <div class="content">
+            <div class="tab-content" id="content2">
+                <h1 class="titulo text-center p-1rem">Guía del <span class="purple">Participante</span>
+                </h1>
+                <div class="guia-section">
+                    <div class="item-2-row">
+                        <div class="card_item">
+                            <div class="icon-title">
+                                <div class="icon"><i class="fas fa-desktop"></i></div>
+                                <span>Objetivos</span>
+                            </div>
+                            <ul>
+                                <li>Aprender a identificar los riesgos en el trabajo con soldadura en el entorno
+                                    laboral, aplicar buenas prácticas en las actividades relacionadas, aumentar la
+                                    seguridad y contribuir a minimizar los riesgos presentes en este tipo de labores
+                                    dentro de nuestra operación
+                                </li>
+                            </ul>
+                        </div>
+
+                        <div class="card_item">
+                            <div class="icon-title">
+                                <div class="icon"><i class="fas fa-globe"></i></div>
+                                <span>Todos nuestros cursos cuentan con:</span>
+                            </div>
+                            <p><strong>Introducción al tema:</strong>
+                                En la cual podrás revisar información de contexto relacionada con la temática del curso
+                            </p>
+                            <p><strong>Lecciones de contenido:</strong>
+                                En las cuales se desarrollarán los temas a tratar en el curso. Dentro de estas podrás
+                                encontrar:
+                            </p>
+                            <ul>
+                                <li>Videos con casos y/o ejemplos (tiene subtítulos)</li>
+                                <li>Audios que permiten ampliar los contenidos vistos (tienen texto de transcripción)
+                                </li>
+                            </ul>
+
+                        </div>
+                    </div>
+
+                    <div class="item-1-row">
+                        <div class="card_item">
+                            <div class="icon-title">
+                                <div class="icon"><i class="fas fa-globe"></i></div>
+                                <span>Evaluación</span>
+                            </div>
+                            <div class="card_item">
+                                <p><strong>Evaluación formativa:</strong>
+                                    Encuentras actividades interactivas que te permitirán validar lo que vas aprendiendo
+                                </p>
+                            </div>
+                            <div class="card_item">
+                                <p><strong>Evaluación sumativa:</strong>
+                                    Al finalizar el curso, encontrarás una evaluación con la cual podrás validar lo
+                                    aprendido. Recuerda que puedes obtener la certificación de participación si alcanzas
+                                    un 75% en esta prueba, tienes hasta 3 intentos para presentarla.</p>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+
+        <!--glosario-->
+        <div class="content">
+            <div class="tab-content" id="content3">
+                <h1 class="titulo text-center p-1rem">Glosario
+                </h1>
+                <p class="text-center p-1rem">Veamos las palabras clave que te ayudarán a comprender mejor la valiosa información de este
+                        curso:</p>
+                <div class="guia-section">
+                    <div class="item-glorasio">
+                        <div class="card_item item-ats">
+                            <p><span class="purple strong-text">Análisis de Trabajo Seguro (ATS): </span>
+                                Un procedimiento que detalla las actividades a realizar, identifica los peligros
+                                asociados y establece controles para realizar el trabajo de manera segura.</p>
+                            <hr>
+                        </div>
+                        <div class="card_item">
+                            <p><span class="purple strong-text">Andamios: </span>
+                                Estructuras temporales que permiten acceder a zonas elevadas.</p>
+                            <hr>
+                        </div>
+                        <div class="card_item">
+                            <p><span class="purple strong-text">Arnés: </span>
+                                Equipo de protección personal que se ajusta al cuerpo del trabajador y se conecta a la
+                                línea de vida para detener caídas.</p>
+                            <hr>
+                        </div>
+                        <div class="card_item">
+                            <p><span class="purple strong-text">Barandillas: </span>
+                                Estructuras rígidas instaladas en bordes para prevenir caídas.</p>
+                            <hr>
+                        </div>
+                        <div class="card_item">
+                            <p><span class="purple strong-text">Barbuquejo: </span>
+                                Correa que se ajusta alrededor del mentón para asegurar el casco.</p>
+                            <hr>
+                        </div>
+                        <div class="card_item">
+                            <p><span class="purple strong-text">Bandola (Mosquetón): </span>
+                                Conector que asegura el arnés a la línea de vida o al punto de anclaje.</p>
+                            <hr>
+                        </div>
+                        <div class="card_item">
+                            <p><span class="purple strong-text">Casco:</span>
+                                Equipo de protección personal para la cabeza.</p>
+                            <hr>
+                        </div>
+                        <div class="card_item">
+                            <p><span class="purple strong-text">Certificación: </span>
+                                Proceso que garantiza que los EPP cumplen con los estándares de calidad y seguridad.</p>
+                            <hr>
+                        </div>
+                        <div class="card_item">
+                            <p><span class="purple strong-text">Certificado de conformidad: </span>
+                                Documento que demuestra que el EPP cumple con las normas y especificaciones técnicas..
+                            </p>
+                            <hr>
+                        </div>
+                        <div class="card_item">
+                            <p><span class="purple strong-text">Decreto N° 44: </span> Reglamento para la Gestión de la
+                                Seguridad y Salud en el Trabajo en Chile, que establece la obligación de los empleadores
+                                de implementar un sistema de gestión en seguridad y salud en el trabajo.</p>
+                            <hr>
+                        </div>
+                        <div class="card_item">
+                            <p><span class="purple strong-text">Directivas de la Unión Europea: </span>
+                                Normativas europeas en seguridad y salud laboral que sirven como referencia para otros
+                                países.</p>
+                            <hr>
+                        </div>
+                        <div class="card_item">
+                            <p><span class="purple strong-text">EPP (Equipos de Protección Personal):</span>
+                                Conjunto de elementos y dispositivos diseñados para proteger al trabajador de posibles
+                                riesgos laborales.</p>
+                            <hr>
+                        </div>
+                        <div class="card_item">
+                            <p><span class="purple strong-text">Ficha técnica: </span>
+                                Documento que contiene información detallada sobre el EPP, como fabricante, modelo y
+                                materiales.</p>
+                            <hr>
+                        </div>
+                        <div class="card_item">
+                            <p><span class="purple strong-text">Guía Técnica del Instituto de Salud Pública (ISP):
+                                </span>
+                                Proporciona criterios técnicos para la selección, uso y control de EPP en trabajos con
+                                riesgo de caídas.</p>
+                            <hr>
+                        </div>
+                        <div class="card_item">
+                            <p><span class="purple strong-text">Hoja de vida: </span>
+                                Documento que registra el historial del EPP, incluyendo inspecciones, reparaciones y
+                                reemplazos.</p>
+                            <hr>
+                        </div>
+                        <div class="card_item">
+                            <p><span class="purple strong-text">Mutualidad: </span> Organismo que gestiona las
+                                prestaciones del seguro de accidentes laborales.</p>
+                            <hr>
+                        </div>
+                        <div class="card_item">
+                            <p><span class="purple strong-text">Línea de vida: </span>
+                                Cable o cuerda que se asegura a un anclaje y se conecta al arnés para detener caídas.
+                            </p>
+                            <hr>
+                        </div>
+                        <div class="card_item">
+                            <p><span class="purple strong-text">Listas de chequeo: </span>
+                                Herramientas para identificar riesgos y verificar el cumplimiento de medidas de
+                                seguridad.</p>
+                            <hr>
+                        </div>
+                        <div class="card_item">
+                            <p><span class="purple strong-text">NCh 1258: </span>
+                                Norma Chilena que establece los requisitos de seguridad para prevenir caídas en trabajos
+                                realizados a más de 1,8 metros de altura.</p>
+                            <hr>
+                        </div>
+                        <div class="card_item">
+                            <p><span class="purple strong-text">Normas ISO 45001: </span>
+                                Norma internacional para sistemas de gestión de seguridad y salud en el trabajo.</p>
+                            <hr>
+                        </div>
+                        <div class="card_item">
+                            <p><span class="purple strong-text">Quemadura:</span> Lesión en la piel por calor,
+                                electricidad o sustancias químicas.</p>
+                            <hr>
+                        </div>
+                        <div class="card_item">
+                            <p><span class="purple strong-text">Permiso de trabajo: </span>
+                                Autorización requerida antes de iniciar trabajos en alturas.</p>
+                            <hr>
+                        </div>
+                        <div class="card_item">
+                            <p><span class="purple strong-text">Plataformas Elevadoras: </span>
+                                Dispositivos mecánicos para elevar trabajadores a zonas de difícil acceso</p>
+                            <hr>
+                        </div>
+                        <div class="card_item">
+                            <p><span class="purple strong-text">
+                                  Profesional competente o prevencionista de riesgos: </span>
+                                  Persona que diseña y aprueba procedimientos de trabajo seguro.</p>
+                            <hr>
+                        </div>
+                        <div class="card_item">
+                            <p><span class="purple strong-text">
+                                  Redes de seguridad: </span>
+                                 Estructuras que amortiguan y previenen la caída de trabajadores y herramientas.</p>
+                            <hr>
+                        </div>
+                        <div class="card_item">
+                            <p><span class="purple strong-text">
+                                   Riesgo: 
+                                </span>Posibilidad de que ocurra un evento peligroso.</p>
+                            <hr>
+                        </div>
+                        <div class="card_item">
+                            <p><span class="purple strong-text">
+                                    Supervisor / Encargado de seguridad: 
+                                </span>Persona que vigila la correcta ejecución de los trabajos.</p>
+                            <hr>
+                        </div>
+                        <div class="card_item">
+                            <p><span class="purple strong-text">
+                                    Trabajador:
+                                </span>Persona que realiza el trabajo en alturas</p>
+                            <hr>
+                        </div>
+                        <div class="card_item">
+                            <p><span class="purple strong-text">
+                                    Trabajo en alturas: 
+                                </span>Labores realizadas a más de 1,8 metros sobre el nivel del suelo.</p>
+                            <hr>
+                        </div>
+                    </div>
+                </div>
+                <div class="container-center">
+                    <a href="../assets/doc/glosario.pdf" download="Resumen-Glosario.pdf" class="btn">
+                        <i class="fas fa-hand-pointer"></i> Descargar PDF
+                    </a>
+                </div>
+
+            </div>
+        </div>
+
+        <!--estructura tematica-->
+        <div class="content">
+            <div class="tab-content" id="content4">
+                <div class="col-lg-12 col-md-12">
+                    <div class="m-4rem">
+                        <h1 class="titulo text-center">Estructura <span class="purple">temática</span>
+                        </h1>
+                        <p class="text-center">En este curso encontrarás estas <span class="purple">tres
+                                (3) lecciones</span> para el cuidado de tus manos en el trabajo.</p>
+                    </div>
+                    <!--Instruccion-->
+                    <div class="mostrar-web">
+                        <div class="instruccion-center p-5rem">
+                            <i class="instruccion-bg-light">Desliza el cursor sobre cada lección para mostrar su
+                                contenido<span class="icono-inst"><i class="fa-solid fa-arrow-turn-down"></i></span>
+                            </i>
+                        </div>
+                    </div>
+
+                    <div class="mostrar-mobile">
+                        <div class="instruccion-center p-5rem">
+                            <i class="instruccion-bg-dark">Lee atentamente el contenido de cada momento<span
+                                    class="icono-inst"><i class="fa-solid fa-arrow-turn-down"></i></span> </i>
+                        </div>
+                    </div>
+
+                    <!--cards -->
+                    <div class="card-container_momentos">
+                        <div class="card_momentos">
+                            <img src="../assets/img/momento-1-alturas.webp" alt="Imagen 1">
+                            <div class="info_momentos">
+                                <h3>1-Comencemos: Principios de Seguridad y normatividad aplicable</h3>
+                                <hr>
+                                <p>Recordaremos las definiciones clave, los permisos de trabajo en caliente y las normas
+                                    aplicables en Colombia.
+                                </p>
+                            </div>
+                        </div>
+                        <div class="card_momentos">
+                            <img src="../assets/img/momento-2-alturas.webp" alt="Imagen 2">
+                            <div class="info_momentos">
+                                <h3>2-Profundicemos: Técnicas de soldadura y roles clave</h3>
+                                <hr>
+                                <p>Aprenderemos los tipos de soldadura y sus características, los equipos adecuados y
+                                    las precauciones.</p>
+                            </div>
+                        </div>
+                        <div class="card_momentos">
+                            <img src="../assets/img/momento-3-alturas.webp" alt="Imagen 3">
+                            <div class="info_momentos">
+                                <h3>3-Afiancemos: Gestión de Riesgos y Medidas de Control</h3>
+                                <hr>
+                                <p>Revisaremos los peligros y riesgos asociados al trabajo con soldadura, su análisis de
+                                    riesgo y las medidas de prevención a aplicar.</p>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+
+    <!-- Botón "Comenzar el curso" -->
+    <p id="warning-msg" class="warning-msg">Por favor, revisa todas las secciones antes de comenzar el curso.</p>
+    <p id="success-msg" class="success-msg hidden">¡Perfecto! Ya puedes comenzar tu curso.</p>
+    <button class="start-btn" id="start-btn" onclick="window.location.href='../leccion1/leccion1.html'">
+        <i class="fas fa-hand-pointer"></i> Comenzar el curso</button>
+    <script src="script.js"></script>
+    <script src="../assets/js/slide_inicio.js"></script>
+    <!-- Script del Widget -->
+    <script src="../assetsWidget/js/widget.js"></script>
+</body>
+
+</html>

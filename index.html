@@ -1,0 +1,458 @@
+<!-- <?php 
+  // $CI = require('../../ci_instance.php');
+  require('../../../functions_helpers.php'); /*load helper*/
+  check_session(); /* Comprobar la sesión activa*/
+  $course_code        = $_GET['course_code'];  /* recibir el código del curso */
+  $unique_course_id   = check_permission_employee_course($course_code); /* Comprobar si el empleado tiene acceso al curso*/
+  $CI->load->model('training/evaluation_model');
+  $modules            = $CI->evaluation_model->get_read_progress_user($unique_course_id, [], [$CI->session->userdata('employee_data')['user_id']]);
+  //$modules            = get_course_modules($course_code);
+	$extension_url      = "?course_code=".$course_code;
+  
+  foreach ($modules as $key => $module) {
+		# code...
+		$module_info = get_module_image_description($key + 1);
+		//echo $key + 1;
+		switch($key + 1) {
+			case 1: $url = "inicio.php?course_code=".$course_code; break;
+		}
+   }  
+	$url .= $extension_url . "&module=".__my_simple_crypt__($module['module_id'], 'e');
+  $extension_url = "?course_code=".$course_code; /* variable url para pasar el código del curso*/
+?> -->
+<!DOCTYPE html>
+<html lang="es">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>CHILE CURSOS</title>
+    <!-- Librerías CSS -->
+    <link rel="stylesheet" href="https://use.fontawesome.com/releases/v5.12.1/css/all.css" crossorigin="anonymous">
+    <!-- Librería JavaScript -->
+    <script src="assets/js/jquery-3.3.1.js" defer></script>
+
+    <style>
+        * {
+            margin: 0;
+            padding: 0;
+        }
+
+        body {
+            position: relative;
+            width: 100%;
+            height: 100vh;
+        }
+
+        video {
+            position: fixed;
+            width: 100%;
+            height: 100%;
+            background: #333;
+            object-fit: cover;
+        }
+
+        .contInd {
+            position: absolute;
+            width: 90%;
+            z-index: 2;
+            max-width: 900px;
+            top: 5%;
+            left: 10%;
+        }
+
+        img {
+            position: relative;
+            max-width: 400px;
+            width: 100%;
+            margin-bottom: 20px;
+        }
+
+        b {
+            position: relative;
+            font-size: 2.55rem;
+            width: auto;
+            height: auto;
+            z-index: 2;
+            font-family: Arial, sans-serif;
+            color: #badde1;
+        }
+
+        button {
+            font-size: 25px;
+            color: #0b3d5c !important;
+            padding: 10px 20px;
+            border-radius: 30px;
+            background: #BFEE30;
+            position: absolute;
+            z-index: 3;
+            max-width: 200px;
+            left: 0;
+            right: 0;
+            margin: 0 auto;
+            bottom: 10%;
+            border: none;
+            box-shadow: rgb(0 160 175 / 30%) 0px 8px 24px;
+        }
+
+        button:hover {
+            cursor: pointer;
+            filter: grayscale(50%);
+        }
+
+        .button-right {
+            max-width: 180px;
+            margin: 0 auto;
+        }
+
+        .button-1 {
+            border: none;
+            background: transparent;
+            padding: 0;
+            cursor: pointer;
+            outline-offset: 4px;
+            transition: filter 250ms;
+            user-select: none;
+            -webkit-user-select: none;
+            touch-action: manipulation;
+        }
+
+        .button-1-shadow {
+            position: absolute;
+            top: 0;
+            left: 0;
+            width: 100%;
+            height: 100%;
+            border-radius: 12px;
+            background: hsl(0deg 0% 0% / 0.25);
+            will-change: transform;
+            transform: translateY(2px);
+            transition: transform 600ms cubic-bezier(.3, .7, .4, 1);
+        }
+
+        .button-1-edge {
+            position: absolute;
+            top: 0;
+            left: 0;
+            width: 100%;
+            height: 100%;
+            border-radius: 12px;
+            background: linear-gradient(to left, #6f1599, #6803ab 8%, #5a00a3 92%, #8f1cc4);
+        }
+
+        .button-1-front {
+            display: block;
+            position: relative;
+            padding: 12px 27px;
+            border-radius: 12px;
+            font-size: 25px;
+            font-weight: 600;
+            color: #fff;
+            background: #963cd2;
+            will-change: transform;
+            transform: translateY(-4px);
+            transition: transform 600ms cubic-bezier(.3, .7, .4, 1);
+        }
+
+        @media (min-width: 768px) {
+            .button-1-front {
+                font-size: 25px;
+                padding: 12px 30px;
+                font-family: 'Montserrat', sans-serif;
+            }
+        }
+
+        .button-1:hover {
+            filter: brightness(110%);
+            -webkit-filter: brightness(110%);
+        }
+
+        .button-1:hover .button-1-front {
+            transform: translateY(-6px);
+            transition: transform 250ms cubic-bezier(.3, .7, .4, 1.5);
+        }
+
+        .button-1:active .button-1-front {
+            transform: translateY(-2px);
+            transition: transform 34ms;
+        }
+
+        .button-1:hover .button-1-shadow {
+            transform: translateY(4px);
+            transition: transform 250ms cubic-bezier(.3, .7, .4, 1.5);
+        }
+
+        .button-1:active .button-1-shadow {
+            transform: translateY(1px);
+            transition: transform 34ms;
+        }
+
+        .button-1:focus:not(:focus-visible) {
+            outline: none;
+        }
+
+        .border-green {
+            border-color: green !important;
+        }
+
+        .border-red {
+            border-color: red !important;
+        }
+
+        .slider12>div:nth-child(4)>i:hover {
+            filter: grayscale(50%);
+            transform: scale(1.01);
+        }
+
+        .parrafoblanco-center p {
+            text-align: left;
+            line-height: 1.2em;
+            font-size: 25px;
+            color: #fff;
+            margin-top: 5%;
+            font-family: Arial, Helvetica, sans-serif;
+        }
+
+        .dx2-v2 {
+            font-size: 40px;
+            line-height: 1.0em;
+            word-wrap: break-word;
+            overflow-wrap: break-word;
+            white-space: normal;
+            color: #badde1;
+            padding-top: 2%;
+            font-family: 'Alata', sans-serif;
+        }
+
+        .parrafo {
+            color: #d0d0d0;
+            font-size: 35px;
+            font-family: 'Futura Bk BT', sans-serif;
+            margin-top: 2%;
+        }
+
+        .parrafov2 {
+            color: #fff;
+            font-size: 35px;
+            font-family: 'Futura Bk BT', sans-serif;
+            margin-top: 2%;
+        }
+
+
+        @-webkit-keyframes bell {
+            0% {
+                box-shadow: 0 0 0 0 rgba(0 160 175 / 0.8);
+            }
+
+            100% {
+                box-shadow: 0 0 0 50px rgba(0 160 175 / 0);
+            }
+        }
+
+        .fd {
+            position: absolute;
+            width: 100%;
+            height: 100vh;
+            background-image: url();
+            background-size: cover;
+            background-position: center;
+            z-index: 1;
+            opacity: .55;
+        }
+
+        .video-background {
+            position: relative;
+            width: 100%;
+            height: 100vh;
+            overflow: hidden;
+        }
+
+        #myVideo {
+            position: absolute;
+            top: 0;
+            left: 0;
+            width: 100%;
+            height: 100%;
+            object-fit: cover;
+            filter: brightness(40%);
+        }
+
+        .img-logo {
+            padding-top: 5%;
+            padding-bottom: .5%;
+            max-width: 20%;
+            margin: 0 auto;
+        }
+
+        .titulo {
+            position: relative;
+            margin-top: .5%;
+            font-size: 3.2rem;
+            font-weight: 700;
+            line-height: 1.2em;
+            width: auto;
+            height: auto;
+            z-index: 2;
+            font-family: 'Montserrat', sans-serif;
+            color: #ffffff;
+        }
+
+        .subtitulo {
+            font-size: 55px;
+            line-height: 1.2em;
+            z-index: 2;
+            font-family: 'Montserrat', sans-serif;
+            color: #ffffff;
+        }
+
+        @media (max-width: 1024px) {
+            .contInd {
+                left: 0;
+                right: 0;
+                margin: 0 auto;
+                padding-top: 10%;
+            }
+        }
+
+        @media (max-width: 768px) {
+
+            .titulo {
+                position: relative;
+                margin-top: 5%;
+                font-size: 35px;
+                font-weight: 700;
+                line-height: 1.2em;
+                text-align: center;
+                width: auto;
+                height: auto;
+                z-index: 2;
+                font-family: 'Montserrat', sans-serif;
+                color: #ffffff;
+            }
+
+            .subtitulo {
+                font-size: 35px;
+                line-height: 1.2em;
+                z-index: 2;
+                font-family: 'Montserrat', sans-serif;
+                color: #ffffff;
+                text-align: center;
+            }
+
+            .fd {
+                position: absolute;
+                width: 100%;
+                height: 100vh;
+                background-image: url();
+                background-size: cover;
+                background-position: center;
+                z-index: 1;
+            }
+
+            .img-logo {
+                padding-top: 0%;
+                padding-bottom: 1%;
+                max-width: 80%;
+                margin: 0 auto;
+                text-align: center;
+                display: block;
+            }
+
+            .parrafoblanco-center p {
+                text-align: center;
+                line-height: 1.2em;
+                font-size: 30px;
+                color: #fff;
+                font-family: Arial, Helvetica, sans-serif;
+            }
+
+            .dx2-v2 {
+                font-size: 35px;
+                text-align: center;
+                line-height: 1.0em;
+                word-wrap: break-word;
+                overflow-wrap: break-word;
+                white-space: normal;
+                color: #badde1;
+                font-family: 'Alata', sans-serif;
+            }
+
+            .parrafo {
+                color: #d0d0d0;
+                font-size: 28px;
+                font-family: 'Futura Bk BT', sans-serif;
+                margin-top: 5%;
+                text-align: center;
+                word-wrap: break-word;
+                overflow-wrap: break-word;
+                white-space: normal;
+            }
+
+            .parrafov2 {
+                color: #fff;
+                font-size: 25px;
+                font-family: 'Futura Bk BT', sans-serif;
+                margin-top: 5%;
+                text-align: center;
+                word-wrap: break-word;
+                overflow-wrap: break-word;
+                white-space: normal;
+            }
+
+            button {
+                font-size: 20px;
+                position: absolute;
+                z-index: 3;
+                max-width: 150px;
+                left: 0;
+                right: 0;
+                margin: 0 auto;
+                bottom: 10%;
+                color: #0b3d5c !important;
+                background: #BFEE30;
+                padding: 10px 20px;
+                border-radius: 30px;
+                border: none;
+                box-shadow: rgb(0 160 175 / 30%) 0px 8px 24px;
+            }
+        }
+    </style>
+</head>
+
+<body>
+    <div class="contInd">
+        <img src="assets/img/logo_accioneblanco.webp" alt="" class="img-logo">
+        <h1 class="titulo">Medidas para la prevención de riesgo en el trabajo en alturas
+        </h1>
+        <h1 class="subtitulo">dentro del contexto laboral</h1>
+    </div>
+    <div class="fd"></div>
+
+    <div class="video-background">
+        <video autoplay muted loop id="myVideo">
+            <source src="assets/video/background_index.mp4" type="video/mp4">
+        </video>
+    </div>
+    <button class="button-1 button-right" role="button" id="btn_espanol">
+        <span class="button-1-shadow"></span>
+        <span class="button-1-edge"></span>
+        <span class="button-1-front text">
+            <i class="fas fa-hand-point-right"></i> Iniciar
+        </span>
+    </button>
+
+    <script>
+        //document.getElementById('iniVideo').play();
+
+        /*$("body").on("click", function(){
+            window.location.href = "introduccion.html";
+            // window.location.href = "modulo.php?course_code=<?= $course_code; ?>";
+        });*/
+
+        document.getElementById('btn_espanol').addEventListener('click', function () {
+            window.location.href = 'inicio/inicio.html';
+        });
+    </script>
+</body>
+
+</html>

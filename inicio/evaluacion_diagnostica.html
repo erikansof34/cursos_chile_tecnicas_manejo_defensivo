@@ -1,0 +1,91 @@
+<!DOCTYPE html>
+<html lang="es">
+
+<head>
+
+    <meta http-equiv="Content-Type" content="text/html; charset=utf-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <!-- library bootstrap v.5.0.2 -->
+    <link rel="stylesheet" type="text/css" href="../assets/bootstrap/css/bootstrap.css">
+    <link rel="stylesheet" type="text/css" href="../assets/bootstrap/css/bootstrap-grid.css">
+    <link rel="stylesheet" type="text/css" href="../assets/bootstrap/css/bootstrap-reboot.css">
+    <link rel="stylesheet" type="text/css" href="../assets/css/cards.css">
+    <link rel="stylesheet" type="text/css" href="../assets/bootstrap/css/bootstrap-utilities.css">
+
+
+    <!-- library cascading style sheets -->
+    <link rel="stylesheet" type="text/css" href="../assets/css/style_instruccion.css">
+    <link rel="stylesheet" type="text/css" href="../assets/css/style.css">
+    <link rel="stylesheet" type="text/css" href="../assets/css/cards.css">
+    <link rel="stylesheet" type="text/css" href="../assets/css/styleSlider.css">
+
+    <!--Montserrat-->
+    <link href="https://fonts.googleapis.com/css2?family=Montserrat:wght@400;500;700&display=swap" rel="stylesheet">
+
+    <!--Libreria iconos-->
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/4.7.0/css/font-awesome.min.css">
+    <link rel="stylesheet" href="https://use.fontawesome.com/releases/v5.12.1/css/all.css" crossorigin="anonymous">
+
+    <!--library javascript-->
+    <script src="../assets/js/jquery-3.3.1.js"></script>
+
+</head>
+
+<body style="padding-left: 0px !important; padding-right: 0px !important;">
+    <!-- Info usuario -->
+    <input id='course_code' value="<?php echo $course_code;?>" hidden>
+    <input id='module_id' value="<?php echo $module_id;?>" hidden>
+    <input id='unique_course_id' value="<?php echo $unique_course_id ;?>" hidden>
+    <input id='emp_unique_id' value="<?php echo $_SESSION['employee_data']['emp_unique_id'] ;?>" hidden>
+    <!-- Header con el logo -->
+
+    <!-- content fluid -->
+    <div class="container-fluid" style="position: relative; height: 100vh; margin-top: 0px;">
+        <!-- content slider -->
+        <div class="ctMd">
+            <!-- content module-->
+            <div class="contentModule">
+
+                <!--Pantalla de introduccion-->
+                <div class="container current bg-instrucciones parrafo-ins">
+                    <h1 class="titulo text-center white">Evaluación Diagnostica</h1>
+                    <div class="course-container_inst">
+                        <div class="course-box_inst">
+                            <div class="header_inst">
+                                <div class="icon-container_inst">
+                                    <i class="fas fa-clock icon_inst"></i>
+                                </div>
+                                <h2>Antes de comenzar…</h2>
+                            </div>
+                            <div class="content_inst">
+                                <p>
+                                    Tu experiencia y tu conocimiento son importantes, y acá los valoramos mucho.
+                                    <br>
+                                    Te invitamos a presentar esta evaluación diagnóstica, y así sabrás qué conocimiento
+                                    tienes y que te van a ayudar a aprovechar de la mejor forma este curso.
+                                    <br>
+                                    Mucho éxito !
+                                </p>
+                            </div>
+                        </div>
+                        <img src="../assets/img/avatar_hombre_alzando_mano_fondo_azul.webp" alt="" class="img-40">
+
+                    </div>
+                    <button id='siguiente' class="btn btn-warning">
+                        <i class="fa fa-arrow-right"></i> Siguiente</button>
+                </div>
+            </div>
+        </div>
+    </div>
+    <script>
+        //document.getElementById('iniVideo').play();
+
+        $("#siguiente").on("click", function () {
+            window.location.href = "../leccion1/leccion1.html";
+            //window.location.href = "modulo.php?course_code=<?= $course_code; ?>";
+        });
+    </script>
+
+</body>
+
+</html>

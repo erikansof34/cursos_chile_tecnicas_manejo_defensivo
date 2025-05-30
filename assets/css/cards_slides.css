@@ -1,0 +1,127 @@
+/*NUEVA CARD*/
+.card-container_momentos {
+  display: flex;
+  gap: 2.5rem;
+  margin-top: 2%;
+  justify-content: center;
+}
+
+.card_momentos {
+  position: relative;
+  width: 100%;
+  height: 55vh;
+  overflow: hidden;
+  border-radius: 10px;
+  cursor: pointer;
+  box-shadow: 0 4px 6px rgba(0, 0, 0, 0.1);
+  transition: transform 0.5s ease-in-out; 
+}
+
+.card_momentos img {
+  width: 100%;
+  height: 100%;
+  object-fit: cover;
+  filter: grayscale(100%); 
+  transition: filter 0.5s ease-in-out;
+}
+
+.card_momentos:hover {
+  transform: scale(1.05); 
+}
+
+.card_momentos:hover img {
+  filter: grayscale(0%); 
+}
+
+.card_momentos .info_momentos {
+  position: absolute;
+  bottom: 0;
+  left: 0;
+  right: 0;
+  background: #6e3cd2e1;
+  color: white;
+  padding: 1.2rem;
+  text-align: center;
+  overflow: hidden;
+  height: auto;
+}
+
+.card_momentos h3 {
+  margin: 0; 
+  font-size: 16px; 
+  font-weight: 600;
+  line-height: 1.3em;
+  transition: color 0.5s ease-in-out; 
+  text-align: center; 
+  overflow-wrap: break-word;
+  word-wrap: break-word;
+  hyphens: auto; 
+  max-width: 100%; 
+  white-space: normal; 
+  font-family: 'Montserrat', sans-serif;
+}
+
+.card_momentos:hover h3 {
+  color: #ffffff; 
+}
+
+.card_momentos p {
+  color: #fff;
+  margin: 0;
+  font-size: 15px;
+  line-height: 1.1em;
+  opacity: 0; 
+  max-height: 0;
+  overflow: hidden;
+  transition: opacity 0.5s ease-in-out, max-height 0.5s ease-in-out; 
+  font-family: 'Montserrat', sans-serif;
+}
+
+.card_momentos:hover p {
+  opacity: 1; 
+  max-height: 100px; 
+}
+
+.card_momentos .info_momentos hr {
+  border: none;
+  height: 2px;
+  background-color: #fff; 
+  margin: 10px 0;
+  width: 80%;
+  margin-left: auto;
+  margin-right: auto;
+  transition: background-color 0.5s ease-in-out; 
+}
+
+.card_momentos:hover .info_momentos hr {
+  background-color: #ffffff;
+}
+
+
+@media (hover: none) and (pointer: coarse) {
+  .card_momentos p {
+    opacity: 1;
+    max-height: 100px;
+  }
+
+  .card_momentos:active {
+    transform: scale(1.05);
+  }
+}
+
+@media screen and (max-width: 768px) {
+  .card-container_momentos {
+    display: flex;
+    flex-direction: column; 
+    justify-content: center;
+    align-items: center;
+    gap: 2rem;
+    margin: 0 auto; 
+    height: auto; 
+    padding: 1rem;
+  }
+  .card_momentos {
+    width: 100%; 
+    height: 350px; 
+  }
+}

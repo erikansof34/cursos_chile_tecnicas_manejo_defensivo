@@ -1,0 +1,514 @@
+<!-- <?php
+    require('../../../functions_helpers.php'); /*load helper*/
+    check_session(); /*check session by employee */
+    $course_code = $_GET['course_code']; /* recibir el código del curso */
+    //$module_id        = __my_simple_crypt__($_GET['module'], 'd');
+    $module_id = 54;
+    $unique_course_id = check_permission_employee_course($course_code); /* Comprobar si el empleado tiene acceso al curso*/
+    $extension_url = "?course_code=" . $course_code; /* variable url para pasar el código del curso*/
+    
+    
+    $progress = progress_courses($course_code,$module_id);
+    $firma =  image_profile($course_code);
+   
+?> -->
+<!DOCTYPE html>
+<html lang="es">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <!-- library bootstrap v.5.0.2 -->
+    <link rel="stylesheet" type="text/css" href="../assets/bootstrap/css/bootstrap.css">
+    <link rel="stylesheet" type="text/css" href="../assets/bootstrap/css/bootstrap-grid.css">
+    <link rel="stylesheet" type="text/css" href="../assets/bootstrap/css/bootstrap-reboot.css">
+    <link rel="stylesheet" type="text/css" href="../assets/css/cards.css">
+    <link rel="stylesheet" type="text/css" href="../assets/css/cards_slides.css">
+    <link rel="stylesheet" type="text/css" href="../assets/bootstrap/css/bootstrap-utilities.css">
+    <script src="../assets/bootstrap/js/bootstrap.bundle.js"></script>
+    <script src="../assets/bootstrap/js/bootstrap.esm.js"></script>
+    <script src="../assets/bootstrap/js/bootstrap.js"></script>
+    <script src="../assets/js/jquery-3.3.1.js"></script>
+    <script src="../assets/js/touch-dnd.js"></script>
+    <!-- library cascading style sheets -->
+    <link rel="stylesheet" type="text/css" href="../assets/css/all.css">
+    <link rel="stylesheet" type="text/css" href="../assets/css/style.css">
+    <link rel="stylesheet" type="text/css" href="../assets/css/styleSlider.css">
+    <link rel="stylesheet" type="text/css" href="../assets/css/actividades.css">
+    <link rel="stylesheet" type="text/css" href="../assets/css/style_personalizado.css">
+    <link rel="stylesheet" type="text/css" href="../assets/css/style_slides.css">
+
+    <!--Tiporgraia Montserrat-->
+    <link href="https://fonts.googleapis.com/css2?family=Montserrat:wght@400;500;700&display=swap" rel="stylesheet">
+
+    <!--Libreria iconos-->
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.0.0-beta3/css/all.min.css">
+
+    <!--Importaciones local CDN-->
+    <link rel="stylesheet" type="text/css" href="../assets/cdn/font-awesome.min.css">
+    <link rel="stylesheet" type="text/css" href="../assets/cdn/all.css">
+    <link rel="stylesheet" type="text/css" href="../assets/cdn/all.min.css">
+
+    <!--Libreria iconos-->
+    <link rel="stylesheet" href="../assets/js/magnify/css/magnify.css" />
+    <!-- Estilos del widget -->
+    <link rel="stylesheet" href="../assetsWidget/css/widget.css">
+</head>
+
+<body class="body-style">
+    <!-- Info usuario -->
+    <input id='course_code' value="<?php echo $course_code;?>" hidden>
+    <input id='module_id' value="<?php echo $module_id;?>" hidden>
+    <input id='unique_course_id' value="<?php echo $unique_course_id ;?>" hidden>
+    <input id='emp_unique_id' value="<?php echo $_SESSION['employee_data']['emp_unique_id'] ;?>" hidden>
+    <!-- Header con el logo -->
+    <div class="header">
+        <!-- header -->
+        <div class="contentHeader">
+            <div>
+                <img class="logoTop" src="../assets/img/logo_acciona_empresas.webp">
+                <div class="miga_pan">
+                    <p style="text-align: left;" id="breadcrumb"></p>
+                </div>
+                <!-- button home -->
+                <div>
+                    <button id="home" onclick="progCircle(1);">
+                        <i class="fas fa-home"></i>
+                    </button>
+                </div>
+                <!-- progress counter -->
+                <div class="txPg">
+                    <span id="textProg">1</span> / <span id="nSlider3"></span>
+                    <div class="contCircleBarMovil">
+                    </div>
+                </div>
+                <div>
+                    <p class="txPg"> Progreso: <span id="porcentajeProgreso">0</span>% </p>
+                </div>
+                <!-- <i class="fas fa-bars" style="padding: 10px 10px 10px 20px;"></i> -->
+                <i class="" style="padding: 10px 10px 10px 50px;"></i>
+                <div class="miga_pan_movil">
+                    <p style="text-align: center; display: none;" id="breadcrumb_movil"></p>
+                </div>
+            </div>
+            <!--BARRA DE PROGRESO PC -->
+            <div class="contCircleBar contCircleBar-nav-bar pt-2">
+            </div>
+            <!--BARRA DE PROGRESO MOVIL -->
+            <div class="progBar">
+                <div style="width: 10% !important;"></div>
+            </div>
+        </div>
+    </div>
+    <!-- content fluid -->
+    <div class="container-fluid">
+        <!-- content slider -->
+        <div class="ctMd">
+            <!-- content module-->
+            <div class="contentModule">
+
+                <!--slider01-leccion3-->
+                <div class="container dividerImgSeccion3 miga_titulo_curso" id="dividerImgSeccion3">
+                    <div class="row">
+                        <div class="pl-seccion">
+                            <div class="col-lg-8 col-md-12">
+                                <h1 class="tituloseccion">3-Factores para evitar 
+                                    <span class="yellow">Accidentes</span>
+                                    <span class="yellow">de Tránsito</span>
+                                </h1>
+                                <hr class="hr-50">
+                                <h1 class="subtituloseccion white">En esta lección aprenderás a:
+                                    <ul>
+                                        <li></li>
+                                    </ul>
+                                </h1>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+
+                <!--slider02 leccion3--->
+                <div class="container miga_titulo_curso">
+                    <div class="row">
+                        <div class="col-lg-6 col-md-12 background-dark-column">
+                            <div class="m-4rem">
+                                <h1 class="titulo text-center white">Factores que influyen</h1>
+                                <img src="../assets/img/avatar_mujer_con_brazos_abiertos_fondo_azul.webp" alt=""
+                                    class="img-40 img-center img-80-mobile">
+                                <h1 class="subtitulo text-center purple">en los accidentes de tránsito
+                                </h1>
+                                <p class="text-justify white">Hay elementos que <strong>NO</strong> corresponden al <strong>MANEJO DEFENSIVO</strong> y que pueden influir en que ocurran los accidentes de tránsito.</strong>
+                                </p>
+                                <div class="container-center">
+                                </div>
+                            </div>
+                        </div>
+                        <div class="col-lg-6 col-md-12 background-light">
+                            <div class="m-4rem">
+                                <div class="instruccion-center p-5rem">
+                                    <i class="instruccion-bg-light">Selecciona la respuesta correcta para cada factor<span
+                                            class="icono-inst"><i class="fa-solid fa-arrow-turn-down"></i></span>
+                                    </i>
+                                </div>
+                                <div class="video-center video-center">
+                                    <div class="preview-container-livebox">
+                                        <img src="../assets/img/portada_actividades/portada2_hombre_horizontal_fondo_blanco.webp"
+                                            alt="Vista previa Video" class=" img-50 img-center img-80-mobile">
+                                        <button id="liveBoxSlide21" class="liveBoxSlideIframe" data-bs-toggle="modal24"
+                                            data-bs-target="#slide24_video">
+                                            <i class="fas fa-hand-pointer"></i>
+                                        </button>
+                                    </div>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                    <div class="modal-container" id="modalContainerSlide21"></div>
+                </div>
+
+                <!--slider03 leccion3-->
+                <div class="container miga_titulo_curso">
+                    <div class="row">
+                        <div class="col-lg-6 col-md-12 background-dark-column">
+                            <div class="m-4rem">
+                                <h1 class="titulo text-center white">Evite chocar el
+                                </h1>
+                                <h1 class="subtitulo text-center purple">vehículo de Adelante</span>
+                                <img src="../assets/img/avatar_hombre_cruzado_brazos_fondo_azul.webp" alt=""
+                                    class="img-40 img-center">
+                                <br>
+                                <p class="white text-justify">Una de las claves para evitar chocar con el vehículo de adelante, 
+                                    <strong>es tener en cuenta las distancias recomendadas</strong> de acuerdo con la velocidad 
+                                    de su vehículo</p>
+                            </div>
+                        </div>
+                        <div class="col-lg-6 col-md-12 background-light-column">
+                            <div class="m-4rem">
+                                <div class="instruccion-center p-5rem">
+                                    <i class="instruccion-bg-dark">
+                                        Haz clic para ejecutar el video
+                                        <span class="icono-inst">
+                                            <i class="fa-solid fa-arrow-turn-down"></i>
+                                        </span>
+                                    </i>
+                                </div>
+                                <div class="video-center">
+                                    <div class="iframe-container mostrar-web" id="Slide6L1Web">
+                                        <!-- Botón de reproducción centrado para web -->
+                                        <button class="video-button-control-audio" data-slider="slider6L1"
+                                            data-target="webIframeSlider6L1">
+                                            <i class="fas fa-play"></i>
+                                        </button>
+                                        <div class="loader">
+                                            <div class="bar1"></div>
+                                            <div class="bar2"></div>
+                                            <div class="bar3"></div>
+                                            <div class="bar4"></div>
+                                            <div class="bar5"></div>
+                                            <div class="bar6"></div>
+                                            <div class="bar7"></div>
+                                            <div class="bar8"></div>
+                                            <div class="bar9"></div>
+                                            <div class="bar10"></div>
+                                            <div class="bar11"></div>
+                                            <div class="bar12"></div>
+                                        </div>
+                                        <iframe id="webIframeSlider6L1" class="iframe-video-vertical-web"
+                                            src="https://iframe.mediadelivery.net/embed/424470/ab772b78-9c1f-485e-a4ff-32ff28b67713?autoplay=false&loop=false&muted=false&preload=true&responsive=true"
+                                            loading="lazy"
+                                            allow="accelerometer; gyroscope; autoplay; encrypted-media; picture-in-picture;"
+                                            allowfullscreen="true" style="pointer-events: none;"></iframe>
+                                    </div>
+                                    <div class="iframe-container mostrar-mobile" id="Slide6L1Mobile">
+                                        <!-- Botón de reproducción centrado para móvil -->
+                                        <button class="video-button-control-audio" data-slider="slider6L1"
+                                            data-target="mobileIframeSlider6L1">
+                                            <i class="fas fa-play"></i>
+                                        </button>
+                                        <div class="loader">
+                                            <div class="bar1"></div>
+                                            <div class="bar2"></div>
+                                            <div class="bar3"></div>
+                                            <div class="bar4"></div>
+                                            <div class="bar5"></div>
+                                            <div class="bar6"></div>
+                                            <div class="bar7"></div>
+                                            <div class="bar8"></div>
+                                            <div class="bar9"></div>
+                                            <div class="bar10"></div>
+                                            <div class="bar11"></div>
+                                            <div class="bar12"></div>
+                                        </div>
+                                        <iframe id="mobileIframeSlider6L1" class="iframe-video-vertical-mobile"
+                                            src="https://iframe.mediadelivery.net/embed/424470/ab772b78-9c1f-485e-a4ff-32ff28b67713?autoplay=false&loop=false&muted=false&preload=true&responsive=true"
+                                            loading="lazy"
+                                            allow="accelerometer; gyroscope; autoplay; encrypted-media; picture-in-picture;"
+                                            allowfullscreen="true" style="pointer-events: none;"></iframe>
+                                    </div>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+
+                <!--slider04 leccion3--->
+                <div class="container miga_titulo_curso">
+                    <div class="row">
+                        <div class="col-lg-6 col-md-12 background-dark-column">
+                            <div class="m-4rem">
+                                <h1 class="titulo text-center white">No olvides las</h1>
+                                <img src="../assets/img/avatar_mujer_con_brazos_abiertos_fondo_azul.webp" alt=""
+                                    class="img-40 img-center img-80-mobile">
+                                <h1 class="subtitulo text-center purple">SEÑALES DE TRANSITO
+                                </h1>
+                                <p class="text-justify white">La señal vial es una norma jurídica accesoria, 
+                                    por lo tanto, de cumplimiento obligatorio. El usuario debe conocer su 
+                                    significado, acatar sus indicaciones y conservarlas, ya que la destrucción 
+                                    es un delito contra su seguridad y la de los demás
+                                </p>
+                                <button class="btn" data-bs-toggle="modal" data-bs-target="#slide_sld4_leccion3_sabias">
+                                    <i class="fas fa-question-circle"></i> Sabías que
+                                </button>
+                            </div>
+                        </div>
+                        <div class="col-lg-6 col-md-12 background-light">
+                            <div class="m-4rem">
+                                <div class="instruccion-center p-5rem">
+                                    <i class="instruccion-bg-light">Relaciona los tipos de señales de tránsito con el formato que le corresponde:<span
+                                            class="icono-inst"><i class="fa-solid fa-arrow-turn-down"></i></span>
+                                    </i>
+                                </div>
+                                <div class="video-center video-center">
+                                    <div class="preview-container-livebox">
+                                        <img src="../assets/img/portada_actividades/portada2_hombre_horizontal_fondo_blanco.webp"
+                                            alt="Vista previa Video" class=" img-50 img-center img-80-mobile">
+                                        <button id="liveBoxSlide21" class="liveBoxSlideIframe" data-bs-toggle="modal24"
+                                            data-bs-target="#slide24_video">
+                                            <i class="fas fa-hand-pointer"></i>
+                                        </button>
+                                    </div>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                    <div class="modal-container" id="modalContainerSlide21"></div>
+
+                    <!-- Modal -->
+                    <div class="modal fade" id="slide_sld4_leccion3_sabias" tabindex="-1" aria-hidden="true">
+                        <div class="modal-dialog modal-dialog-centered modal-lg modal-infografia modal-size-img">
+                            <div class="modal-content">
+                                <div class="modal-header">
+                                    <h5 class="modal-title">Sabías que</h5>
+                                    <button type="button" class="btn-close" data-bs-dismiss="modal"
+                                        aria-label="Close"></button>
+                                </div>
+                                <div class="modal-body">
+                                    <img src="../assets/img/info_epp.webp"/>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+
+                <!--slider05 leccion3--->
+                <div class="container miga_titulo_curso">
+                    <div class="row">
+                        <div class="col-lg-6 col-md-12 background-dark-column">
+                            <div class="m-4rem">
+                                <h1 class="titulo text-center white">Prelación de las</h1>
+                                <img src="../assets/img/avatar_mujer_con_brazos_abiertos_fondo_azul.webp" alt=""
+                                    class="img-40 img-center img-80-mobile">
+                                <h1 class="subtitulo text-center purple">SEÑALES DE TRANSITO
+                                </h1>
+                                <p class="text-justify white">El <strong>Artículo 111 del CNT (Código Nacional de Tránsito)</strong>
+                                    establece en qué orden de importancia los conductores debemos atender las 
+                                    señales de tránsito:
+                                </p>
+                            </div>
+                        </div>
+                        <div class="col-lg-6 col-md-12 background-light">
+                            <div class="m-4rem">
+                                <div class="instruccion-center p-5rem">
+                                    <i class="instruccion-bg-light">Arrastra los elementos para ordenarlos de acuerdo con la prelación de las señales de tránsito:<span
+                                            class="icono-inst"><i class="fa-solid fa-arrow-turn-down"></i></span>
+                                    </i>
+                                </div>
+                                <div class="video-center video-center">
+                                    <div class="preview-container-livebox">
+                                        <img src="../assets/img/portada_actividades/portada2_hombre_horizontal_fondo_blanco.webp"
+                                            alt="Vista previa Video" class=" img-50 img-center img-80-mobile">
+                                        <button id="liveBoxSlide21" class="liveBoxSlideIframe" data-bs-toggle="modal24"
+                                            data-bs-target="#slide24_video">
+                                            <i class="fas fa-hand-pointer"></i>
+                                        </button>
+                                    </div>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                    <div class="modal-container" id="modalContainerSlide21"></div>
+                </div>
+
+                <!--slider06 leccion3-->
+                <div class="container miga_titulo_curso">
+                    <div class="row">
+                        <div class="col-lg-5 col-md-12 background-dark-column">
+                            <div class="m-4rem">
+                                <h1 class="titulo text-center white">ANTES de iniciar la marcha,</h1>
+                                <h1 class="subtitulo text-center purple">recuerde:</h1>
+                                <img src="../assets/img/avatar_mujer_mirando_frente_cuaderno_bajo_el_brazo_fondo_azul.webp" alt=""
+                                    class="img-50 img-50-mobile img-center">
+                                <br>
+                                <p class="text-justify white">Alistar adecuadamente su vehículo, le permite darse el 
+                                    tiempo para tomar conciencia de la importante labor de conducción que va a 
+                                    realizar, aproveche este espacio para respirar, y asegúrese de tener la 
+                                    actitud defensiva adecuada para la conducción:
+                                </p>
+                            </div>
+                        </div>
+                        <div class="col-lg-7 col-md-12 background-light-column preguntas_01">
+                            <div class="m-4rem">
+                                <div class="instruccion-center p-5rem">
+                                    <i class="instruccion-bg-light">Haz clic sobre cada número para ver la información<span class="icono-inst"><i
+                                        class="fa-solid fa-arrow-turn-down"></i></span> 
+                                    </i>
+                                </div>
+                                <div class="image-sld15epp" id="imageContainer_sld15epp">
+                                    <img src="../assets/img/opciones_auto.png" alt="Matriz de riesgos"
+                                        id="mainImage_sld15epp">
+                                    <!-- Botones circulares numerados -->
+                                    <button class="circle-button_sld15epp" id="button1_sld15epp"
+                                            data-audio="../assets/audio/tarea-m2-slide-17-audio.mp3"
+                                            data-transcripcion='[
+                                            {"start":0,"end":1,"text":"1:"},
+                                            {"start":1,"end":5,"text":"La selección de los equipos debe basarse en los riesgos identificados"},
+                                            {"start":5,"end":9,"text":"y valorados en el Sistema de Gestión de Seguridad y Salud en el Trabajo "},
+                                            {"start":9,"end":14,"text":"(Sistema de Gestión de Seguridad y Salud en el Trabajo (SGSST) según D. N° 44)"},
+                                            {"start":14,"end":16,"text":"y el programa de prevención."}
+                                            ]'
+                                            onclick="showAudioWithTranscription_sld15epp(this, '<strong>1</strong><br>La selección de los equipos debe basarse en los riesgos identificados y valorados en el Sistema de Gestión de Seguridad y Salud en el Trabajo -SG-SST- y el programa de prevención.', event)">
+                                        1
+                                    </button>
+
+                                    <button class="circle-button_sld15epp" id="button2_sld15epp"
+                                            data-audio="../assets/audio/entorno-m2-slide-17.mp3"
+                                            data-transcripcion='[
+                                            {"start":0,"end":1,"text":"2:"},
+                                            {"start":1,"end":5,"text":"Los equipos deben proteger contra riesgos asociados como"},
+                                            {"start":5,"end":10,"text":"condiciones atmosféricas, sustancias químicas, espacios confinados,"},
+                                            {"start":10,"end":16,"text":"riesgos de incendio, contactos eléctricos, superficies calientes, abrasivas,"},
+                                            {"start":16,"end":18,"text":"o cualquier otro peligro identificado."}
+                                            ]'
+                                            onclick="showAudioWithTranscription_sld15epp(this, '<strong>2</strong><br>Los equipos deben proteger contra riesgos asociados como condiciones atmosféricas, sustancias químicas, espacios confinados, riesgos de incendio, contactos eléctricos, superficies calientes, abrasivas, o cualquier otro peligro identificado.', event)">
+                                        2
+                                    </button>
+
+                                    <button class="circle-button_sld15epp" id="button3_sld15epp"
+                                            data-audio="../assets/audio/trabajador-m2-slide-17.mp3"
+                                            data-transcripcion='[
+                                            {"start":0,"end":1,"text":"3:"},
+                                            {"start":1,"end":5,"text":"Se deben tomar en cuenta las condiciones fisiológicas"},
+                                            {"start":5,"end":7,"text":"del trabajador y su estado de salud,"},
+                                            {"start":7,"end":9,"text":"garantizando su aptitud para la tarea. "}
+                                            ]'
+                                            onclick="showAudioWithTranscription_sld15epp(this, '<strong>3</strong><br>Se deben tomar en cuenta las condiciones fisiológicas del trabajador y su estado de salud, garantizando su aptitud para la tarea.', event)">
+                                        3
+                                    </button>
+                                    
+                                    <!-- Nuevos botones adicionales (4-7) -->
+                                    <button class="circle-button_sld15epp" id="button4_sld15epp"
+                                            data-audio="../assets/audio/tarea-m2-slide-17-audio.mp3"
+                                            data-transcripcion='[
+                                            {"start":0,"end":1,"text":"4:"},
+                                            {"start":1,"end":5,"text":"Información adicional para el punto 4."},
+                                            {"start":5,"end":10,"text":"Detalles sobre el criterio número cuatro."}
+                                            ]'
+                                            onclick="showAudioWithTranscription_sld15epp(this, '<strong>4</strong><br>Información adicional para el punto 4. Detalles sobre el criterio número cuatro.', event)">
+                                        4
+                                    </button>
+
+                                    <button class="circle-button_sld15epp" id="button5_sld15epp"
+                                            data-audio="../assets/audio/entorno-m2-slide-17.mp3"
+                                            data-transcripcion='[
+                                            {"start":0,"end":1,"text":"5:"},
+                                            {"start":1,"end":5,"text":"Información adicional para el punto 5."},
+                                            {"start":5,"end":10,"text":"Detalles sobre el criterio número cinco."}
+                                            ]'
+                                            onclick="showAudioWithTranscription_sld15epp(this, '<strong>5</strong><br>Información adicional para el punto 5. Detalles sobre el criterio número cinco.', event)">
+                                        5
+                                    </button>
+
+                                    <button class="circle-button_sld15epp" id="button6_sld15epp"
+                                            data-audio="../assets/audio/trabajador-m2-slide-17.mp3"
+                                            data-transcripcion='[
+                                            {"start":0,"end":1,"text":"6:"},
+                                            {"start":1,"end":5,"text":"Información adicional para el punto 6."},
+                                            {"start":5,"end":10,"text":"Detalles sobre el criterio número seis."}
+                                            ]'
+                                            onclick="showAudioWithTranscription_sld15epp(this, '<strong>6</strong><br>Información adicional para el punto 6. Detalles sobre el criterio número seis.', event)">
+                                        6
+                                    </button>
+
+                                    <button class="circle-button_sld15epp" id="button7_sld15epp"
+                                            data-audio="../assets/audio/trabajador-m2-slide-17.mp3"
+                                            data-transcripcion='[
+                                            {"start":0,"end":1,"text":"7:"},
+                                            {"start":1,"end":5,"text":"Información adicional para el punto 7."},
+                                            {"start":5,"end":10,"text":"Detalles sobre el criterio número siete."}
+                                            ]'
+                                            onclick="showAudioWithTranscription_sld15epp(this, '<strong>7</strong><br>Información adicional para el punto 7. Detalles sobre el criterio número siete.', event)">
+                                        7
+                                    </button>
+                                </div>   
+                            </div>
+                        </div>
+                    </div>
+                </div>        
+
+                <!-- sliderfinal NO REMOVER -->
+                <!-- <div class="container">
+                    <h1></h1>
+                </div> -->
+                <!--end contentmodule -->
+            </div>
+            <div class="bntNextPrev-container">
+                <!-- button next & prev -->
+                <button id="pagIndex" class="bntNextPrev" onclick="btnPrev()" style="left: 10px;">
+                    <i class="fas fa-angle-left"></i>
+                </button>
+                <!-- button next & prev -->
+                <button id="prev" class="bntNextPrev" style="display: none;">
+                    <i class="fas fa-angle-left"></i>
+                </button>
+                <!-- button next & prev -->
+                <button id="next" class="bntNextPrev">
+                    <i class="fas fa-angle-right"></i>
+                </button>
+            </div>
+        </div>
+        <!-- end content fluid -->
+
+    </div>
+    <!-- Agrega esto justo antes del cierre del body (antes de los scripts) -->
+    <div id="transcripcion-global"></div>
+    <footer>
+        <!-- library javascript -->
+        <script src="../assets/js/getProgressActivity.js"></script>
+        <script src="../assets/js/trackingmanager_activities.js"></script>
+        <script src="../assets/js/trackingmanagern3.js"></script>
+        <script src="../assets/js/sessvars.js"> </script>
+        <script src="../assets/js/touch-dnd.js"></script>
+        <script src="../assets/js/script.js"></script>
+        <!-- <script type="text/javascript" src="../assets/js/magnify/js/jquery.magnify.js"></script> -->
+        <script src="../assets/js/interactividad.js"></script>
+        <script src="../assets/js/interactividad_slides.js"></script>
+        <script src="../assets/js/progreso-curso.js"></script>
+        <!-- <script src="https://cdnjs.cloudflare.com/ajax/libs/jqueryui-touch-punch/0.2.3/jquery.ui.touch-punch.min.js"></script> -->
+        <script src="https://unpkg.com/leaflet/dist/leaflet.js"></script>
+        <!-- Script del Widget -->
+        <script src="../assetsWidget/js/widget.js"></script>
+        <script src="../assets/js/leccion3.js"></script>
+    </footer>
+</body>
+
+</html>

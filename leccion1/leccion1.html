@@ -1,0 +1,565 @@
+<!-- <?php
+    require('../../../functions_helpers.php'); /*load helper*/
+    check_session(); /*check session by employee */
+    $course_code = $_GET['course_code']; /* recibir el código del curso */
+    //$module_id        = __my_simple_crypt__($_GET['module'], 'd');
+    $module_id = 54;
+    $unique_course_id = check_permission_employee_course($course_code); /* Comprobar si el empleado tiene acceso al curso*/
+    $extension_url = "?course_code=" . $course_code; /* variable url para pasar el código del curso*/
+    
+    
+    $progress = progress_courses($course_code,$module_id);
+    $firma =  image_profile($course_code);
+   
+?> -->
+<!DOCTYPE html>
+<html lang="es">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <!-- library bootstrap v.5.0.2 -->
+    <link rel="stylesheet" type="text/css" href="../assets/bootstrap/css/bootstrap.css">
+    <link rel="stylesheet" type="text/css" href="../assets/bootstrap/css/bootstrap-grid.css">
+    <link rel="stylesheet" type="text/css" href="../assets/bootstrap/css/bootstrap-reboot.css">
+    <link rel="stylesheet" type="text/css" href="../assets/css/cards.css">
+    <link rel="stylesheet" type="text/css" href="../assets/css/cards_slides.css">
+    <link rel="stylesheet" type="text/css" href="../assets/bootstrap/css/bootstrap-utilities.css">
+    <script src="../assets/bootstrap/js/bootstrap.bundle.js"></script>
+    <script src="../assets/bootstrap/js/bootstrap.esm.js"></script>
+    <script src="../assets/bootstrap/js/bootstrap.js"></script>
+    <script src="../assets/js/jquery-3.3.1.js"></script>
+    <script src="../assets/js/touch-dnd.js"></script>
+    <!-- library cascading style sheets -->
+    <link rel="stylesheet" type="text/css" href="../assets/css/all.css">
+    <link rel="stylesheet" type="text/css" href="../assets/css/style.css">
+    <link rel="stylesheet" type="text/css" href="../assets/css/styleSlider.css">
+    <link rel="stylesheet" type="text/css" href="../assets/css/actividades.css">
+    <link rel="stylesheet" type="text/css" href="../assets/css/style_personalizado.css">
+    <link rel="stylesheet" type="text/css" href="../assets/css/style_slides.css">
+
+    <!--Tiporgraia Montserrat-->
+    <link href="https://fonts.googleapis.com/css2?family=Montserrat:wght@400;500;700&display=swap" rel="stylesheet">
+
+    <!--Libreria iconos-->
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.0.0-beta3/css/all.min.css">
+
+    <!--Importaciones local CDN-->
+    <!-- <link rel="stylesheet" type="text/css" href="../assets/cdn/font-awesome.min.css">
+    <link rel="stylesheet" type="text/css" href="../assets/cdn/all.css">
+    <link rel="stylesheet" type="text/css" href="../assets/cdn/all.min.css"> -->
+
+    <!--Libreria iconos-->
+    <!-- <link rel="stylesheet" href="../assets/js/magnify/css/magnify.css" /> -->
+    <!-- Estilos del widget -->
+    <link rel="stylesheet" href="../assetsWidget/css/widget.css">
+</head>
+
+<body class="body-style">
+    <input id='course_code' value="<?php echo $course_code;?>" hidden>
+    <input id='module_id' value="<?php echo $module_id;?>" hidden>
+    <input id='unique_course_id' value="<?php echo $unique_course_id ;?>" hidden>
+    <input id='emp_unique_id' value="<?php echo $_SESSION['employee_data']['emp_unique_id'] ;?>" hidden>
+    <!-- Header con el logo -->
+    <div class="header">
+        <!-- header -->
+        <div class="contentHeader">
+            <div>
+                <img class="logoTop" src="../assets/img/logo_acciona_empresas.webp">
+                <div class="miga_pan">
+                    <p id="breadcrumb"></p>
+                </div>
+                <!-- button home -->
+                <div>
+                    <button id="home" onclick="progCircle(1);">
+                        <i class="fas fa-home"></i>
+                    </button>
+                </div>
+                <!-- progress counter -->
+                <div class="txPg">
+                    <span id="textProg">1</span> / <span id="nSlider1"></span>
+                    <div class="contCircleBarMovil">
+                    </div>
+                </div>
+
+                <div>
+                    <p class="txPg"> Progreso: <span id="porcentajeProgreso">0</span>% </p>
+                </div>
+                <!-- <i class="fas fa-bars" style="padding: 10px 10px 10px 20px;"></i> -->
+                <i class="" style="padding: 10px 10px 10px 50px;"></i>
+
+                <div class="miga_pan_movil">
+                    <p style="text-align: center; display: none;" id="breadcrumb_movil"></p>
+                </div>
+
+            </div>
+
+            <!--BARRA DE PROGRESO PC -->
+            <div class="contCircleBar contCircleBar-nav-bar pt-2">
+            </div>
+            <!--BARRA DE PROGRESO MOVIL -->
+            <div class="progBar">
+                <div style="width: 10% !important;"></div>
+            </div>
+        </div>
+    </div>
+    <!-- content fluid -->
+    <div class="container-fluid">
+        <!-- content slider -->
+        <div class="ctMd">
+            <!-- content module-->
+            <div class="contentModule">
+
+                <!--slider01-->
+                <div class="container dividerImgSeccion1 miga_titulo_curso  current" id="dividerImgSeccion1">
+                    <div class="row">
+                        <div class="pl-seccion">
+                            <div class="col-lg-8 col-md-12">
+                                <h1 class="tituloseccion">1-Teoría del
+                                    <span class="yellow">Manejo Defensivo</span>
+                                </h1>
+                                <hr class="hr-50">
+                            </div>
+                        </div>
+                    </div>
+                </div>
+
+                <!--slider02-->
+                <div class="container miga_titulo_curso ">
+                    <div class="row">
+                        <div class="col-lg-7 col-md-12 background-dark-column">
+                            <div class="m-4rem">
+                                <h1 class="titulo text-center white">Antes de comenzar...</h1>
+                                <h1 class="subtitulo text-center purple">Reflexionemos...</h1>
+                                <p class="text-justify white">Observa este video y piensa: 
+                                    ¿Realmente vale la pena tener <strong>ESE</strong> descuido en <strong>LA VÍA?</strong></p>
+                            
+                                <div class="mt-10"></div>
+                                <div class="instruccion-center p-5rem">
+                                    <i class="instruccion-bg-dark">Haz clic para ejecutar el video <span
+                                            class="icono-inst"> <i class="fa-solid fa-arrow-turn-down"></i></span> </i>
+                                </div>
+                                <div class="video-center">
+                                    <div class="iframe-container mostrar-web" id="Slide6L1Web">
+                                        <!-- Botón de reproducción centrado para web -->
+                                        <button class="video-button-control-audio" data-slider="slider6L1"
+                                            data-target="webIframeSlider6L1">
+                                            <i class="fas fa-play"></i>
+                                        </button>
+                                        <div class="loader">
+                                            <div class="bar1"></div>
+                                            <div class="bar2"></div>
+                                            <div class="bar3"></div>
+                                            <div class="bar4"></div>
+                                            <div class="bar5"></div>
+                                            <div class="bar6"></div>
+                                            <div class="bar7"></div>
+                                            <div class="bar8"></div>
+                                            <div class="bar9"></div>
+                                            <div class="bar10"></div>
+                                            <div class="bar11"></div>
+                                            <div class="bar12"></div>
+                                        </div>
+                                        <iframe id="webIframeSlider6L1" class="iframe-video-horizontal-web"
+                                            src="https://iframe.mediadelivery.net/embed/424470/ab772b78-9c1f-485e-a4ff-32ff28b67713?autoplay=false&loop=false&muted=false&preload=true&responsive=true"
+                                            loading="lazy"
+                                            allow="accelerometer; gyroscope; autoplay; encrypted-media; picture-in-picture;"
+                                            allowfullscreen="true" style="pointer-events: none;"></iframe>
+                                    </div>
+                                    <div class="iframe-container mostrar-mobile" id="Slide6L1Mobile">
+                                        <!-- Botón de reproducción centrado para móvil -->
+                                        <button class="video-button-control-audio" data-slider="slider6L1"
+                                            data-target="mobileIframeSlider6L1">
+                                            <i class="fas fa-play"></i>
+                                        </button>
+                                        <div class="loader">
+                                            <div class="bar1"></div>
+                                            <div class="bar2"></div>
+                                            <div class="bar3"></div>
+                                            <div class="bar4"></div>
+                                            <div class="bar5"></div>
+                                            <div class="bar6"></div>
+                                            <div class="bar7"></div>
+                                            <div class="bar8"></div>
+                                            <div class="bar9"></div>
+                                            <div class="bar10"></div>
+                                            <div class="bar11"></div>
+                                            <div class="bar12"></div>
+                                        </div>
+                                        <iframe id="mobileIframeSlider6L1" class="iframe-video-horizontal-mobile"
+                                            src="https://iframe.mediadelivery.net/embed/424470/ab772b78-9c1f-485e-a4ff-32ff28b67713?autoplay=false&loop=false&muted=false&preload=true&responsive=true"
+                                            loading="lazy"
+                                            allow="accelerometer; gyroscope; autoplay; encrypted-media; picture-in-picture;"
+                                            allowfullscreen="true" style="pointer-events: none;"></iframe>
+                                    </div>
+                                </div>
+                            </div>
+                        </div>
+                        <div class="col-lg-5 col-md-12">
+                            <div class="mostrar-web">
+                                <video autoplay loop muted playsinline id="fondo-video-alturas" class="mostrar-web">
+                                    <source src="../assets/video/trabajo_alturas.mp4" type="video/mp4">
+                                </video>
+                            </div>
+                            <video autoplay loop muted playsinline id="fondo-video-alturas" class="mostrar-mobile">
+                                <source src="../assets/video/trabajo_alturas.mp4" type="video/mp4">
+                            </video>
+                            <button class="btn" data-bs-toggle="modal" data-bs-target="#slide_01_pregunta">
+                                <i class="fas fa-question-circle"></i> Pregunta</button>
+                        </div>
+                    </div>
+                    <!-- Modal -->
+                    <div class="modal fade" id="slide_01_pregunta" tabindex="-1" aria-hidden="true">
+                        <div class="modal-dialog modal-dialog-centered modal-lg">
+                            <div class="modal-content">
+                                <div class="modal-header">
+                                    <h5 class="modal-title">Pregunta</h5>
+                                    <button type="button" class="btn-close" data-bs-dismiss="modal"
+                                        aria-label="Close"></button>
+                                </div>
+                                <div class="modal-body">
+                                    <img src="../assets/img/botones/recuerda_icono.webp" alt="Pregunta"
+                                        class="img-30 img-center">
+                                    <p class="text-center grey">
+                                        ¿Estás consciente de que todos somos en algún momento PEATONES, CICLISTAS o CONDUCTORES, y que por lo tanto todos somos frágiles en la vía?
+                                    </p>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                    <div class="modal-container" id="modalContainerSlide2"></div>
+                </div>
+
+                <!--slider03-->
+                <div class="container miga_titulo_curso">
+                    <div class="row">
+                        <div class="col-lg-7 col-md-12 background-dark">
+                            <div class="m-4rem">
+                                <h1 class="titulo text-center white">Bienvenidos al módulo</h1>
+                                <h1 class="subtitulo text-center purple">Técnicas de Manejo Defensivo</h1>
+                                <img src="../assets/img/avatar_hombre_alzando_mano_fondo_azul.webp" alt=""
+                                    class="img-40 img-center img-80-mobile">
+                                <p class="text-justify white">
+                                    <strong>¡Bienvenidas y bienvenidos al curso de Técnicas de Manejo Defensivo!</strong>
+                                    este módulo virtual, en el cual buscamos mejorar la cultura de prevención vial en 
+                                    busca de modificar las conductas y actitudes durante la conducción para 
+                                    proteger la vida y reducir la siniestralidad en nuestras operaciones y/o 
+                                    en las vías utilizadas para la operación de <strong>EMERALD ENERGY COLOMBIA</strong>  o en nuestra vida cotidiana.
+                                </p>
+                                <div class="instruccion-center p-5rem">
+                                    <i class="instruccion-bg-dark">Haz clic para escuchar el audio
+                                        <span class="icono-inst"><i class="fa-solid fa-arrow-turn-down"></i></span>
+                                    </i>
+                                </div>
+                                <div class="audio-center p-5rem">
+                                    <audio class="audio-con-transcripcion audio-reducido" controls data-transcripcion='[
+                                            {"start": 0, "end": 4, "text": "Andy es muy laborioso y gusta de hacer bien su trabajo,"},
+                                            {"start": 4, "end": 11, "text": "realiza trabajos con herramientas mecánicas, como la sierra eléctrica, y manuales como el martillo."},
+                                            {"start": 11, "end": 17, "text": "Él sabe que está expuesto a Riesgos mecánicos que Incluyen cortes, aplastamientos y golpes,"},
+                                            {"start": 17, "end": 24, "text": "causados por el uso de herramientas y maquinaria pesada. Tatiana se detiene para conversar con él"},
+                                            {"start": 24, "end": 29, "text": "acerca de los factores de riesgo MECÁNICOS y le hace un par de preguntas,"},
+                                            {"start": 29, "end": 34, "text": "ayúdale a Andy a responderlas correctamente:"}
+                                            
+                                        ]'>
+                                        <source src="../assets/audio/sld2_lec1_bienvenidos.mp3" type="audio/mp3">
+                                    </audio>
+                                    <i class="transcription-toggle fas fa-closed-captioning audio-estilos"></i>
+                                </div>
+
+                            </div>
+                        </div>
+                        <div class="col-lg-5 col-md-12 p-0">
+                            <div class="slider-sld3_lec1">
+                                <div class="slide-sld3_lec1 active-sld3_lec1"><img
+                                        src="../assets/img/sld3_lec1_img1.webp" alt="Imagen 1"></div>
+                                <div class="slide-sld3_lec1"><img src="../assets/img/sld3_lec1_img2.webp"
+                                        alt="Imagen 2"></div>
+                                <div class="slide-sld3_lec1"><img src="../assets/img/sld3_lec1_img3.webp"
+                                        alt="Imagen 3"></div>
+                                <div class="slide-sld3_lec1"><img src="../assets/img/sld3_lec1_img4.webp"
+                                        alt="Imagen 4"></div>
+                                <div class="slide-sld3_lec1"><img src="../assets/img/sld3_lec1_img5.webp"
+                                        alt="Imagen 5"></div>
+                                <div class="slide-sld3_lec1"><img src="../assets/img/sld3_lec1_img6.webp"
+                                        alt="Imagen 6"></div>
+
+                            </div>
+                        </div>
+
+                    </div>
+                </div>
+
+                <!--slider04-->
+                <div class="container miga_titulo_curso">
+                    <div class="row">
+                        <div class="col-lg-6 col-md-12 background-dark-column">
+                            <div class="m-4rem">
+                                <h1 class="titulo text-center white">Recordemos...
+                                </h1>
+                                <h1 class="subtitulo text-center purple">¿Qué es Manejo Defensivo...?</span>
+                                </h1>
+                                <img src="../assets/img/avatar_mujer_con_brazos_abiertos_fondo_azul.webp" alt="" img
+                                    class="img-40 img-center">
+                                <p class="text-justify white">El <strong>MANEJO DEFENSIVO</strong> es una técnica de conducción 
+                                    que busca prevenir accidentes y proteger la seguridad vial de todos los 
+                                    usuarios de la carretera.</p>
+                                <div class="instruccion-center p-5rem">
+                                    <i class="instruccion-bg-dark">Haz clic para escuchar el audio
+                                        <span class="icono-inst"><i class="fa-solid fa-arrow-turn-down"></i></span>
+                                    </i>
+                                </div>
+                                <div class="audio-center p-5rem">
+                                    <audio class="audio-con-transcripcion audio-reducido" controls data-transcripcion='[
+                                            {"start": 0, "end": 4, "text": "Andy es muy laborioso y gusta de hacer bien su trabajo,"},
+                                            {"start": 4, "end": 11, "text": "realiza trabajos con herramientas mecánicas, como la sierra eléctrica, y manuales como el martillo."},
+                                            {"start": 11, "end": 17, "text": "Él sabe que está expuesto a Riesgos mecánicos que Incluyen cortes, aplastamientos y golpes,"},
+                                            {"start": 17, "end": 24, "text": "causados por el uso de herramientas y maquinaria pesada. Tatiana se detiene para conversar con él"},
+                                            {"start": 24, "end": 29, "text": "acerca de los factores de riesgo MECÁNICOS y le hace un par de preguntas,"},
+                                            {"start": 29, "end": 34, "text": "ayúdale a Andy a responderlas correctamente:"}
+                                            
+                                        ]'>
+                                        <source src="../assets/audio/sld2_lec1_bienvenidos.mp3" type="audio/mp3">
+                                    </audio>
+                                    <i class="transcription-toggle fas fa-closed-captioning audio-estilos"></i>
+                                </div>
+                            </div>
+                        </div>
+                        <div class="col-lg-6 col-md-12 background-light-column preguntas_01 ">
+                            <div class="m-4rem">
+                                <div class="instruccion-center p-5rem">
+                                    <i class="instruccion-bg-dark">
+                                        Haz clic para ejecutar el video
+                                        <span class="icono-inst">
+                                            <i class="fa-solid fa-arrow-turn-down"></i>
+                                        </span>
+                                    </i>
+                                </div>
+                                <div class="video-center">
+                                    <div class="iframe-container mostrar-web" id="Slide6L1Web">
+                                        <!-- Botón de reproducción centrado para web -->
+                                        <button class="video-button-control-audio" data-slider="slider6L1"
+                                            data-target="webIframeSlider6L1">
+                                            <i class="fas fa-play"></i>
+                                        </button>
+                                        <div class="loader">
+                                            <div class="bar1"></div>
+                                            <div class="bar2"></div>
+                                            <div class="bar3"></div>
+                                            <div class="bar4"></div>
+                                            <div class="bar5"></div>
+                                            <div class="bar6"></div>
+                                            <div class="bar7"></div>
+                                            <div class="bar8"></div>
+                                            <div class="bar9"></div>
+                                            <div class="bar10"></div>
+                                            <div class="bar11"></div>
+                                            <div class="bar12"></div>
+                                        </div>
+                                        <iframe id="webIframeSlider6L1" class="iframe-video-vertical-web"
+                                            src="https://iframe.mediadelivery.net/embed/424470/ab772b78-9c1f-485e-a4ff-32ff28b67713?autoplay=false&loop=false&muted=false&preload=true&responsive=true"
+                                            loading="lazy"
+                                            allow="accelerometer; gyroscope; autoplay; encrypted-media; picture-in-picture;"
+                                            allowfullscreen="true" style="pointer-events: none;"></iframe>
+                                    </div>
+                                    <div class="iframe-container mostrar-mobile" id="Slide6L1Mobile">
+                                        <!-- Botón de reproducción centrado para móvil -->
+                                        <button class="video-button-control-audio" data-slider="slider6L1"
+                                            data-target="mobileIframeSlider6L1">
+                                            <i class="fas fa-play"></i>
+                                        </button>
+                                        <div class="loader">
+                                            <div class="bar1"></div>
+                                            <div class="bar2"></div>
+                                            <div class="bar3"></div>
+                                            <div class="bar4"></div>
+                                            <div class="bar5"></div>
+                                            <div class="bar6"></div>
+                                            <div class="bar7"></div>
+                                            <div class="bar8"></div>
+                                            <div class="bar9"></div>
+                                            <div class="bar10"></div>
+                                            <div class="bar11"></div>
+                                            <div class="bar12"></div>
+                                        </div>
+                                        <iframe id="mobileIframeSlider6L1" class="iframe-video-vertical-mobile"
+                                            src="https://iframe.mediadelivery.net/embed/424470/ab772b78-9c1f-485e-a4ff-32ff28b67713?autoplay=false&loop=false&muted=false&preload=true&responsive=true"
+                                            loading="lazy"
+                                            allow="accelerometer; gyroscope; autoplay; encrypted-media; picture-in-picture;"
+                                            allowfullscreen="true" style="pointer-events: none;"></iframe>
+                                    </div>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+
+                <!--slider05-->
+                <div class="container miga_titulo_curso">
+                    <div class="row">
+                        <div class="col-lg-6 col-md-12 background-dark-column">
+                            <div class="m-4rem">
+                                <h1 class="titulo text-center white">Mis responsabilidades
+                                </h1>
+                                <h1 class="subtitulo text-center purple">como Conductor</span>
+                                <img src="../assets/img/avatar_hombre_cruzado_brazos_fondo_azul.webp" alt=""
+                                    class="img-40 img-center">
+                                <br>
+                                <p class="white text-justify">Aplicar el buen <strong>MANEJO DEFENSIVO</strong>, implica 
+                                    que debo atender unas responsabilidades básicas con mi trabajo, y 
+                                    con mi vehículo.</p>
+                            </div>
+                        </div>
+                        <div class="col-lg-6 col-md-12 background-light-column">
+                            <div class="m-4rem">
+                                <div class="instruccion-center p-5rem">
+                                    <i class="instruccion-bg-dark">
+                                        Haz clic para ejecutar el video
+                                        <span class="icono-inst">
+                                            <i class="fa-solid fa-arrow-turn-down"></i>
+                                        </span>
+                                    </i>
+                                </div>
+                                <div class="video-center">
+                                    <div class="iframe-container mostrar-web" id="Slide6L1Web">
+                                        <!-- Botón de reproducción centrado para web -->
+                                        <button class="video-button-control-audio" data-slider="slider6L1"
+                                            data-target="webIframeSlider6L1">
+                                            <i class="fas fa-play"></i>
+                                        </button>
+                                        <div class="loader">
+                                            <div class="bar1"></div>
+                                            <div class="bar2"></div>
+                                            <div class="bar3"></div>
+                                            <div class="bar4"></div>
+                                            <div class="bar5"></div>
+                                            <div class="bar6"></div>
+                                            <div class="bar7"></div>
+                                            <div class="bar8"></div>
+                                            <div class="bar9"></div>
+                                            <div class="bar10"></div>
+                                            <div class="bar11"></div>
+                                            <div class="bar12"></div>
+                                        </div>
+                                        <iframe id="webIframeSlider6L1" class="iframe-video-vertical-web"
+                                            src="https://iframe.mediadelivery.net/embed/424470/ab772b78-9c1f-485e-a4ff-32ff28b67713?autoplay=false&loop=false&muted=false&preload=true&responsive=true"
+                                            loading="lazy"
+                                            allow="accelerometer; gyroscope; autoplay; encrypted-media; picture-in-picture;"
+                                            allowfullscreen="true" style="pointer-events: none;"></iframe>
+                                    </div>
+                                    <div class="iframe-container mostrar-mobile" id="Slide6L1Mobile">
+                                        <!-- Botón de reproducción centrado para móvil -->
+                                        <button class="video-button-control-audio" data-slider="slider6L1"
+                                            data-target="mobileIframeSlider6L1">
+                                            <i class="fas fa-play"></i>
+                                        </button>
+                                        <div class="loader">
+                                            <div class="bar1"></div>
+                                            <div class="bar2"></div>
+                                            <div class="bar3"></div>
+                                            <div class="bar4"></div>
+                                            <div class="bar5"></div>
+                                            <div class="bar6"></div>
+                                            <div class="bar7"></div>
+                                            <div class="bar8"></div>
+                                            <div class="bar9"></div>
+                                            <div class="bar10"></div>
+                                            <div class="bar11"></div>
+                                            <div class="bar12"></div>
+                                        </div>
+                                        <iframe id="mobileIframeSlider6L1" class="iframe-video-vertical-mobile"
+                                            src="https://iframe.mediadelivery.net/embed/424470/ab772b78-9c1f-485e-a4ff-32ff28b67713?autoplay=false&loop=false&muted=false&preload=true&responsive=true"
+                                            loading="lazy"
+                                            allow="accelerometer; gyroscope; autoplay; encrypted-media; picture-in-picture;"
+                                            allowfullscreen="true" style="pointer-events: none;"></iframe>
+                                    </div>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+
+                <!--slider06-->
+                <div class="container miga_titulo_curso">
+                    <div class="row">
+                        <div class="col-lg-6 col-md-12 background-dark-column">
+                            <div class="m-4rem">
+                                <h1 class="titulo text-center white">Pensemos…
+                                </h1>
+                                <h1 class="titulo text-center purple">¿Qué NO es Manejo Defensivo?
+                                </h1>
+                                <img src="../assets/img/avatar_hombre_cruzado_brazos_fondo_azul.webp" alt=""
+                                    class="img-40 img-center">
+                                <p class="text-justify white">
+                                    Como conductores en la operación o en las vías, muchas veces no 
+                                    actuamos de forma correcta ni previsiva, recordemos algunos de 
+                                    los comportamientos que <strong>NO</strong> hacen parte de una Conducción Defensiva:
+                                </p>
+                            </div>
+                        </div>
+                        <div class="col-lg-6 col-md-12 background-light-column">
+                            <div class="ml-1 mr-4">
+                                <div class="instruccion-center p-5rem">
+                                    <i class="instruccion-bg-light">
+                                        Selecciona las cuatro imágenes correctas
+                                        <span class="icono-inst"><i class="fa-solid fa-arrow-turn-down"></i></span>
+                                    </i>
+                                </div>
+
+                                <div class="preview-container-livebox">
+                                    <img src="../assets/img/portada_actividades/portada1_hombre_horizontal_fondo_blanco.webp"
+                                        alt="Vista previa Video" class=" img-50 img-center img-80-mobile">
+                                    <button id="liveBoxSlide7" class="liveBoxSlideIframe" data-bs-toggle="modal24"
+                                        data-bs-target="#slide24_video">
+                                        <i class="fas fa-hand-pointer"></i>
+                                    </button>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                    <div class="modal-container" id="modalContainerSlide7"></div>
+                </div>
+
+                
+            </div>
+            <div class="bntNextPrev-container">
+                <!-- button next & prev -->
+                <button id="pagIndex" class="bntNextPrev" onclick="btnPrev()" style="left: 10px;">
+                    <i class="fas fa-angle-left"></i>
+                </button>
+                <!-- button next & prev -->
+                <button id="prev" class="bntNextPrev" style="display: none;">
+                    <i class="fas fa-angle-left"></i>
+                </button>
+                <!-- button next & prev -->
+                <button id="next" class="bntNextPrev">
+                    <i class="fas fa-angle-right"></i>
+                </button>
+            </div>
+        </div>
+        <!-- end content fluid -->
+
+    </div>
+    <!-- Agrega esto justo antes del cierre del body (antes de los scripts) -->
+    <div id="transcripcion-global"></div>
+    <footer>
+        <!-- library javascript -->
+        <script src="../assets/js/getProgressActivity.js"></script>
+        <script src="../assets/js/trackingmanager_activities.js"></script>
+        <script src="../assets/js/trackingmanagern3.js"></script>
+        <!-- <script src="../assets/js/sessvars.js"> </script> -->
+        <script src="../assets/js/touch-dnd.js"></script>
+        <script src="../assets/js/script.js"></script>
+        <!-- <script type="text/javascript" src="../assets/js/magnify/js/jquery.magnify.js"></script> -->
+        <script src="../assets/js/interactividad.js"></script>
+        <script src="../assets/js/interactividad_slides.js"></script>
+        <script src="../assets/js/progreso-curso.js"></script>
+        <!-- <script src="https://cdnjs.cloudflare.com/ajax/libs/jqueryui-touch-punch/0.2.3/jquery.ui.touch-punch.min.js"></script> -->
+        <script src="https://unpkg.com/leaflet/dist/leaflet.js"></script>
+        <!-- Script del Widget -->
+        <script src="../assetsWidget/js/widget.js"></script>
+        <script src="../assets/js/leccion1.js"></script>
+
+    </footer>
+</body>
+
+</html>

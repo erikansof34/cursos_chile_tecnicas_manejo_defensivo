@@ -1,0 +1,102 @@
+<!DOCTYPE html>
+<html lang="es">
+
+<head>
+
+    <meta http-equiv="Content-Type" content="text/html; charset=utf-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <!-- library bootstrap v.5.0.2 -->
+    <link rel="stylesheet" type="text/css" href="../assets/bootstrap/css/bootstrap.css">
+    <link rel="stylesheet" type="text/css" href="../assets/bootstrap/css/bootstrap-grid.css">
+    <link rel="stylesheet" type="text/css" href="../assets/bootstrap/css/bootstrap-reboot.css">
+    <link rel="stylesheet" type="text/css" href="../assets/css/cards.css">
+    <link rel="stylesheet" type="text/css" href="../assets/bootstrap/css/bootstrap-utilities.css">
+
+   <!-- library cascading style sheets -->
+   <link rel="stylesheet" type="text/css" href="../assets/css/style_resumen.css">
+   <link rel="stylesheet" type="text/css" href="../assets/css/style_personalizado.css">
+   <link rel="stylesheet" type="text/css" href="../assets/css/style.css">
+
+   <!--Montserrat-->
+   <link href="https://fonts.googleapis.com/css2?family=Montserrat:wght@400;500;700&display=swap" rel="stylesheet">
+
+   <!--Libreria iconos-->
+   <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.0.0-beta3/css/all.min.css">
+   <!-- Estilos del widget -->
+   <link rel="stylesheet" href="../assetsWidget/css/widget.css">
+</head>
+
+<body style="padding-left: 0px !important; padding-right: 0px !important;">
+        <!-- content fluid -->
+        <div class="container-fluid p-0" style="position: relative; height: 100vh; margin-top: 0px;">
+            <div class="ctMd">
+                <div class="contentModule">
+                    <div class="container current">
+                        <div class="bg-resumen">
+                            <div class="col-lg-3 col-md-12">
+                                <div class="ml-4">
+                                    <h1 class="titulo text-center white">Resumen <span class="purple">Lección 2</span></h1>
+                                </div>
+                                <img src="../assets/gif/avatar_mujer_leyendo.gif" alt="avatar" class="img-100">
+                            </div>
+                            <div class="col-lg-9 col-md-12">
+                                <div class="m-4rem">
+                                    <p class="white">¡Bien hecho! Has terminado la Lección 2</p>
+                                    <p class="white">¡Revisemos este resumen de lo visto en esta lección!</p>
+                                    <embed src="../assets/doc/resumen_leccion_2.pdf" type="application/pdf"
+                                        class="visualizador-pdf">
+                                        <a href="../assets/doc/resumen_leccion_2.pdf" download="Resumen-Leccion-2.pdf" class="btn">
+                                            <i class="fas fa-hand-pointer"></i> Descargar PDF
+                                          </a>                             
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+    <!-- Botones de navegación -->
+  <div class="bntNextPrev-container">
+    <!-- button para volver al index -->
+    <button id="pagIndex" class="bntNextPrev" onclick="btnPrev()" style="left: 10px;">
+        <i class="fas fa-angle-left"></i>
+    </button>
+    <!-- button prev (oculto en esta página) -->
+    <button id="prev" class="bntNextPrev" style="display: none;">
+        <i class="fas fa-angle-left"></i>
+    </button>
+    <!-- button next -->
+    <button id="next" class="bntNextPrev">
+        <i class="fas fa-angle-right"></i>
+    </button>
+</div>
+
+    <!--library javascript-->
+    <script src="../assets/js/jquery-3.3.1.js"></script>
+    <!-- Script del Widget -->
+    <script src="../assetsWidget/js/widget.js"></script>
+    <script>
+
+        // Función para volver atrás
+        function btnPrev() {
+        const path = location.pathname.split("/").slice(0, -1).join("/");
+        window.location.href = path.replace("leccion2", "leccion2") + "/leccion2.html";
+        };
+        
+        // Manejar el botón next
+        $("#next").on("click", function() {
+            const path = location.pathname.split("/").slice(0, -1).join("/");
+         window.location.href = path.replace("leccion2", "leccion2") + "/evaluacion_leccion2.html";
+        });
+
+        $(document).ready(function() {
+            // Mostrar todos los botones
+            $("#prev").css('display', 'none');
+            $("#pagIndex").css('display', 'inline-block');
+        });
+        
+    </script>
+
+</body>
+
+</html>

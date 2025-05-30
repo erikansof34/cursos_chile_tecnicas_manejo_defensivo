@@ -1,0 +1,246 @@
+<!-- <?php
+    require('../../../functions_helpers.php'); /*load helper*/
+    check_session(); /*check session by employee */
+    $course_code = $_GET['course_code']; /* recibir el código del curso */
+    //$module_id        = __my_simple_crypt__($_GET['module'], 'd');
+    $module_id = 54;
+    $unique_course_id = check_permission_employee_course($course_code); /* Comprobar si el empleado tiene acceso al curso*/
+    $extension_url = "?course_code=" . $course_code; /* variable url para pasar el código del curso*/
+    
+    
+    $progress = progress_courses($course_code,$module_id);
+    $firma =  image_profile($course_code);
+   
+?> -->
+<!DOCTYPE html>
+<html lang="es">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <!-- library bootstrap v.5.0.2 -->
+    <link rel="stylesheet" type="text/css" href="../assets/bootstrap/css/bootstrap.css">
+    <link rel="stylesheet" type="text/css" href="../assets/bootstrap/css/bootstrap-grid.css">
+    <link rel="stylesheet" type="text/css" href="../assets/bootstrap/css/bootstrap-reboot.css">
+    <link rel="stylesheet" type="text/css" href="../assets/css/cards.css">
+    <link rel="stylesheet" type="text/css" href="../assets/css/cards_slides.css">
+    <link rel="stylesheet" type="text/css" href="../assets/bootstrap/css/bootstrap-utilities.css">
+
+
+    <!-- library cascading style sheets -->
+    <link rel="stylesheet" type="text/css" href="../assets/css/style_resumen.css">
+    <link rel="stylesheet" type="text/css" href="../assets/css/style_personalizado.css">
+    <link rel="stylesheet" type="text/css" href="../assets/css/style.css">
+
+    <!--Montserrat-->
+    <link href="https://fonts.googleapis.com/css2?family=Montserrat:wght@400;500;700&display=swap" rel="stylesheet">
+
+    <!--Libreria iconos-->
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.0.0-beta3/css/all.min.css">
+    <!-- Estilos del widget -->
+    <link rel="stylesheet" href="../assetsWidget/css/widget.css">
+</head>
+
+<body class="body-style">
+    <!-- Info usuario -->
+    <input id='course_code' value="<?php echo $course_code;?>" hidden>
+    <input id='module_id' value="<?php echo $module_id;?>" hidden>
+    <input id='unique_course_id' value="<?php echo $unique_course_id ;?>" hidden>
+    <input id='emp_unique_id' value="<?php echo $_SESSION['employee_data']['emp_unique_id'] ;?>" hidden>
+    <!-- Header con el logo -->
+
+    <div class="container-fluid p-0" style="position: relative; height: 100vh; margin-top: 0px;">
+        <div class="ctMd">
+            <div class="contentModule">
+                <div class="container current">
+                    <div class="bg-resumen">
+                       
+                        <div class="col-lg-12 col-md-12">
+                            <div class="m-4rem">
+                                <div class="instruccion-center p-5rem">
+                                    <i class="instruccion-bg-dark">Ahora para finalizar, por favor lee en voz alta este
+                                        compromiso que asumes de ahora en adelante en el cuidado de tus manos:<span
+                                            class="icono-inst"><i class="fa-solid fa-arrow-turn-down"></i></span>
+                                    </i>
+                                </div>
+                                <img src="../assets/gif/avatar_compromiso.gif" alt="avatar"
+                                class="img-20 img-80-mobile img-center">
+                             
+                                <h1 class="titulo text-center white">En mi calidad de
+                                   <span class="purple">Trabajador o Contratista</span>
+                                </h1>
+                                <hr>
+                                <p class="text-justify white">Me comprometo a cuidar y proteger mis manos en todo
+                                    momento durante el desempeño de mis tareas en el trabajo. Utilizaré siempre los
+                                    equipos de protección personal adecuados, como guantes específicos para cada
+                                    actividad, y seguiré las técnicas correctas de uso de herramientas para evitar
+                                    accidentes. 
+                                    Me aseguraré de mantener una postura ergonómica y no forzar las herramientas más
+                                    allá de sus capacidades. Además, seré responsable al almacenar y manipular las
+                                    herramientas, garantizando que estén en buenas condiciones y ubicadas en lugares
+                                    seguros, evitando cualquier riesgo innecesario para mí y para mis compañeros de
+                                    trabajo.
+                                </p>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+
+    <div>
+        <!-- button next & prev -->
+        <button id="pagIndex" class="bntNextPrev" onclick="btnPrev()" style="left: 10px;">
+            <i class="fas fa-angle-left"></i>
+        </button>
+        <!-- button next & prev -->
+        <button id="prev" class="bntNextPrev" style="display: none;">
+            <i class="fas fa-angle-left"></i>
+        </button>
+        <!-- button next & prev -->
+        <button id="next" class="bntNextPrev">
+            <i class="fas fa-angle-right"></i>
+        </button>
+    </div>
+
+    <footer>
+        <script src="../assets/bootstrap/js/bootstrap.bundle.js"></script>
+        <script src="../assets/bootstrap/js/bootstrap.esm.js"></script>
+        <script src="../assets/bootstrap/js/bootstrap.js"></script>
+        <script src="../assets/js/jquery-3.3.1.js"></script>
+        <script src="../assets/js/touch-dnd.js"></script>
+        <!-- library javascript -->
+        <script src="../assets/js/getProgressActivity.js"></script>
+        <script src="../assets/js/trackingmanager_activities.js"></script>
+        <script src="../assets/js/trackingmanagern3.js"></script>
+        <script src="../assets/js/sessvars.js"> </script>
+        <script src="../assets/js/touch-dnd.js"></script>
+        <script src="../assets/js/script.js"></script>
+        <script type="text/javascript" src="../assets/js/magnify/js/jquery.magnify.js"></script>
+        <script src="../assets/js/interactividad.js"></script>
+        <script src="../assets/js/interactividad_slides.js"></script>
+        <!-- <script src="https://cdnjs.cloudflare.com/ajax/libs/jqueryui-touch-punch/0.2.3/jquery.ui.touch-punch.min.js"></script> -->
+        <script src="https://unpkg.com/leaflet/dist/leaflet.js"></script>
+        <!-- Script del Widget -->
+        <script src="../assetsWidget/js/widget.js"></script>
+        <script>
+            document.addEventListener('DOMContentLoaded', function () {
+                const tempRange = document.getElementById('tempRange');
+                const temperature = document.getElementById('temperature');
+                const preventiveMeasures = document.querySelectorAll('#right-messages .centered-text');
+
+                tempRange.addEventListener('input', function () {
+                    const value = this.value;
+                    temperature.style.height = value + '%';
+
+                    preventiveMeasures.forEach((measure, index) => {
+                        if (value >= (index + 1) * 20) {
+                            measure.classList.add('visible');
+                        } else {
+                            measure.classList.remove('visible');
+                        }
+                    });
+                });
+            });
+        </script>
+        <script>
+            $('#evaluacion').click(function () {
+                window.location.href = 'quiz.html';
+                // window.location.href = "quiz.php?course_code=<?= $course_code; ?>";
+
+            });
+
+            createCirclesMovil();
+            aniSl19(1);
+            function aniSl19(e) {
+
+                // number of slider
+                var sliders = $(".contentModule > div").length;
+                $('#nSlider').html(sliders);
+                var progressBar = Math.round((e / sliders) * 100);
+                $(".progBar > div").css("width", progressBar + "%");
+                if (e === 1) {
+                    $("#prev").css('display', 'none');
+                    $("#pagIndex").css('display', 'inline-block');
+                } else {
+                    $("#pagIndex").css('display', 'none');
+                }
+                if (e === 2) {
+                    $("#pagIndex").css('display', 'none');
+                    $("#next-btn").on('click', function () {
+                        $("#next").click();
+                    });
+
+                }
+                if (e === sliders) {
+                    // Verificar si es una pantalla de escritorio (ancho mayor a 768px)
+                    if ($(window).width() >= 768) {
+                        $("#next").css('display', 'block');
+                    }
+
+                    $("#next").attr('data-last-slide', 'true');
+                } else {
+                    $("#next").removeAttr('data-last-slide');
+                }
+
+                $(document).ready(function () {
+                    // Este evento se ejecutará cada vez que se haga click en #next
+                    $("#next").on('click', function (event) {
+                        // Verificamos si estamos en el último slide
+                        if ($(this).attr('data-last-slide') === 'true') {
+                            event.preventDefault();
+                            // window.location.href = "quiz.html";
+                            const path = location.pathname.split("/").slice(0, -1).join("/");
+                            window.location.href = path.replace("compromiso", "evaluacion") + "/quiz.html";
+                        }
+                        // Si no estamos en el último slide, el comportamiento predeterminado
+                        // de navegación al siguiente slide ocurrirá normalmente
+                    });
+                });
+
+                var breadcrumbMap = {
+                    'miga_titulo_curso': 'Técnicas de protección ante peligros y riesgos para las manos, en contextos laborales',
+                    'miga_vision_zeroo': 'Programa Visión Zerooo',
+                    'miga_gestion_riesgo': 'Gestión de riesgos',
+                    'miga_salud_trabajo': 'Salud en el trabajo'
+                };
+
+                $('#breadcrumb').html(
+                    $('.current').filter(function () {
+                        return Array.from(this.classList).find(className => className.startsWith('miga'));
+                    }).map(function () {
+                        return breadcrumbMap[Array.from(this.classList).find(className => className.startsWith('miga'))] || '';
+                    }).get().join('')
+                );
+
+                $('#breadcrumb_movil').html(
+                    $('.current').filter(function () {
+                        return Array.from(this.classList).find(className => className.startsWith('miga'));
+                    }).map(function () {
+                        return breadcrumbMap[Array.from(this.classList).find(className => className.startsWith('miga'))] || '';
+                    }).get().join('')
+                );
+
+                // cambiar fondo instruccion
+                if ($('.current').hasClass('dividerInstruccion')) {
+                    $('body').addClass('darkStyleInstruccion');
+                } else {
+                    $('body').removeClass('darkStyleInstruccion');
+                }
+
+            }
+
+            // function redirect pag index
+            function btnPrev() {
+                //window.location.href = "index.php?course_code=<?= $course_code; ?>";
+                // window.location.href = "index.html";
+                const path = location.pathname.split("/").slice(0, -1).join("/");
+                window.location.href = path.replace("compromiso", "leccion3") + "/evaluacion_leccion3.html";
+            };
+
+        </script>
+    </footer>
+</body>
+
+</html>

@@ -1,0 +1,108 @@
+<!-- <?php 
+	require('../../../functions_helpers.php'); /*load helper*/
+	check_session(); /*check session by employee */
+	$course_code = $_GET['course_code']; /* recibir el código del curso */
+	//$module_id        = __my_simple_crypt__($_GET['module'], 'd');
+	$module_id = 54;
+	$unique_course_id = check_permission_employee_course($course_code); /* Comprobar si el empleado tiene acceso al curso*/
+	$extension_url = "?course_code=" . $course_code; /* variable url para pasar el código del curso*/
+	$progress = progress_courses($course_code,$module_id);
+	$valor_minimo_progreso = get_porcentage($course_code);
+	$CI->session->set_userdata('category_es',$progress[0]['category_es']);
+	$CI->session->set_userdata('porcentaje_min_eva',$progress[0]['porcentaje_min_eva']);
+?> -->
+<!DOCTYPE html>
+<html>
+<head>
+	<meta http-equiv="Content-Type" content="text/html; charset=utf-8">
+	<meta name="viewport" content="width=device-width, initial-scale=1.0">
+	<!--library bootstrap v.5.0.2-->
+	<link rel="stylesheet" type="text/css" href="../assets/bootstrap/css/bootstrap.css">
+	<link rel="stylesheet" type="text/css" href="../assets/bootstrap/css/bootstrap-grid.css">
+	<link rel="stylesheet" type="text/css" href="../assets/bootstrap/css/bootstrap-reboot.css">
+	<link rel="stylesheet" type="text/css" href="../assets/bootstrap/css/bootstrap-utilities.css">
+	<script src="../assets/bootstrap/js/bootstrap.bundle.js"></script>
+	<script src="../assets/bootstrap/js/bootstrap.esm.js"></script>
+	<script src="../assets/bootstrap/js/bootstrap.js"></script>
+	<!--library cascading style sheets-->
+	<link rel="stylesheet" type="text/css" href="../assets/css/style.css">
+	<link rel="stylesheet" type="text/css" href="../assets/css/styleSlider.css">
+	<link rel="stylesheet" type="text/css" href="../assets/css/style_personalizado.css">
+    <link rel="stylesheet" type="text/css" href="../assets/css/style_slides.css">
+
+	  <!--Libreria iconos-->
+	  <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.0.0-beta3/css/all.min.css">
+	  
+</head>
+<body class="darkStyle">
+	<div class="ctMd">
+		<!--content-->
+		<div class="contentModule">
+			<div class="container background-dark current">
+				<div class="row mx-auto" style="max-width:1000px;">
+					<div class="col-lg-6 col-md-12">
+						<img  src="../assets/gif/avatar_mujer_evaluacion.gif" class="img-80">
+					</div>
+					<div class="col-lg-6 col-md-12 top-quiz parrafoblanco-justify">
+						<!-- <?php
+							if(!empty($progress[0]['course_progress']) && $progress[0]['course_progress'] >=  $valor_minimo_progreso){
+						?> -->
+						<h1 class="titulo text-center pink">Evaluación <span class="purple">Final</span></h1> 
+							<p class="white text-justify">Ahora evaluemos lo aprendido en este curso presentando esta evaluación.
+								<br>¡MUCHO ÉXITO!</p>
+							<p  class="white text-justify">Por favor haz clic en el botón para comenzar la evaluación del módulo. </p>
+							<a href="#" target="_blank" style="text-decoration: none;">
+							<button class="btn">
+								<i class="fas fa-clipboard-check"></i> Iniciar Evaluación</button>
+							</a>
+						<!-- <?php } else { ?>
+    							<h1>RECUERDA</h1>
+    							<h6 style="color: #fff;">Debes superar el <?=$valor_minimo_progreso;?>% de la valoración para aprobar el módulo. </h6>
+						<?php } ?> -->
+					</div>
+					
+				</div>
+			</div>
+
+		</div>
+	</div>
+
+	<!--button next & prev-->
+	<button id="pagIndex" class="bntNextPrev" onclick="btnPrev()" style="left: 10px;">
+    <i class="fas fa-angle-left"></i>
+  </button>
+
+  <!-- library javascript -->
+	<script src="../assets/js/jquery-3.3.1.js"></script>
+	<script src="../assets/js/trackingmanagern3.js"></script>
+  <script src="../assets/js/sessvars.js"> </script>
+	<!-- <script src="../assets/js/script.js"></script> -->
+	<script src="../assets/js/tracking.js"></script>
+	<script>
+		function btnPrev(){
+      	// window.location.href = "modulo.html";
+		//window.location.href = "modulo.php?course_code=<?= $course_code; ?>";
+		const path = location.pathname.split("/").slice(0, -1).join("/");
+		window.location.href = path.replace("evaluacion", "compromiso") + "/compromiso.html";
+    };
+
+    //function bar menu
+		$(".fa-bars").on("click", function(){
+			$(".opMenu").toggle();
+		});
+
+		//function bar menu
+		$(".fa-bars").on("click", function(){
+			event.stopPropagation();
+			$(".headerOpc").addClass('act');
+		});
+		$('html, .fa-times').click(function() {
+		  $(".headerOpc").removeClass('act');
+		});
+		$('.headerOpc').click(function() {
+			event.stopPropagation();
+		});
+	</script>
+
+</body>
+</html>
