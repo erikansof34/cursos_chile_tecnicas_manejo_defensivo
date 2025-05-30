@@ -138,112 +138,52 @@ document.addEventListener('DOMContentLoaded', function () {
 });
 document.addEventListener("DOMContentLoaded", function () {
   const slideConfigs = {
-    'slide2': {
-      buttonId: 'liveBoxSlide2',
-      title: 'Tatiana lo ve, y sabe que es riesgoso… ¿Qué crees que Tamara debe hacer?',
-      titleMobile: 'Tamara lo ve, y sabe que es riesgoso… ¿Qué crees que Tamara debe hacer?',
+    'slide6': {
+      buttonId: 'liveBoxSlide6',
+      title: 'Selecciona las cuatro imágenes correctas ',
+      titleMobile: 'Selecciona las cuatro imágenes correctas ',
       mobileSrc: "../assets/actividades/actividad_pregunta1alturas/index.html",
       desktopSrc: "../assets/actividades/actividad_pregunta1alturas/index.html",
       mobileHeight: '69vh',
       desktopHeight: '76vh',
       modalSize: "small"
     },
-    'slide4': {
-      buttonId: 'liveBoxSlide4',
-      title: 'Para ver el contenido secreto haz clic y contesta la trivia…',
-      titleMobile: 'Para ver el contenido secreto haz clic y contesta la trivia…',
+    'slide11': {
+      buttonId: 'liveBoxSlide11',
+      title: 'Selecciona Verdadero o Falso segun corresponda el caso',
+      titleMobile: 'Selecciona Verdadero o Falso segun corresponda el caso',
       mobileSrc: '../assets/actividades/actividad_pregunta2alturas/index.html',
       desktopSrc: '../assets/actividades/actividad_pregunta2alturas/index.html',
       mobileHeight: '69vh',
       desktopHeight: '76vh',
       modalSize: "small"
     },
-    'slide5': {
-      buttonId: 'liveBoxSlide5',
-      title: 'Ayuda a Tatiana a identificar cuales SI son actividades que pueden presentar tareas de trabajo en alturas',
-      titleMobile: 'Ayuda a Tatiana a identificar cuales SI son actividades que pueden presentar tareas de trabajo en alturas',
+    'slide14': {
+      buttonId: 'liveBoxSlide14',
+      title: 'Selecciona la respuesta correcta para cada factor',
+      titleMobile: 'Selecciona la respuesta correcta para cada factor',
       mobileSrc: '../assets/actividades/actividad_seleccionimagenesalturas/index.html',
       desktopSrc: '../assets/actividades/actividad_seleccionimagenesalturas/index.html',
       mobileHeight: '69vh',
       desktopHeight: '76vh',
       modalSize: "large"
     },
-    'slide7': {
-      buttonId: 'liveBoxSlide7',
-      title: 'Arrastra la opción correcta según corresponde',
-      titleMobile: 'Arrastra la opción correcta según corresponde',
+    'slide16': {
+      buttonId: 'liveBoxSlide16',
+      title: 'Relaciona los tipos de señales de tránsito con el formato que le corresponde:',
+      titleMobile: 'Relaciona los tipos de señales de tránsito con el formato que le corresponde:',
       mobileSrc: '../assets/actividades/draganddropslide9movil/index.html',
       desktopSrc: '../assets/actividades/actividad_draganddropslide9/index.html',
       mobileHeight: '69vh',
       desktopHeight: '76vh',
       modalSize: "large"
     },
-    'slide9': {
-      buttonId: 'liveBoxSlide9',
-      title: 'Ayuda a Andy a relacionar cada término con su significado correspondiente ',
-      titleMobile: 'Ayuda a Andy a relacionar cada término con su significado correspondiente ',
-      mobileSrc: '../assets/actividades/actividaddraganddropslide9/index.html',
-      desktopSrc: '../assets/actividades/actividaddraganddropslide9/index.html',
-      mobileHeight: '69vh',
-      desktopHeight: '76vh',
-      modalSize: "small"
-    },
-    slide11: {
-      buttonId: "liveBoxSlide11",
-      title: "Ayúdale a Tatiana a seleccionar correctamente las medidas de control para cada tipo de Peligro y Riesgo:",
-      titleMobile: "Ayúdale a Tatiana a seleccionar correctamente las medidas de control para cada tipo de Peligro y Riesgo:",
-      mobileSrc: "../assets/actividades/draganddropalturas2movil/index.html",
-      desktopSrc: "../assets/actividades/draganddropalturas2/index.html",
-      mobileHeight: "65vh",
-      desktopHeight: "90vh",
-      modalSize: "large",
-    },
-    'slide21': {
-      buttonId: 'liveBoxSlide21',
-      title: 'Organiza los pasos en el orden que consideras que siguió la empresa para la protección con BARRERAS',
-      titleMobile: 'Selecciona el orden que consideras que siguió la empresa para la protección con BARRERAS',
-      desktopSrc: '../assets/actividades/seleccione_elementos_clave/index.html',
-      mobileSrc: '../assets/actividades/seleccione_elementos_clave/index.html',
-      mobileHeight: '69vh',
-      desktopHeight: '76vh',
-      modalSize: "large"
-    },
     'slide17': {
       buttonId: 'liveBoxSlide17',
-      title: 'Responde las preguntas de acuerdo con los audios',
-      titleMobile: 'Responde las preguntas de acuerdo con los audios',
-      desktopSrc: '../assets/actividades/actividadpreguntasseleccionherramientas/index.html',
-      mobileSrc: '../assets/actividades/actividadpreguntasseleccionherramientas/index.html',
-      mobileHeight: '69vh',
-      desktopHeight: '76vh',
-      modalSize: "small"
-    },
-    'slide19': {
-      buttonId: 'liveBoxSlide19',
-      title: 'Organizar las seis (6) etapas que deben seguir a la ocurrencia de un accidente en la operación',
-      titleMobile: 'Organizar las seis (6) etapas que deben seguir a la ocurrencia de un accidente en la operación',
-      desktopSrc: '../assets/actividades/actividadordenarpasospalmamanos/index.html',
-      mobileSrc: '../assets/actividades/actividadordenarpasospalmamanos/index.html',
-      mobileHeight: '69vh',
-      desktopHeight: '76vh',
-      modalSize: "large"
-    },
-    'slide23': {
-      buttonId: 'liveBoxSlide23',
-      title: 'Selecciona la opción correcta',
-      titleMobile: 'Selecciona la opción correcta',
-      desktopSrc: '../assets/actividades/actividadlistadesplegableweb/index.html',
-      mobileSrc: '../assets/actividades/actividadlistadesplegableweb/index.html',
-      mobileHeight: '69vh',
-      desktopHeight: '76vh',
-      modalSize: "large",
-    },
-    'slide26': {
-      buttonId: 'liveBoxSlide26',
-      title: 'Selecciona Verdadero o Falso segun corresponda el caso',
-      titleMobile: 'Selecciona Verdadero o Falso segun corresponda el caso',
-      desktopSrc: '../assets/actividades/actividadvorf/index.html',
-      mobileSrc: '../assets/actividades/actividadvorf/index.html',
+      title: 'Arrastra los elementos para ordenarlos de acuerdo con la prelación de las señales de tránsito:',
+      titleMobile: 'Selecciona los elementos para ordenarlos de acuerdo con la prelación de las señales de tránsito:',
+      mobileSrc: '../assets/actividades/actividaddraganddropslide9/index.html',
+      desktopSrc: '../assets/actividades/actividaddraganddropslide9/index.html',
       mobileHeight: '69vh',
       desktopHeight: '76vh',
       modalSize: "small"
