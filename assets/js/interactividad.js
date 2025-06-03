@@ -19,8 +19,8 @@ document.addEventListener("DOMContentLoaded", function () {
       buttonId: 'liveBoxSlide6',
       title: 'Selecciona las cuatro imágenes correctas ',
       titleMobile: 'Selecciona las cuatro imágenes correctas ',
-      mobileSrc: "../assets/actividades/actividad_pregunta1alturas/index.html",
-      desktopSrc: "../assets/actividades/actividad_pregunta1alturas/index.html",
+      mobileSrc: "../assets/actividades/actividad_identifica_no_manejo_multiple/index.html",
+      desktopSrc: "../assets/actividades/actividad_identifica_no_manejo_multiple/index.html",
       mobileHeight: '69vh',
       desktopHeight: '76vh',
       modalSize: "small"
@@ -49,8 +49,8 @@ document.addEventListener("DOMContentLoaded", function () {
       buttonId: 'liveBoxSlide16',
       title: 'Relaciona los tipos de señales de tránsito con el formato que le corresponde:',
       titleMobile: 'Relaciona los tipos de señales de tránsito con el formato que le corresponde:',
-      mobileSrc: '../assets/actividades/draganddropslide9movil/index.html',
-      desktopSrc: '../assets/actividades/actividad_draganddropslide9/index.html',
+      mobileSrc: '../assets/actividades/actividad_dragandrop_señales_transito/index.html',
+      desktopSrc: '../assets/actividades/actividad_dragandrop_señales_transito/index.html',
       mobileHeight: '69vh',
       desktopHeight: '76vh',
       modalSize: "large"
