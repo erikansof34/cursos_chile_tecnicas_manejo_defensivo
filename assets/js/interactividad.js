@@ -152,8 +152,8 @@ document.addEventListener("DOMContentLoaded", function () {
       buttonId: 'liveBoxSlide11',
       title: 'Selecciona Verdadero o Falso segun corresponda el caso',
       titleMobile: 'Selecciona Verdadero o Falso segun corresponda el caso',
-      mobileSrc: '../assets/actividades/actividad_pregunta2alturas/index.html',
-      desktopSrc: '../assets/actividades/actividad_pregunta2alturas/index.html',
+      mobileSrc: '../assets/actividades/actividad_selectvorf/index.html',
+      desktopSrc: '../assets/actividades/actividad_selectvorf/index.html',
       mobileHeight: '69vh',
       desktopHeight: '76vh',
       modalSize: "small"
@@ -1999,209 +1999,388 @@ function dragablePuzzle() {
 }
 
 //Script para controlar la reproducción de audio y video
-document.addEventListener('DOMContentLoaded', function () {
+
+// Función para inicializar la lógica del botón de play
+function initializePlayButtonLogic() {
   const audioElements = document.querySelectorAll('audio');
   const playButtons = document.querySelectorAll('.video-button-control-audio');
   const modalButtons = document.querySelectorAll('[data-bs-toggle="modal"]');
-  const sliderContainers = document.querySelectorAll('[data-slider]'); // Selector para contenedores de slider
+  const sliderContainers = document.querySelectorAll('[data-slider]');
 
-  let currentPlayingVideo = null;
-  let currentPlayingButton = null;
+  // Variables globales (moverlas fuera de la función)
+  if (typeof currentPlayingVideo === 'undefined') {
+    window.currentPlayingVideo = null;
+    window.currentPlayingButton = null;
+  }
 
-  // Función para mostrar el botón de reproducción
-  const showPlayButton = (playButton) => {
-      if (playButton) playButton.style.display = 'block';
+  // Función para mostrar el botón de reproducción con delay
+  const showPlayButton = (playButton, delay = 0) => {
+    if (playButton) {
+      setTimeout(() => {
+        playButton.style.display = 'block';
+        playButton.style.opacity = '0';
+        playButton.style.transition = 'opacity 0.3s ease';
+        setTimeout(() => {
+          playButton.style.opacity = '1';
+        }, 50);
+      }, delay);
+    }
   };
 
   // Función para ocultar el botón de reproducción
   const hidePlayButton = (playButton) => {
-      if (playButton) playButton.style.display = 'none';
+    if (playButton) {
+      playButton.style.opacity = '0';
+      setTimeout(() => {
+        playButton.style.display = 'none';
+      }, 300);
+    }
   };
 
   // Función para pausar el video
   const pauseVideo = (iframe) => {
-      if (iframe) {
-          const pauseMessage = JSON.stringify({ action: 'pause' });
-          iframe.contentWindow.postMessage(pauseMessage, '*');
-          iframe.src = iframe.src.replace('autoplay=true', 'autoplay=false');
-          iframe.style.pointerEvents = 'none';
-      }
+    if (iframe) {
+      const pauseMessage = JSON.stringify({ action: 'pause' });
+      iframe.contentWindow.postMessage(pauseMessage, '*');
+      iframe.src = iframe.src.replace('autoplay=true', 'autoplay=false');
+      iframe.style.pointerEvents = 'none';
+    }
   };
 
   // Función para reproducir el video
   const playVideo = (iframe, playButton) => {
-      if (iframe) {
-          const playMessage = JSON.stringify({ action: 'play' });
-          iframe.contentWindow.postMessage(playMessage, '*');
-          iframe.src = iframe.src.replace('autoplay=false', 'autoplay=true');
-          
-          // Ocultar el botón inmediatamente
-          hidePlayButton(playButton);
-          
-          // Actualizar estado
-          currentPlayingVideo = iframe;
-          currentPlayingButton = playButton;
-          
-          setTimeout(() => {
-              iframe.style.pointerEvents = 'auto';
-          }, 500);
-      }
+    if (iframe) {
+      const playMessage = JSON.stringify({ action: 'play' });
+      iframe.contentWindow.postMessage(playMessage, '*');
+      iframe.src = iframe.src.replace('autoplay=false', 'autoplay=true');
+
+      // Ocultar el botón inmediatamente
+      hidePlayButton(playButton);
+
+      // Actualizar estado
+      window.currentPlayingVideo = iframe;
+      window.currentPlayingButton = playButton;
+
+      setTimeout(() => {
+        iframe.style.pointerEvents = 'auto';
+      }, 500);
+    }
   };
 
   // Función para manejar el clic en el botón de reproducción del video
   const handlePlayButtonClick = (event, iframe) => {
-      // Pausar todos los audios si están reproduciéndose
-      audioElements.forEach(audio => {
-          if (!audio.paused) {
-              audio.pause();
-          }
-      });
+    // Pausar todos los audios si están reproduciéndose
+    audioElements.forEach(audio => {
+      if (!audio.paused) {
+        audio.pause();
+      }
+    });
 
-      // Pausar otros videos
-      playButtons.forEach(button => {
-          if (button !== event.target.closest('.video-button-control-audio')) {
-              const otherIframeId = button.getAttribute('data-target');
-              const otherIframe = document.getElementById(otherIframeId);
-              if (otherIframe) {
-                  pauseVideo(otherIframe);
-                  showPlayButton(button);
-              }
-          }
-      });
+    // Pausar otros videos
+    playButtons.forEach(button => {
+      if (button !== event.target.closest('.video-button-control-audio')) {
+        const otherIframeId = button.getAttribute('data-target');
+        const otherIframe = document.getElementById(otherIframeId);
+        if (otherIframe) {
+          pauseVideo(otherIframe);
+          showPlayButton(button);
+        }
+      }
+    });
 
-      // Obtener el botón de play
-      const playButton = event.target.closest('.video-button-control-audio');
-      
-      // Reproducir el video
-      playVideo(iframe, playButton);
+    // Obtener el botón de play
+    const playButton = event.target.closest('.video-button-control-audio');
+
+    // Reproducir el video
+    playVideo(iframe, playButton);
   };
 
   // Función para manejar la reproducción del audio
   const handleAudioPlay = (event) => {
-      // Pausar todos los videos si están reproduciéndose
-      if (currentPlayingVideo) {
-          pauseVideo(currentPlayingVideo);
-          if (currentPlayingButton) {
-              showPlayButton(currentPlayingButton);
-          }
-          currentPlayingVideo = null;
-          currentPlayingButton = null;
+    // Pausar todos los videos si están reproduciéndose
+    if (window.currentPlayingVideo) {
+      pauseVideo(window.currentPlayingVideo);
+      if (window.currentPlayingButton) {
+        showPlayButton(window.currentPlayingButton);
       }
+      window.currentPlayingVideo = null;
+      window.currentPlayingButton = null;
+    }
 
-      // Pausar otros audios si están reproduciéndose
-      audioElements.forEach(audio => {
-          if (audio !== event.target && !audio.paused) {
-              audio.pause();
-          }
-      });
+    // Pausar otros audios si están reproduciéndose
+    audioElements.forEach(audio => {
+      if (audio !== event.target && !audio.paused) {
+        audio.pause();
+      }
+    });
   };
 
   // Agregar eventos de clic a los botones de reproducción del video
   playButtons.forEach(button => {
-      button.addEventListener('click', (event) => {
-          const iframeId = button.getAttribute('data-target');
-          const iframe = document.getElementById(iframeId);
-          if (iframe) {
-              handlePlayButtonClick(event, iframe);
-          }
-      });
+    button.addEventListener('click', (event) => {
+      const iframeId = button.getAttribute('data-target');
+      const iframe = document.getElementById(iframeId);
+      if (iframe) {
+        handlePlayButtonClick(event, iframe);
+      }
+    });
   });
 
   // Agregar evento a los audios para pausar el video y otros audios cuando se reproduzcan
   audioElements.forEach(audio => {
-      audio.addEventListener('play', handleAudioPlay);
+    audio.addEventListener('play', handleAudioPlay);
   });
 
-  // Escuchar mensajes del iframe - SOLO para evento 'ended' (ignorar 'paused')
+  // Escuchar mensajes del iframe - SOLO para evento 'ended'
   window.addEventListener('message', (event) => {
-      try {
-          const data = JSON.parse(event.data);
-          if (data.event === 'ended') {
-              // Mostrar el botón de reproducción solo cuando el video termine
-              if (currentPlayingVideo && currentPlayingButton) {
-                  showPlayButton(currentPlayingButton);
-                  currentPlayingVideo.style.pointerEvents = 'none';
-                  currentPlayingVideo = null;
-                  currentPlayingButton = null;
-              }
-          }
-      } catch (e) {
-          // No es un mensaje JSON o no es de nuestro iframe
+    try {
+      const data = JSON.parse(event.data);
+      if (data.event === 'ended') {
+        // Mostrar el botón de reproducción solo cuando el video termine
+        if (window.currentPlayingVideo && window.currentPlayingButton) {
+          showPlayButton(window.currentPlayingButton);
+          window.currentPlayingVideo.style.pointerEvents = 'none';
+          window.currentPlayingVideo = null;
+          window.currentPlayingButton = null;
+        }
       }
+    } catch (e) {
+      // No es un mensaje JSON o no es de nuestro iframe
+    }
   });
 
-  // Mostrar el botón de reproducción cuando el iframe se cargue por primera vez
+  // NUEVA FUNCIONALIDAD: Sincronizar botón de play con carga del iframe
   const containers = document.querySelectorAll(".iframe-container");
   containers.forEach(container => {
-      const iframe = container.querySelector("iframe");
-      const loader = container.querySelector(".loader");
+    const iframe = container.querySelector("iframe");
+    const loader = container.querySelector(".loader");
+    const playButton = container.querySelector('.video-button-control-audio');
 
-      if (iframe && loader) {
-          iframe.style.pointerEvents = 'none';
-          
-          iframe.addEventListener("load", function () {
-              if (!currentPlayingVideo || iframe !== currentPlayingVideo) {
-                  const playButton = container.querySelector('.video-button-control-audio');
-                  showPlayButton(playButton);
-              }
-          });
-      }
+    if (iframe && loader && playButton) {
+      // Inicialmente ocultar el botón de play y preparar iframe
+      playButton.style.display = 'none';
+      playButton.style.opacity = '0';
+      playButton.style.transition = 'opacity 0.5s ease';
+      iframe.style.pointerEvents = 'none';
+      iframe.style.opacity = '0';
+      iframe.style.transition = 'opacity 0.5s';
+
+      // Cuando el iframe se carga completamente
+      iframe.addEventListener("load", function () {
+        // Ocultar el loader
+        loader.style.display = 'none';
+
+        // Mostrar el iframe Y el botón al MISMO TIEMPO
+        iframe.style.opacity = '1';
+
+        // Solo mostrar el botón si no hay un video reproduciéndose actualmente
+        if (!currentPlayingVideo || iframe !== currentPlayingVideo) {
+          playButton.style.display = 'block';
+          // Usar el mismo timing de transición que el iframe
+          setTimeout(() => {
+            playButton.style.opacity = '1';
+          }, 50); // Pequeño delay para sincronizar con la transición del iframe
+        }
+      });
+
+      // Manejar errores de carga del iframe
+      iframe.addEventListener("error", function () {
+        loader.style.display = 'none';
+        console.error('Error al cargar el iframe:', iframe.src);
+      });
+    }
   });
 
   // Manejar la apertura de modales
   modalButtons.forEach(button => {
-      button.addEventListener('click', function() {
-          // Pausar todos los audios cuando se abre un modal
-          audioElements.forEach(audio => {
-              if (!audio.paused) {
-                  audio.pause();
-              }
-          });
-          
-          // Pausar todos los videos cuando se abre un modal
-          if (currentPlayingVideo) {
-              pauseVideo(currentPlayingVideo);
-              if (currentPlayingButton) {
-                  showPlayButton(currentPlayingButton);
-              }
-              currentPlayingVideo = null;
-              currentPlayingButton = null;
-          }
+    button.addEventListener('click', function () {
+      // Pausar todos los audios cuando se abre un modal
+      audioElements.forEach(audio => {
+        if (!audio.paused) {
+          audio.pause();
+        }
       });
+
+      // Pausar todos los videos cuando se abre un modal
+      if (window.currentPlayingVideo) {
+        pauseVideo(window.currentPlayingVideo);
+        if (window.currentPlayingButton) {
+          showPlayButton(window.currentPlayingButton);
+        }
+        window.currentPlayingVideo = null;
+        window.currentPlayingButton = null;
+      }
+    });
   });
 
-  // Observar cambios de slider (para detectar cuando el usuario cambia de slide)
-  const observer = new MutationObserver(function(mutations) {
-      mutations.forEach(function(mutation) {
-          if (mutation.attributeName === 'class') {
-              // Si hay un video reproduciéndose y cambiamos de slider
-              if (currentPlayingVideo) {
-                  const currentSlider = currentPlayingVideo.closest('[data-slider]');
-                  const activeSliders = document.querySelectorAll('[data-slider].active, [data-slider].show');
-                  
-                  let isStillVisible = false;
-                  activeSliders.forEach(slider => {
-                      if (slider === currentSlider) {
-                          isStillVisible = true;
-                      }
-                  });
-                  
-                  if (!isStillVisible) {
-                      pauseVideo(currentPlayingVideo);
-                      if (currentPlayingButton) {
-                          showPlayButton(currentPlayingButton);
-                      }
-                      currentPlayingVideo = null;
-                      currentPlayingButton = null;
-                  }
-              }
+  // Observar cambios de slider
+  const observer = new MutationObserver(function (mutations) {
+    mutations.forEach(function (mutation) {
+      if (mutation.attributeName === 'class') {
+        if (window.currentPlayingVideo) {
+          const currentSlider = window.currentPlayingVideo.closest('[data-slider]');
+          const activeSliders = document.querySelectorAll('[data-slider].active, [data-slider].show');
+
+          let isStillVisible = false;
+          activeSliders.forEach(slider => {
+            if (slider === currentSlider) {
+              isStillVisible = true;
+            }
+          });
+
+          if (!isStillVisible) {
+            pauseVideo(window.currentPlayingVideo);
+            if (window.currentPlayingButton) {
+              showPlayButton(window.currentPlayingButton);
+            }
+            window.currentPlayingVideo = null;
+            window.currentPlayingButton = null;
           }
-      });
+        }
+      }
+    });
   });
 
   // Configurar el observer para cada contenedor de slider
   sliderContainers.forEach(container => {
-      observer.observe(container, { attributes: true });
+    observer.observe(container, { attributes: true });
+  });
+}
+
+// Función para reiniciar la lógica de los botones de play en el slide actual
+function resetPlayButtonLogic() {
+  // Obtener solo los contenedores visibles/activos del slide actual
+  const activeContainers = document.querySelectorAll(".iframe-container");
+
+  activeContainers.forEach(container => {
+    const iframe = container.querySelector("iframe");
+    const loader = container.querySelector(".loader");
+    const playButton = container.querySelector('.video-button-control-audio');
+
+    // Verificar si el contenedor está en un slide visible
+    const parentSlide = container.closest('[data-slider], .slide, .carousel-item, .swiper-slide');
+    let isVisible = true;
+
+    if (parentSlide) {
+      const computedStyle = window.getComputedStyle(parentSlide);
+      isVisible = computedStyle.display !== 'none' &&
+        computedStyle.visibility !== 'hidden' &&
+        computedStyle.opacity !== '0';
+    }
+
+    if (iframe && loader && playButton && isVisible) {
+      // Resetear estados
+      playButton.style.display = 'none';
+      playButton.style.opacity = '0';
+      playButton.style.transition = 'opacity 0.5s ease';
+      iframe.style.pointerEvents = 'none';
+
+      // Verificar si el iframe ya está cargado
+      if (iframe.complete || iframe.readyState === 'complete') {
+        // Si ya está cargado, aplicar lógica inmediatamente
+        loader.style.display = 'none';
+        iframe.style.opacity = '1';
+
+        if (!window.currentPlayingVideo || iframe !== window.currentPlayingVideo) {
+          playButton.style.display = 'block';
+          setTimeout(() => {
+            playButton.style.opacity = '1';
+          }, 50);
+        }
+      } else {
+        // Si no está cargado, mostrar loader y esperar
+        loader.style.display = 'block';
+        iframe.style.opacity = '0';
+        iframe.style.transition = 'opacity 0.5s';
+
+        // Remover listeners anteriores para evitar duplicados
+        iframe.removeEventListener("load", handleIframeLoad);
+        iframe.removeEventListener("error", handleIframeError);
+
+        // Agregar nuevos listeners
+        iframe.addEventListener("load", handleIframeLoad);
+        iframe.addEventListener("error", handleIframeError);
+      }
+    }
+  });
+}
+
+// Handlers para los eventos del iframe
+function handleIframeLoad(event) {
+  const iframe = event.target;
+  const container = iframe.closest('.iframe-container');
+  if (!container) return;
+
+  const loader = container.querySelector(".loader");
+  const playButton = container.querySelector('.video-button-control-audio');
+
+  if (loader && playButton) {
+    loader.style.display = 'none';
+    iframe.style.opacity = '1';
+
+    if (!window.currentPlayingVideo || iframe !== window.currentPlayingVideo) {
+      playButton.style.display = 'block';
+      setTimeout(() => {
+        playButton.style.opacity = '1';
+      }, 50);
+    }
+  }
+}
+
+function handleIframeError(event) {
+  const iframe = event.target;
+  const container = iframe.closest('.iframe-container');
+  if (!container) return;
+
+  const loader = container.querySelector(".loader");
+  if (loader) {
+    loader.style.display = 'none';
+  }
+  console.error('Error al cargar el iframe:', iframe.src);
+}
+
+// Función para manejar los clics en las flechas de navegación
+function handleSliderNavigation() {
+  // Pausar video actual si está reproduciéndose
+  if (window.currentPlayingVideo) {
+    const pauseMessage = JSON.stringify({ action: 'pause' });
+    window.currentPlayingVideo.contentWindow.postMessage(pauseMessage, '*');
+    window.currentPlayingVideo.src = window.currentPlayingVideo.src.replace('autoplay=true', 'autoplay=false');
+    window.currentPlayingVideo.style.pointerEvents = 'none';
+
+    if (window.currentPlayingButton) {
+      window.currentPlayingButton.style.display = 'none';
+    }
+
+    window.currentPlayingVideo = null;
+    window.currentPlayingButton = null;
+  }
+
+  // Reiniciar lógica después de un pequeño delay para permitir que el slide cambie
+  setTimeout(() => {
+    resetPlayButtonLogic();
+  }, 100);
+}
+
+// Inicializar cuando el DOM está listo
+document.addEventListener('DOMContentLoaded', function () {
+  initializePlayButtonLogic();
+  resetPlayButtonLogic();
+
+  // Agregar listeners a las flechas de navegación
+  const navButtons = document.querySelectorAll('.bntNextPrev, #pagIndex, #prev, #next');
+  navButtons.forEach(button => {
+    button.addEventListener('click', function () {
+      handleSliderNavigation();
+    });
+  });
+
+  // También escuchar cambios en elementos que puedan indicar cambio de slide
+  const sliderIndicators = document.querySelectorAll('[data-bs-slide], [data-slide], .carousel-control-prev, .carousel-control-next');
+  sliderIndicators.forEach(indicator => {
+    indicator.addEventListener('click', function () {
+      handleSliderNavigation();
+    });
   });
 });
 
