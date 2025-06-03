@@ -1327,7 +1327,6 @@ button.btn:hover {
 
 
 /* CSS TRANSCRIPCION */
-
 #transcripcion-global {
     position: absolute;
     bottom: 0%;
@@ -1348,7 +1347,6 @@ button.btn:hover {
 }
 
 /* Media query para dispositivos móviles */
-
 @media screen and (max-width: 1023px) {
     #transcripcion-global {
         width: 90%;
@@ -1378,7 +1376,6 @@ button.btn:hover {
 /* Asegurar que el cuerpo tenga espacio para la transcripción */
 body {
     margin-bottom: 100px;
-
 }
 
 /* Estilo para el icono de transcripción */
@@ -1391,6 +1388,10 @@ body {
 .transcription-toggle:hover {
     background-color: #f0f0f0;
     transform: translateY(-50%) scale(1.1);
+}
+
+.transcription-toggle.active {
+    color: #2a7fba !important;
 }
 
 /* Ajuste de posición para el contenedor de audio */

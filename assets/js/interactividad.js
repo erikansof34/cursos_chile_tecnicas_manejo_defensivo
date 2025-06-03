@@ -1,10 +1,22 @@
 document.addEventListener('DOMContentLoaded', function () {
   const audios = document.querySelectorAll('.audio-con-transcripcion');
   const transcripcionGlobal = document.getElementById('transcripcion-global');
+  const toggleButtons = document.querySelectorAll('.transcription-toggle');
 
   if (audios.length === 0) {
     console.warn('No se encontraron audios con la clase audio-con-transcripcion');
     return;
+  }
+
+  // Función para desactivar todos los botones excepto el actual
+  function deactivateOtherToggleButtons(currentButton) {
+    toggleButtons.forEach(btn => {
+      if (btn !== currentButton) {
+        btn.classList.remove('active');
+        btn.style.color = '#666';
+        btn.setAttribute('title', 'Activar subtítulos');
+      }
+    });
   }
 
   // Función para actualizar la transcripción
@@ -51,6 +63,10 @@ document.addEventListener('DOMContentLoaded', function () {
 
       // Evento para el botón de toggle
       toggleBtn.addEventListener('click', function () {
+        // Desactivar otros botones primero
+        deactivateOtherToggleButtons(this);
+
+        // Activar/desactivar el actual
         this.classList.toggle('active');
         this.style.color = this.classList.contains('active') ? '#2a7fba' : '#666';
         this.setAttribute('title', this.classList.contains('active') ? 'Desactivar subtítulos' : 'Activar subtítulos');
