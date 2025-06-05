@@ -39,8 +39,8 @@ document.addEventListener("DOMContentLoaded", function () {
       buttonId: 'liveBoxSlide14',
       title: 'Selecciona la respuesta correcta para cada factor',
       titleMobile: 'Selecciona la respuesta correcta para cada factor',
-      mobileSrc: '../assets/actividades/actividad_seleccionimagenesalturas/index.html',
-      desktopSrc: '../assets/actividades/actividad_seleccionimagenesalturas/index.html',
+      mobileSrc: '../assets/actividades/actividad_selecciones_accidentes_transitos/index.html',
+      desktopSrc: '../assets/actividades/actividad_selecciones_accidentes_transitos/index.html',
       mobileHeight: '69vh',
       desktopHeight: '76vh',
       modalSize: "large"
@@ -59,11 +59,11 @@ document.addEventListener("DOMContentLoaded", function () {
       buttonId: 'liveBoxSlide17',
       title: 'Arrastra los elementos para ordenarlos de acuerdo con la prelación de las señales de tránsito:',
       titleMobile: 'Selecciona los elementos para ordenarlos de acuerdo con la prelación de las señales de tránsito:',
-      mobileSrc: '../assets/actividades/actividaddraganddropslide9/index.html',
-      desktopSrc: '../assets/actividades/actividaddraganddropslide9/index.html',
+      mobileSrc: '../assets/actividades/actividad_ordene_prelacion_accidentes_trans/index.html',
+      desktopSrc: '../assets/actividades/actividad_ordene_prelacion_accidentes_trans/index.html',
       mobileHeight: '69vh',
       desktopHeight: '76vh',
-      modalSize: "small"
+      modalSize: "large"
     },
   };
 
