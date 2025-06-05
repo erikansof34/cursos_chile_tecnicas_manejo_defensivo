@@ -583,9 +583,9 @@ document.addEventListener("DOMContentLoaded", function () {
 //SLIDER 3 LECCION 2//
 document.addEventListener("DOMContentLoaded", () => {
     const audios = [
-      { title: "1. Atención y Visión Periférica", src: "assets/audio/sld20_factor_1.mp3" },
-      { title: "2. Anticipación y Predecibilidad", src: "assets/audio/sld20_factor_2.mp3" },
-      { title: "3. Uso de Tecnología para la Seguridad", src: "assets/audio/sld20_factor_3.mp3" }
+      { title: "1. Atención y Visión Periférica", src: "../../assets/audio/L2-slide_3_factor_1.mp3" },
+      { title: "2. Anticipación y Predecibilidad", src: "../../assets/audio/L2-slide_3_factor_2.mp3" },
+      { title: "3. Uso de Tecnología para la Seguridad", src: "../../assets/audio/L2-slide_3_factor_3.mp3" }
     ];
   
     let currentAudioIndex = 0;
