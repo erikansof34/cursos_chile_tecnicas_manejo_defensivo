@@ -1008,7 +1008,10 @@ button.btn:hover {
     }
 }
 
-
+.texto-superior {
+    height: 80px;
+    z-index: 2;
+}
 
 
 /*Seccion 1*/
@@ -1038,14 +1041,14 @@ button.btn:hover {
     height: 100%;
     background-color: rgba(0, 0, 0, 0.582);
     /* color negro con opacidad */
-    z-index: 1;
+    z-index: -1;
     /* por debajo del contenido interno */
 }
 
 /* Asegúrate de que el contenido esté encima del ::after */
 .darkStyleImgSeccion1>* {
     position: relative;
-    z-index: 2;
+    /* z-index: 2; */
 }
 
 /*Seccion 2*/
@@ -1074,13 +1077,13 @@ button.btn:hover {
     height: 100%;
     background-color: rgba(0, 0, 0, 0.582);
     /* color negro con opacidad */
-    z-index: 1;
+    z-index: -1;
 }
 
 /* Asegúrate de que el contenido esté encima del ::after */
 .darkStyleImgSeccion2>* {
     position: relative;
-    z-index: 2;
+    /* z-index: 2; */
 }
 
 
@@ -1110,14 +1113,14 @@ button.btn:hover {
     height: 100%;
     background-color: rgba(0, 0, 0, 0.582);
     /* color negro con opacidad */
-    z-index: 1;
+    z-index: -1;
     /* por debajo del contenido interno */
 }
 
 /* Asegúrate de que el contenido esté encima del ::after */
 .darkStyleImgSeccion3>* {
     position: relative;
-    z-index: 2;
+    /* z-index: 2; */
 }
 
 
