@@ -17,7 +17,7 @@ document.addEventListener('DOMContentLoaded', function () {
     });
 });
 // Módulo para manejar la navegación móvil - Versión mejorada
-const MobileSlides = (function() {
+const MobileSlides = (function () {
     function esDispositivoMovil() {
         return window.innerWidth <= 768;
     }
@@ -26,12 +26,12 @@ const MobileSlides = (function() {
         $(".contentModule > div").first().remove();
 
         const primerSlide = $(`
-            <div class="container dividerImgSeccion1 miga_titulo_curso current" id="dividerImgSeccion1">
+            <div class="container dividerImgSeccion1 miga_titulo_curso  current" id="dividerImgSeccion1">
                 <div class="row">
                     <div class="pl-seccion">
                         <div class="col-lg-8 col-md-12">
-                            <h1 class="tituloseccion">Introducción al trabajo
-                                <span class="yellow">seguro en Alturas</span>
+                            <h1 class="tituloseccion">1-Teoría del
+                                <span class="yellow">Manejo Defensivo</span>
                             </h1>
                             <hr class="hr-50">
                         </div>
@@ -43,8 +43,8 @@ const MobileSlides = (function() {
         $(".contentModule").prepend(primerSlide);
 
         // Determinar la imagen según el dispositivo
-        const bgImage = esDispositivoMovil() 
-            ? 'url(../assets/img/momento1_mobile.webp)' 
+        const bgImage = esDispositivoMovil()
+            ? 'url(../assets/img/momento1_mobile.webp)'
             : 'url(../assets/img/momento1_web.webp)';
 
         // Aplicar estilos directamente al contenedor, no al body
@@ -105,9 +105,9 @@ const MobileSlides = (function() {
 
             $('#textProg').text(numeroSlide);
             actualizarInterfazProgreso(numeroSlide);
-            
+
             // Asegurar que no hay scroll no deseado
-            if(esDispositivoMovil()) {
+            if (esDispositivoMovil()) {
                 $('html, body').scrollTop(0);
             }
         } catch (error) {
@@ -130,18 +130,18 @@ const MobileSlides = (function() {
         $('body').addClass('mobile-view');
         mostrarSlide(1);
 
-        $(window).on('resize', function() {
+        $(window).on('resize', function () {
             if (!esDispositivoMovil()) return;
             const currentSlide = parseInt($('#textProg').text());
             mostrarSlide(currentSlide); // Forzar redibujado
         });
 
         // Eventos de navegación
-        $("#next").off('click').on('click', function() {
+        $("#next").off('click').on('click', function () {
             if (!esDispositivoMovil()) return;
             const slideActual = parseInt($('#textProg').text());
             const totalSlides = $(".contentModule > div").length;
-            
+
             if (slideActual === totalSlides) {
                 const path = location.pathname.split("/").slice(0, -1).join("/");
                 window.location.href = path.replace("leccion1", "leccion1") + "/resumen_leccion1.html";
@@ -150,7 +150,7 @@ const MobileSlides = (function() {
             }
         });
 
-        $("#prev").off('click').on('click', function() {
+        $("#prev").off('click').on('click', function () {
             if (!esDispositivoMovil()) return;
             const slideActual = parseInt($('#textProg').text());
             if (slideActual > 1) {
@@ -158,7 +158,7 @@ const MobileSlides = (function() {
             }
         });
 
-        $("#pagIndex").off('click').on('click', function() {
+        $("#pagIndex").off('click').on('click', function () {
             if (!esDispositivoMovil()) return;
             const slideActual = parseInt($('#textProg').text());
             if (slideActual === 1) {
@@ -174,23 +174,23 @@ const MobileSlides = (function() {
 })();
 
 // Inicializar cuando el documento esté listo
-$(document).ready(function() {
+$(document).ready(function () {
     MobileSlides.init();
-    
+
     // Asegurar que el body tenga la clase mobile-view solo en móvil
     if (window.innerWidth <= 768) {
         $('body').addClass('mobile-view');
     }
-    
+
     // Manejar el breadcrumb
     var breadcrumbMap = {
         'miga_titulo_curso': 'Lección 1 > Introducción al trabajo seguro en Alturas',
     };
 
     $('#breadcrumb').html(
-        $('.current').filter(function() {
+        $('.current').filter(function () {
             return Array.from(this.classList).find(className => className.startsWith('miga'));
-        }).map(function() {
+        }).map(function () {
             return breadcrumbMap[Array.from(this.classList).find(className => className.startsWith('miga'))] || '';
         }).get().join('')
     );
@@ -278,42 +278,42 @@ function aniSl19(e) {
 
         // Manejo de la navegación
         // function manejarNavegacion(e) {
-            if (e === 1) {
-                $("#prev").hide();
-                $("#pagIndex").show().off('click').on('click', function () {
-                    // Redirecciona solo si el usuario está ya en el slide 1 y presiona este botón
-                    const path = location.pathname.split("/").slice(0, -1).join("/");
-                    window.location.href = path.replace("leccion1", "inicio") + "/inicio.html";
-                });
-            } else {
-                $("#prev").show();
-                $("#pagIndex").hide();
-            }
-
-            if (e === 2) {
-                $('body').removeClass('darkStyleImgSeccion1');
-                $("#pagIndex").css('display', 'none');
-                $("#next-btn").off('click').on('click', function () {
-                    $("#next").click();
-                });
-            }
-
-            // Nueva condición para redirigir al resumen si e es 8
-            if (e === 7) {
+        if (e === 1) {
+            $("#prev").hide();
+            $("#pagIndex").show().off('click').on('click', function () {
+                // Redirecciona solo si el usuario está ya en el slide 1 y presiona este botón
                 const path = location.pathname.split("/").slice(0, -1).join("/");
-                window.location.href = path.replace("leccion1", "leccion1") + "/resumen_leccion1.html";
-                return; // Salir de la función para evitar más lógica
-            }
+                window.location.href = path.replace("leccion1", "inicio") + "/inicio.html";
+            });
+        } else {
+            $("#prev").show();
+            $("#pagIndex").hide();
+        }
 
-            if (e === sliders) {
-                // Verificar si es una pantalla de escritorio (ancho mayor a 768px)
-                if ($(window).width() >= 768) {
-                    $("#next").css('display', 'block');
-                }
-                $("#next").attr('data-last-slide', 'true');
-            } else {
-                $("#next").removeAttr('data-last-slide');
+        if (e === 2) {
+            $('body').removeClass('darkStyleImgSeccion1');
+            $("#pagIndex").css('display', 'none');
+            $("#next-btn").off('click').on('click', function () {
+                $("#next").click();
+            });
+        }
+
+        // Nueva condición para redirigir al resumen si e es 8
+        if (e === 7) {
+            const path = location.pathname.split("/").slice(0, -1).join("/");
+            window.location.href = path.replace("leccion1", "leccion1") + "/resumen_leccion1.html";
+            return; // Salir de la función para evitar más lógica
+        }
+
+        if (e === sliders) {
+            // Verificar si es una pantalla de escritorio (ancho mayor a 768px)
+            if ($(window).width() >= 768) {
+                $("#next").css('display', 'block');
             }
+            $("#next").attr('data-last-slide', 'true');
+        } else {
+            $("#next").removeAttr('data-last-slide');
+        }
         // }
 
         // Evento para el botón "next"
@@ -323,7 +323,7 @@ function aniSl19(e) {
                 event.preventDefault();
                 const path = location.pathname.split("/").slice(0, -1).join("/");
                 window.location.href = path.replace("leccion1", "leccion1") + "/resumen_leccion1.html";
-            } 
+            }
             // else {
             //     // Aquí puedes agregar la lógica para avanzar al siguiente slide
             //     avanzarAlSiguienteSlide();
