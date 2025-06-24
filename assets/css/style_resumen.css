@@ -9,13 +9,13 @@
     position: relative;
 }
 
-.visualizador-pdf{
-    width:100%; 
-    height:450px;
+.visualizador-pdf {
+    width: 100%;
+    height: 450px;
 }
 
 
-.card-evaluacion{
+.card-evaluacion {
     background-color: #fff;
     border: 1px solid #cacaca;
     border-radius: 12px;
@@ -24,5 +24,15 @@
     max-width: 600px;
     margin: 20px auto;
     font-family: 'Montserrat', sans-serif;
-    transition: transform 0.2s ease, box-shadow 0.2s ease; 
+    transition: transform 0.2s ease, box-shadow 0.2s ease;
+}
+
+@media (max-width: 768px) {
+
+    .bg-resumen {
+        /* min-height: auto; */
+        height: auto;
+        padding: 2em 1em;
+        flex-direction: column;
+    }
 }

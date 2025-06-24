@@ -15,6 +15,7 @@
     <link rel="stylesheet" type="text/css" href="../assets/css/style_resumen.css">
     <link rel="stylesheet" type="text/css" href="../assets/css/style_personalizado.css">
     <link rel="stylesheet" type="text/css" href="../assets/css/style.css">
+    <link rel="stylesheet" type="text/css" href="../assets/css/transcripcion.css">
 
     <!--Montserrat-->
     <link href="https://fonts.googleapis.com/css2?family=Montserrat:wght@400;500;700&display=swap" rel="stylesheet">
@@ -34,21 +35,45 @@
                 <div class="container current">
                     <div class="bg-resumen">
                         <div class="col-lg-3 col-md-12">
-                            <h1 class="titulo text-center white">Resumen <span class="purple">Lección 1</span></h1>
-                            <img src="../assets/gif/avatar_mujer_cuaderno.gif" alt="avatar">
+                            <div class="ml-4">
+                                <h1 class="titulo text-center white">Resumen <span class="purple">Lección 1</span></h1>
+                                <img src="../assets/gif/avatar_mujer_cuaderno.gif" alt="avatar">
+                                <div class="instruccion-center p-5rem">
+                                    <i class="instruccion-bg-dark">Haz clic para escuchar el audio <span
+                                            class="icono-inst">
+                                            <i class="fa-solid fa-arrow-turn-down"></i></span> </i>
+                                </div>
+                                <div class="audio-center p-5rem">
+                                    <audio class="audio-con-transcripcion audio-reducido-v2" controls
+                                        data-transcripcion='[
+                                        {"end":6,"start":0,"text":"Este curso se enfoque en las medidas para la prevención de riesgos en el trabajo en alturas dentro del contexto laboral."},
+                                        {"end":18,"start":7,"text":"Se aborda la definición de trabajo en alturas, la identificación de los riesgos más comunes asociados a estas tareas y la importancia de la evaluación de riesgos y la planificación anticipada."},
+                                        {"end":26.4,"start":18.6,"text":"El objetivo principal es asegurar la salud y la vida de los trabajadores mediante la implementación de prácticas y técnicas de seguridad efectivas."},
+                                        {"end":43.8,"start":27,"text":"En Chile, el trabajo en alturas está regulado por normativas específicas siendo la norma chilena NCH1258 la principal, que establece los requisitos de seguridad para prevenir caídas en labores realizadas a más de 1,8 metros sobre el nivel del suelo."},
+                                        {"end":56.6,"start":44.4,"text":"Además, se considera notas referencias importantes como la guía técnica del Instituto de Salud Pública ISP, el decreto número 44 reglamento para la gestión de la seguridad y salud en el trabajo."},
+                                        {"end":64.6,"start":57,"text":"Las normas hizo 45 mil uno y las directivas de la Unión Europea, que en conjunto buscan garantizar un ambiente de trabajo seguro."},
+                                        {"end":82.6,"start":65.6,"text":"Los riesgos comunes en el trabajo en alturas incluyen caídas desde superficies frágiles o inestables, borde sin protección, superficies inclinadas, andámios mal montados o sobrecargados, y el desplazamiento de herramientas o materiales que puedan impactar a trabajadores en niveles inferiores."},
+                                        {"end":94.6,"start":82.6,"text":"La identificación y evaluación continua de estos riesgos es fundamental para implementar procedimientos de seguridad adecuados y ajustar las medidas de prevención a las condiciones cambiantes del entorno laboral."}
+                                        ]'>
+                                        <source src="../assets/audio/resumen_leccion1.mp3" type="audio/mp3">
+                                    </audio>
+                                    <i class="transcription-toggle fas fa-closed-captioning audio-estilos"></i>
+                                </div>
+                            </div>
                         </div>
                         <div class="col-lg-9 col-md-12">
                             <div class="m-4rem">
                                 <p class="white">¡Bien hecho! Has terminado la Lección 1</p>
                                 <p class="white">¡Revisemos este resumen de lo visto en esta lección!</p>
-                                <embed src="../assets/doc/resumen_leccion_1.pdf" type="application/pdf"
+                                <embed src="../assets/doc/resumen_leccion1.pdf" type="application/pdf"
                                     class="visualizador-pdf">
-                                    <a href="../assets/doc/resumen_leccion_1.pdf" download="Resumen-Leccion-1.pdf" class="btn">
-                                        <i class="fas fa-hand-pointer"></i> Descargar PDF
-                                      </a>
-                                      
+                                <a href="../assets/doc/resumen_leccion1.pdf" download="Resumen-Leccion-1.pdf"
+                                    class="btn">
+                                    <i class="fas fa-hand-pointer"></i> Descargar PDF
+                                </a>
 
-                                   
+
+
                             </div>
                         </div>
                     </div>
@@ -71,11 +96,13 @@
             <i class="fas fa-angle-right"></i>
         </button>
     </div>
-
+    <div id="transcripcion-global">
+    </div>
     <!--library javascript-->
     <script src="../assets/js/jquery-3.3.1.js"></script>
     <!-- Script del Widget -->
     <script src="../assetsWidget/js/widget.js"></script>
+    <script src="../assets/js/transcripcion.js"></script>
     <script>
 
         // Función para volver atrás
