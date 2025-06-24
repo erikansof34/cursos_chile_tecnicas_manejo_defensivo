@@ -223,66 +223,28 @@ $('#evaluacion').click(function () {
 });
 
 var iframeConfig = {
-    "Slide2Web": {
-        src: "https://iframe.mediadelivery.net/embed/406826/bbaa5e3c-dd02-4015-aff8-0888e5e60063?autoplay=false&loop=false&muted=false&preload=true&responsive=true",
+    "Slide3L3Web": {
+        src: "https://iframe.mediadelivery.net/embed/450631/0fef6c4b-ae8b-4052-abc9-86be5b38c229?autoplay=false&loop=false&muted=false&preload=true&responsive=true",
         className: "iframe-web",
         style: "width: 20vw; height: 70vh;"
     },
-    "Slide2Mobile": {
-        src: "https://iframe.mediadelivery.net/embed/406826/bbaa5e3c-dd02-4015-aff8-0888e5e60063?autoplay=false&loop=false&muted=false&preload=true&responsive=true",
+
+    "Slide3L3Mobile": {
+        src: "https://iframe.mediadelivery.net/embed/450631/0fef6c4b-ae8b-4052-abc9-86be5b38c229?autoplay=false&loop=false&muted=false&preload=true&responsive=true",
         className: "iframe-mobile",
         style: "width: 80vw; height: 70vh;"
     },
-    "Slide12Web": {
-        src: "https://iframe.mediadelivery.net/embed/406826/47f04557-9ab4-4f48-afb1-e1a82789394a?autoplay=false&loop=false&muted=false&preload=true&responsive=true",
+    "Slide7L3Web": {
+        src: "https://iframe.mediadelivery.net/embed/450631/c26f352e-961c-4ca4-b1c7-82f8bfb00e88?autoplay=false&loop=false&muted=false&preload=true&responsive=true",
         className: "iframe-web",
         style: "width: 40vw; height: 55vh;"
     },
-    "Slide12Mobile": {
-        src: "https://iframe.mediadelivery.net/embed/406826/47f04557-9ab4-4f48-afb1-e1a82789394a?autoplay=false&loop=false&muted=false&preload=true&responsive=true",
+
+    "Slide7L3Mobile": {
+        src: "https://iframe.mediadelivery.net/embed/450631/c26f352e-961c-4ca4-b1c7-82f8bfb00e88?autoplay=false&loop=false&muted=false&preload=true&responsive=true",
         className: "iframe-mobile",
         style: "width: 80vw; height: 30vh;"
     },
-    "Slide14Web": {
-        src: "https://iframe.mediadelivery.net/embed/406826/a35e703b-5011-4357-adea-f371a4f4905f?autoplay=false&loop=false&muted=false&preload=true&responsive=true",
-        className: "iframe-web",
-        style: "width: 40vw; height: 55vh;"
-    },
-    "Slide14Mobile": {
-        src: "https://iframe.mediadelivery.net/embed/406826/a35e703b-5011-4357-adea-f371a4f4905f?autoplay=false&loop=false&muted=false&preload=true&responsive=true",
-        className: "iframe-mobile",
-        style: "width: 80vw; height: 30vh;"
-    },
-    "Slide16Web": {
-        src: "https://iframe.mediadelivery.net/embed/342326/c6e38e16-4ed5-4910-abce-ad063751b1fc?autoplay=false&loop=false&muted=false&preload=true&responsive=true",
-        className: "iframe-web",
-        style: "width: 40vw; height: 55vh;"
-    },
-    "Slide16Mobile": {
-        src: "https://iframe.mediadelivery.net/embed/342326/c6e38e16-4ed5-4910-abce-ad063751b1fc?autoplay=false&loop=false&muted=false&preload=true&responsive=true",
-        className: "iframe-mobile",
-        style: "width: 80vw; height: 30vh;"
-    },
-    "Slide19Web": {
-        src: "https://iframe.mediadelivery.net/embed/406826/997d3e1c-faa9-4918-8581-6b6fb53560ed?autoplay=false&loop=false&muted=false&preload=true&responsive=true",
-        className: "iframe-web",
-        style: "width: 20vw; height: 70vh;"
-    },
-    "Slide19Mobile": {
-        src: "https://iframe.mediadelivery.net/embed/406826/997d3e1c-faa9-4918-8581-6b6fb53560ed?autoplay=false&loop=false&muted=false&preload=true&responsive=true",
-        className: "iframe-mobile",
-        style: "width: 80vw; height: 70vh;"
-    },
-    "Slide20Web": {
-        src: "https://iframe.mediadelivery.net/embed/406826/b851e339-b5e5-49e3-b68f-2f7c5f6a1316?autoplay=false&loop=false&muted=false&preload=true&responsive=true",
-        className: "iframe-web",
-        style: "width: 20vw; height: 70vh;"
-    },
-    "Slide20Mobile": {
-        src: "https://iframe.mediadelivery.net/embed/406826/b851e339-b5e5-49e3-b68f-2f7c5f6a1316?autoplay=false&loop=false&muted=false&preload=true&responsive=true",
-        className: "iframe-mobile",
-        style: "width: 80vw; height: 70vh;"
-    }
 }
 
 function reloadIframe(id) {
@@ -319,46 +281,20 @@ function reloadAllIframes() {
     });
 }
 
-// $("#prev").on('click', function () {
-//     // var sliders = $(".contentModule > div").length;
-//     // var $items = $('.contentModule').children();
-//     // var $current = $items.filter('.current');
-//     // var index = $current.index();
-//     // var newIndex = index; 
-//     console.log("1");
-//     reloadIframe("Slide2Web");
-//     reloadIframe("Slide2Mobile");
-//     reloadIframe("Slide12Web");
-//     reloadIframe("Slide12Mobile");
-//     reloadIframe("Slide14Web");
-//     reloadIframe("Slide14Mobile");
-//     reloadIframe("Slide16Web");
-//     reloadIframe("Slide16Mobile");
-//     reloadIframe("Slide19Web");
-//     reloadIframe("Slide19Mobile");
-//     reloadIframe("Slide20Web");
-//     reloadIframe("Slide20Mobile");
-// });
+$("#prev").on('click', function () {
+    console.log("1");
+    reloadIframe("Slide3L3Web");
+    reloadIframe("Slide3L3Mobile");
+    reloadIframe("Slide7L3Web");
+    reloadIframe("Slide7L3Mobile");
+});
 
 $("#next").on('click', function () {
-    // var sliders = $(".contentModule > div").length;
-    // var $items = $('.contentModule').children();
-    // var $current = $items.filter('.current');
-    // var index = $current.index();
-    // var newIndex = index+2; 
     console.log("2");
-    reloadIframe("Slide2Web");
-    reloadIframe("Slide2Mobile");
-    reloadIframe("Slide12Web");
-    reloadIframe("Slide12Mobile");
-    reloadIframe("Slide14Web");
-    reloadIframe("Slide14Mobile");
-    reloadIframe("Slide16Web");
-    reloadIframe("Slide16Mobile");
-    reloadIframe("Slide19Web");
-    reloadIframe("Slide19Mobile");
-    reloadIframe("Slide20Web");
-    reloadIframe("Slide20Mobile");
+    reloadIframe("Slide3L3Web");
+    reloadIframe("Slide3L3Mobile");
+    reloadIframe("Slide7L3Web");
+    reloadIframe("Slide7L3Mobile");
 });
 
 createCirclesMovil();
@@ -419,7 +355,7 @@ function aniSl19(e) {
     });
 
     var breadcrumbMap = {
-        'miga_titulo_curso': 'Lección 3 > Equipos y técnicas de seguridad para trabajo en alturas',
+        'miga_titulo_curso': 'Lección 3 > Factores para evitar Accidentes de Tránsito',
     };
 
     $('#breadcrumb').html(

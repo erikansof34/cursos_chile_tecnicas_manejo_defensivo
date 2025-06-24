@@ -223,66 +223,17 @@ $('#evaluacion').click(function () {
 });
 
 var iframeConfig = {
-    "Slide2Web": {
-        src: "https://iframe.mediadelivery.net/embed/406826/bbaa5e3c-dd02-4015-aff8-0888e5e60063?autoplay=false&loop=false&muted=false&preload=true&responsive=true",
+    "Slide4L2Web": {
+        src: "https://iframe.mediadelivery.net/embed/450631/bae78faa-6f69-4a99-832d-afaaf94561ac?autoplay=false&loop=false&muted=false&preload=true&responsive=true",
         className: "iframe-web",
         style: "width: 20vw; height: 70vh;"
     },
-    "Slide2Mobile": {
-        src: "https://iframe.mediadelivery.net/embed/406826/bbaa5e3c-dd02-4015-aff8-0888e5e60063?autoplay=false&loop=false&muted=false&preload=true&responsive=true",
+
+    "Slide4L2Mobile": {
+        src: "https://iframe.mediadelivery.net/embed/450631/bae78faa-6f69-4a99-832d-afaaf94561ac?autoplay=false&loop=false&muted=false&preload=true&responsive=true",
         className: "iframe-mobile",
         style: "width: 80vw; height: 70vh;"
     },
-    "Slide12Web": {
-        src: "https://iframe.mediadelivery.net/embed/406826/318eec6b-0fc7-4078-8293-9ccae1f5e2c7?autoplay=false&loop=false&muted=false&preload=true&responsive=true",
-        className: "iframe-web",
-        style: "width: 40vw; height: 55vh;"
-    },
-    "Slide12Mobile": {
-        src: "https://iframe.mediadelivery.net/embed/406826/318eec6b-0fc7-4078-8293-9ccae1f5e2c7?autoplay=false&loop=false&muted=false&preload=true&responsive=true",
-        className: "iframe-mobile",
-        style: "width: 80vw; height: 30vh;"
-    },
-    "Slide14Web": {
-        src: "https://iframe.mediadelivery.net/embed/406826/3594c5dc-5f1e-499c-8239-533cb70dcd1e?autoplay=false&loop=false&muted=false&preload=true&responsive=true",
-        className: "iframe-web",
-        style: "width: 40vw; height: 55vh;"
-    },
-    "Slide14Mobile": {
-        src: "https://iframe.mediadelivery.net/embed/406826/3594c5dc-5f1e-499c-8239-533cb70dcd1e?autoplay=false&loop=false&muted=false&preload=true&responsive=true",
-        className: "iframe-mobile",
-        style: "width: 80vw; height: 30vh;"
-    },
-    "Slide16Web": {
-        src: "https://iframe.mediadelivery.net/embed/406826/7597b1fe-1b7c-4bd0-ad22-5c59a1a305e9?autoplay=false&loop=false&muted=false&preload=true&responsive=true",
-        className: "iframe-web",
-        style: "width: 40vw; height: 55vh;"
-    },
-    "Slide16Mobile": {
-        src: "https://iframe.mediadelivery.net/embed/406826/7597b1fe-1b7c-4bd0-ad22-5c59a1a305e9?autoplay=false&loop=false&muted=false&preload=true&responsive=true",
-        className: "iframe-mobile",
-        style: "width: 80vw; height: 30vh;"
-    },
-    "Slide19Web": {
-        src: "https://iframe.mediadelivery.net/embed/406826/2ea18e38-67de-4d78-aa27-75f21af832c2?autoplay=false&loop=false&muted=false&preload=true&responsive=true",
-        className: "iframe-web",
-        style: "width: 20vw; height: 70vh;"
-    },
-    "Slide19Mobile": {
-        src: "https://iframe.mediadelivery.net/embed/406826/2ea18e38-67de-4d78-aa27-75f21af832c2?autoplay=false&loop=false&muted=false&preload=true&responsive=true",
-        className: "iframe-mobile",
-        style: "width: 80vw; height: 70vh;"
-    },
-    "Slide20Web": {
-        src: "https://iframe.mediadelivery.net/embed/406826/23e208ec-6eef-4b23-ab88-ef917f9c8d06?autoplay=false&loop=false&muted=false&preload=true&responsive=true",
-        className: "iframe-web",
-        style: "width: 20vw; height: 70vh;"
-    },
-    "Slide20Mobile": {
-        src: "https://iframe.mediadelivery.net/embed/406826/23e208ec-6eef-4b23-ab88-ef917f9c8d06?autoplay=false&loop=false&muted=false&preload=true&responsive=true",
-        className: "iframe-mobile",
-        style: "width: 80vw; height: 70vh;"
-    }
 }
 
 function reloadIframe(id) {
@@ -321,34 +272,14 @@ function reloadAllIframes() {
 
 $("#prev").on('click', function () {
     console.log("1");
-    reloadIframe("Slide2Web");
-    reloadIframe("Slide2Mobile");
-    reloadIframe("Slide12Web");
-    reloadIframe("Slide12Mobile");
-    reloadIframe("Slide14Web");
-    reloadIframe("Slide14Mobile");
-    reloadIframe("Slide16Web");
-    reloadIframe("Slide16Mobile");
-    reloadIframe("Slide19Web");
-    reloadIframe("Slide19Mobile");
-    reloadIframe("Slide20Web");
-    reloadIframe("Slide20Mobile");
+    reloadIframe("Slide4L2Web");
+    reloadIframe("Slide4L2Mobile");
 });
 
 $("#next").on('click', function () {
     console.log("2");
-    reloadIframe("Slide2Web");
-    reloadIframe("Slide2Mobile");
-    reloadIframe("Slide12Web");
-    reloadIframe("Slide12Mobile");
-    reloadIframe("Slide14Web");
-    reloadIframe("Slide14Mobile");
-    reloadIframe("Slide16Web");
-    reloadIframe("Slide16Mobile");
-    reloadIframe("Slide19Web");
-    reloadIframe("Slide19Mobile");
-    reloadIframe("Slide20Web");
-    reloadIframe("Slide20Mobile");
+    reloadIframe("Slide4L2Web");
+    reloadIframe("Slide4L2Mobile");
 });
 
 createCirclesMovil();
@@ -406,7 +337,7 @@ function aniSl19(e) {
     });
 
     var breadcrumbMap = {
-        'miga_titulo_curso': 'Lección 2: Conozcamos las Medidas Preventivas y Protección de las Manos',
+        'miga_titulo_curso': 'Lección 2: Buenos hábitos de Manejo Defensivo',
     };
 
     $('#breadcrumb').html(
@@ -643,12 +574,12 @@ document.addEventListener('DOMContentLoaded', function () {
     // URLs de los videos
     const videoUrls = {
         enVia: {
-            web: 'https://iframe.mediadelivery.net/embed/424470/ab772b78-9c1f-485e-a4ff-32ff28b67713?autoplay=false&loop=false&muted=false&preload=true&responsive=true',
-            mobile: 'https://iframe.mediadelivery.net/embed/424470/ab772b78-9c1f-485e-a4ff-32ff28b67713?autoplay=false&loop=false&muted=false&preload=true&responsive=true'
+            web: 'https://iframe.mediadelivery.net/embed/450631/1570698c-827d-4269-bf1f-643e878e66a2?autoplay=false&loop=false&muted=false&preload=true&responsive=true',
+            mobile: 'https://iframe.mediadelivery.net/embed/450631/1570698c-827d-4269-bf1f-643e878e66a2?autoplay=false&loop=false&muted=false&preload=true&responsive=true'
         },
         volcamientos: {
-            web: 'https://iframe.mediadelivery.net/embed/406826/fcef4b2b-4078-4ed9-b2fb-9e3d18cd5bc3?autoplay=false&loop=false&muted=false&preload=true&responsive=true',
-            mobile: 'https://iframe.mediadelivery.net/embed/406826/fcef4b2b-4078-4ed9-b2fb-9e3d18cd5bc3?autoplay=false&loop=false&muted=false&preload=true&responsive=true'
+            web: 'https://iframe.mediadelivery.net/embed/450631/215496f8-81ae-4bd5-8a62-ca91a7c03602?autoplay=false&loop=false&muted=false&preload=true&responsive=true',
+            mobile: 'https://iframe.mediadelivery.net/embed/450631/215496f8-81ae-4bd5-8a62-ca91a7c03602?autoplay=false&loop=false&muted=false&preload=true&responsive=true'
         }
     };
 
@@ -780,6 +711,9 @@ document.addEventListener('DOMContentLoaded', function () {
         // Configurar el botón de play
         const playButton = container.querySelector('.video-button-control-audio');
         if (playButton) {
+            // Añadir la clase personalizada
+            playButton.classList.add('video-button-custom-2');
+
             // Asegurarnos de que el botón de play permanezca visible
             playButton.style.display = 'block';
 

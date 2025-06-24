@@ -184,7 +184,7 @@ $(document).ready(function () {
 
     // Manejar el breadcrumb
     var breadcrumbMap = {
-        'miga_titulo_curso': 'Lección 1 > Introducción al trabajo seguro en Alturas',
+        'miga_titulo_curso': 'Lección 1 > Teoría del Manejo Defensivo',
     };
 
     $('#breadcrumb').html(
@@ -198,14 +198,36 @@ $(document).ready(function () {
 
 
 var iframeConfig = {
-    "Slide6L1Web": {
-        src: "https://iframe.mediadelivery.net/embed/424470/ab772b78-9c1f-485e-a4ff-32ff28b67713?autoplay=false&loop=false&muted=false&preload=true&responsive=true",
+    "Slide2L1Web": {
+        src: "https://iframe.mediadelivery.net/embed/450631/24821a5f-efa6-4786-8f66-b8a6ec872b61?autoplay=false&loop=false&muted=false&preload=true&responsive=true",
+        className: "iframe-web",
+        style: "width: 40vw; height: 55vh;"
+    },
+
+    "Slide2L1Mobile": {
+        src: "https://iframe.mediadelivery.net/embed/450631/24821a5f-efa6-4786-8f66-b8a6ec872b61?autoplay=false&loop=false&muted=false&preload=true&responsive=true",
+        className: "iframe-mobile",
+        style: "width: 80vw; height: 70vh;"
+    },
+    "Slide4L1Web": {
+        src: "https://iframe.mediadelivery.net/embed/450631/198d8d1c-cbcf-483f-a030-cd94e9893671?autoplay=false&loop=false&muted=false&preload=true&responsive=true",
         className: "iframe-web",
         style: "width: 20vw; height: 70vh;"
     },
 
-    "Slide6L1Mobile": {
-        src: "https://iframe.mediadelivery.net/embed/424470/ab772b78-9c1f-485e-a4ff-32ff28b67713?autoplay=false&loop=false&muted=false&preload=true&responsive=true",
+    "Slide4L1Mobile": {
+        src: "https://iframe.mediadelivery.net/embed/450631/198d8d1c-cbcf-483f-a030-cd94e9893671?autoplay=false&loop=false&muted=false&preload=true&responsive=true",
+        className: "iframe-mobile",
+        style: "width: 80vw; height: 70vh;"
+    },
+    "Slide5L1Web": {
+        src: "https://iframe.mediadelivery.net/embed/450631/3415c5f2-0b27-4f7a-98a1-b589dbc549c4?autoplay=false&loop=false&muted=false&preload=true&responsive=true",
+        className: "iframe-web",
+        style: "width: 20vw; height: 70vh;"
+    },
+
+    "Slide5L1Mobile": {
+        src: "https://iframe.mediadelivery.net/embed/450631/3415c5f2-0b27-4f7a-98a1-b589dbc549c4?autoplay=false&loop=false&muted=false&preload=true&responsive=true",
         className: "iframe-mobile",
         style: "width: 80vw; height: 70vh;"
     },
@@ -247,15 +269,23 @@ function reloadAllIframes() {
 
 $("#prev").on('click', function () {
     console.log("1");
-    reloadIframe("Slide6L1Web");
-    reloadIframe("Slide6L1Mobile");
+    reloadIframe("Slide2L1Web");
+    reloadIframe("Slide2L1Mobile");
+    reloadIframe("Slide4L1Web");
+    reloadIframe("Slide4L1Mobile");
+    reloadIframe("Slide5L1Web");
+    reloadIframe("Slide5L1Mobile");
 
 });
 
 $("#next").on('click', function () {
     console.log("2");
-    reloadIframe("Slide6L1Web");
-    reloadIframe("Slide6Mobile"); //si se cambia el contenid se desconfigur
+    reloadIframe("Slide2L1Web");
+    reloadIframe("Slide2L1Mobile");
+    reloadIframe("Slide4L1Web");
+    reloadIframe("Slide4L1Mobile");
+    reloadIframe("Slide5L1Web");
+    reloadIframe("Slide5L1Mobile");
 });
 
 createCirclesMovil();
@@ -350,7 +380,7 @@ function aniSl19(e) {
     }
 
     var breadcrumbMap = {
-        'miga_titulo_curso': 'Lección 1 > Introducción al Medidas para la prevención de riesgo en el trabajo en alturas dentro del contexto laboral​',
+        'miga_titulo_curso': 'Lección 1 > Teoría del Manejo Defensivo',
     };
 
     $('#breadcrumb').html(

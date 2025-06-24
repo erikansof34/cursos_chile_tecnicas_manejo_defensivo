@@ -22,7 +22,7 @@ document.addEventListener("DOMContentLoaded", function () {
       mobileSrc: "../assets/actividades/actividad_identifica_no_manejo_multiple/index.html",
       desktopSrc: "../assets/actividades/actividad_identifica_no_manejo_multiple/index.html",
       mobileHeight: '69vh',
-      desktopHeight: '76vh',
+      desktopHeight: '80vh',
       modalSize: "small"
     },
     'slide11': {
@@ -32,7 +32,7 @@ document.addEventListener("DOMContentLoaded", function () {
       mobileSrc: '../assets/actividades/actividad_selectvorf/index.html',
       desktopSrc: '../assets/actividades/actividad_selectvorf/index.html',
       mobileHeight: '69vh',
-      desktopHeight: '76vh',
+      desktopHeight: '80vh',
       modalSize: "small"
     },
     'slide14': {
@@ -42,7 +42,7 @@ document.addEventListener("DOMContentLoaded", function () {
       mobileSrc: '../assets/actividades/actividad_selecciones_accidentes_transitos/index.html',
       desktopSrc: '../assets/actividades/actividad_selecciones_accidentes_transitos/index.html',
       mobileHeight: '69vh',
-      desktopHeight: '76vh',
+      desktopHeight: '80vh',
       modalSize: "large"
     },
     'slide16': {
@@ -52,7 +52,7 @@ document.addEventListener("DOMContentLoaded", function () {
       mobileSrc: '../assets/actividades/actividad_dragandrop_señales_transito/index.html',
       desktopSrc: '../assets/actividades/actividad_dragandrop_señales_transito/index.html',
       mobileHeight: '69vh',
-      desktopHeight: '76vh',
+      desktopHeight: '80vh',
       modalSize: "large"
     },
     'slide17': {
@@ -62,7 +62,7 @@ document.addEventListener("DOMContentLoaded", function () {
       mobileSrc: '../assets/actividades/actividad_ordene_prelacion_accidentes_trans/index.html',
       desktopSrc: '../assets/actividades/actividad_ordene_prelacion_accidentes_trans/index.html',
       mobileHeight: '69vh',
-      desktopHeight: '76vh',
+      desktopHeight: '80vh',
       modalSize: "large"
     },
   };
