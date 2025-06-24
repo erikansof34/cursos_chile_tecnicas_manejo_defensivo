@@ -415,6 +415,10 @@ span {
     text-align: center;
 }
 
+.audio-justify {
+    text-align: justify;
+}
+
 /*imagenes*/
 .img-center {
     margin: 0 auto;
@@ -533,6 +537,11 @@ button.btn:hover {
 .btn:hover {
     background: #fff;
     color: var(--purple);
+}
+
+.btn-side {
+    display: flex;
+    gap: 10px;
 }
 
 /*------------*/
@@ -703,6 +712,48 @@ button.btn:hover {
     color: #fff;
     transform: scale(1.1);
     transition: all 0.3s ease;
+}
+
+/* Clases adicionales para posicionamiento específico */
+.video-button-center {
+    top: 50%;
+    left: 50%;
+    transform: translate(-50%, -50%);
+    margin: 0;
+}
+
+.video-button-custom-2 {
+    bottom: 34%;
+    right: 45%;
+    top: auto;
+    left: auto;
+    transform: none;
+    margin: 0;
+}
+
+.video-button-top-right {
+    top: 20px;
+    right: 20px;
+    left: auto;
+    bottom: auto;
+    transform: none;
+    margin: 0;
+}
+
+.video-button-bottom-left {
+    bottom: 20px;
+    left: 20px;
+    top: auto;
+    right: auto;
+    transform: none;
+    margin: 0;
+}
+
+.video-button-custom-1 {
+    top: 30%;
+    left: 70%;
+    transform: translate(-50%, -50%);
+    margin: 0;
 }
 
 
@@ -919,14 +970,14 @@ button.btn:hover {
 .modal-large .modal-content-common {
     width: 72vw;
     height: 89%;
-    min-height: 550px;
+    min-height: 35rem;
 }
 
 /* Small modal */
 .modal-small .modal-content-common {
     width: 60vw;
     height: 88%;
-    min-height: 550px;
+    min-height: 35rem;
 }
 
 .modal-content-header {
@@ -1008,7 +1059,10 @@ button.btn:hover {
     }
 }
 
-
+.texto-superior {
+    height: 80px;
+    z-index: 2;
+}
 
 
 /*Seccion 1*/
@@ -1038,14 +1092,14 @@ button.btn:hover {
     height: 100%;
     background-color: rgba(0, 0, 0, 0.582);
     /* color negro con opacidad */
-    z-index: 1;
+    z-index: -1;
     /* por debajo del contenido interno */
 }
 
 /* Asegúrate de que el contenido esté encima del ::after */
 .darkStyleImgSeccion1>* {
     position: relative;
-    z-index: 2;
+    /* z-index: 2; */
 }
 
 /*Seccion 2*/
@@ -1074,13 +1128,13 @@ button.btn:hover {
     height: 100%;
     background-color: rgba(0, 0, 0, 0.582);
     /* color negro con opacidad */
-    z-index: 1;
+    z-index: -1;
 }
 
 /* Asegúrate de que el contenido esté encima del ::after */
 .darkStyleImgSeccion2>* {
     position: relative;
-    z-index: 2;
+    /* z-index: 2; */
 }
 
 
@@ -1110,14 +1164,14 @@ button.btn:hover {
     height: 100%;
     background-color: rgba(0, 0, 0, 0.582);
     /* color negro con opacidad */
-    z-index: 1;
+    z-index: -1;
     /* por debajo del contenido interno */
 }
 
 /* Asegúrate de que el contenido esté encima del ::after */
 .darkStyleImgSeccion3>* {
     position: relative;
-    z-index: 2;
+    /* z-index: 2; */
 }
 
 
@@ -1322,216 +1376,4 @@ button.btn:hover {
     .contentHeader>div:nth-child(1) {
         grid-template-columns: 70px 20px 50px 50px 140px;
     }
-}
-
-
-
-/* CSS TRANSCRIPCION */
-#transcripcion-global {
-    position: absolute;
-    bottom: 0%;
-    left: 50%;
-    transform: translateX(-50%);
-    background-color: rgba(0, 0, 0, 0.85);
-    color: white;
-    padding: 5px 5px;
-    border-radius: 8px;
-    font-family: 'Montserrat', sans-serif;
-    font-size: 16px;
-    z-index: 10000;
-    display: none;
-    max-width: 90%;
-    white-space: nowrap;
-    text-align: center;
-    box-shadow: 0 4px 12px rgba(0, 0, 0, 0.3);
-}
-
-/* Media query para dispositivos móviles */
-@media screen and (max-width: 1023px) {
-    #transcripcion-global {
-        width: 90%;
-        max-width: 95%;
-        font-size: 16px;
-        bottom: 100px;
-        left: 5%;
-        transform: translateX(0);
-        margin: 0 auto;
-        white-space: normal;
-    }
-}
-
-@media (max-width: 768px) {
-    #transcripcion-global {
-        width: 90%;
-        max-width: 95%;
-        font-size: 16px;
-        bottom: 100px;
-        left: 5%;
-        transform: translateX(0);
-        margin: 0 auto;
-        white-space: normal;
-    }
-}
-
-/* Asegurar que el cuerpo tenga espacio para la transcripción */
-body {
-    margin-bottom: 100px;
-}
-
-/* Estilo para el icono de transcripción */
-.transcription-toggle {
-    transition: all 0.3s ease;
-    padding: 8px;
-    border-radius: 50%;
-}
-
-.transcription-toggle:hover {
-    background-color: #f0f0f0;
-    transform: translateY(-50%) scale(1.1);
-}
-
-.transcription-toggle.active {
-    color: #2a7fba !important;
-}
-
-/* Ajuste de posición para el contenedor de audio */
-.audio-center {
-    position: relative;
-    padding-right: 40px !important;
-    /* Espacio para el icono */
-}
-
-.audio-estilos {
-    position: absolute;
-    top: 50%;
-    margin-left: -1%;
-    transform: translateY(-50%);
-    cursor: pointer;
-    font-size: 1.2rem;
-    color: #666;
-}
-
-.audio-estilos-textos {
-    position: absolute;
-    top: 63%;
-    margin-left: -1%;
-    transform: translateY(-50%);
-    cursor: pointer;
-    font-size: 1.2rem;
-    color: #666;
-}
-
-.audio-estilos-cuadro-epp {
-    position: absolute;
-    top: 50%;
-    margin-left: 87%;
-    transform: translateY(-50%);
-    cursor: pointer;
-    font-size: 1.2rem;
-    color: #666;
-}
-
-/* Estilos para el reproductor de audio en el slider */
-.audio-container-slider {
-    margin-top: 15px;
-    position: relative;
-    width: 100%;
-}
-
-.transcription-toggle-slider {
-    position: absolute;
-    right: 10px;
-    top: 50%;
-    transform: translateY(-50%);
-    cursor: pointer;
-    color: #666;
-    font-size: 1.2rem;
-    transition: all 0.3s ease;
-}
-
-.transcription-toggle-slider:hover {
-    color: #2a7fba;
-}
-
-.transcription-toggle-slider.active {
-    color: #2a7fba;
-}
-
-/* Ajustes para móviles */
-@media (max-width: 768px) {
-    .audio-container-slider {
-        margin-top: 10px;
-    }
-
-    .transcription-toggle-slider {
-        right: 5px;
-        font-size: 1rem;
-    }
-
-    .audio-estilos {
-        margin-left: 1%;
-    }
-
-    .audio-estilos-textos {
-        margin-left: 1%;
-    }
-}
-
-/* Agrega esto a tu CSS */
-.audio-reducido {
-    width: 90%;
-    max-width: 400px;
-    margin: 0 auto;
-    transform: scale(0.9);
-    transform-origin: center;
-}
-
-@media (max-width: 768px) {
-    .audio-reducido {
-        width: 95%;
-        max-width: 100%;
-        transform: scale(1);
-    }
-}
-
-.audio-reducido-modal {
-    width: 90%;
-    max-width: 400px;
-    margin: 0 auto;
-    transform: scale(0.9);
-    transform-origin: center;
-}
-
-@media (max-width: 768px) {
-    .audio-reducido-modal {
-        width: 88%;
-        max-width: 100%;
-        transform: scale(1);
-    }
-}
-
-.audio-reducido-v2 {
-    width: 90%;
-    max-width: 400px;
-    margin: 0 auto;
-    transform: scale(0.9);
-    transform-origin: center;
-}
-
-@media (max-width: 768px) {
-    .audio-reducido-v2 {
-        width: 90vw;
-        max-width: 100%;
-        transform: scale(1);
-    }
-}
-
-/* Versión alternativa web y mobile para Tarjetas */
-.audio-tarjeta-mobile {
-    width: 18rem;
-    max-width: 90%;
-    min-width: 12rem;
-    margin: 0 auto;
-    transform: scale(0.95);
-    transform-origin: center;
 }

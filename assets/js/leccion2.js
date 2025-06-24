@@ -16,68 +16,61 @@ document.addEventListener('DOMContentLoaded', function () {
         });
     });
 });
-    // Módulo para manejar la navegación móvil
-    const MobileSlides = (function() {
-        // Función para verificar si es un dispositivo móvil
-        function esDispositivoMovil() {
-            return window.innerWidth <= 768; // Consideramos móvil si el ancho es menor o igual a 768px
-        }
+// Módulo para manejar la navegación móvil
+const MobileSlides = (function () {
+    // Función para verificar si es un dispositivo móvil
+    function esDispositivoMovil() {
+        return window.innerWidth <= 768; // Consideramos móvil si el ancho es menor o igual a 768px
+    }
 
-        // Función para crear el primer slide dinámicamente
-        function crearPrimerSlide() {
-            // Eliminar el primer slide existente si existe
-            $(".contentModule > div").first().remove();
-            
-            // Crear el nuevo primer slide
-            const primerSlide = $(`
+    // Función para crear el primer slide dinámicamente
+    function crearPrimerSlide() {
+        // Eliminar el primer slide existente si existe
+        $(".contentModule > div").first().remove();
+
+        // Crear el nuevo primer slide
+        const primerSlide = $(`
                 <div class="container dividerImgSeccion2 miga_titulo_curso" id="dividerImgSeccion2">
                     <div class="row">
                         <div class="pl-seccion">
                             <div class="col-lg-8 col-md-12">
-                                <h1 class="tituloseccion">2- Evaluación de riesgos y
-                                    <span class="yellow">planificación del trabajo</span>
-                                    <span class="yellow">en alturas</span>
+                                <h1 class="tituloseccion">2- Buenos hábitos
+                                    <span class="yellow">de Manejo</span>
+                                    <span class="yellow">Defensivo</span>
                                 </h1>
                                 <hr class="hr-50">
-                                <h1 class="subtituloseccion white">En esta lección aprenderás a:
-                                    <ul>
-                                        <li> 
-                                        </li>
-                                        <li></li>
-                                    </ul>
-                                </h1>
                             </div>
                         </div>
                     </div>
                 </div>
             `);
-            
-            
-            // Insertar el nuevo slide al principio del contenedor
-            $(".contentModule").prepend(primerSlide);
 
-            // Determinar la imagen según el dispositivo
-            const bgImage = esDispositivoMovil() 
-                ? 'url(../../assets/img/momento2_mobile.webp)' 
-                : 'url(../../assets/img/momento2_web.webp)';
 
-            // Aplicar estilos directamente
-            primerSlide.css({
-                'background': bgImage + ' no-repeat center center',
-                'background-size': 'cover',
-                'height': '100vh',
-                'display': 'flex',
-                'flex-direction': 'column',
-                'align-items': 'center',
-                'justify-content': 'center',
-                'text-align': 'left',
-                'position': 'relative',
-                'z-index': '0'
-            });
-            
-            // Crear y aplicar el pseudo-elemento ::after
-            const style = document.createElement('style');
-            style.textContent = `
+        // Insertar el nuevo slide al principio del contenedor
+        $(".contentModule").prepend(primerSlide);
+
+        // Determinar la imagen según el dispositivo
+        const bgImage = esDispositivoMovil()
+            ? 'url(../../assets/img/momento2_mobile.webp)'
+            : 'url(../../assets/img/momento2_web.webp)';
+
+        // Aplicar estilos directamente
+        primerSlide.css({
+            'background': bgImage + ' no-repeat center center',
+            'background-size': 'cover',
+            'height': '100vh',
+            'display': 'flex',
+            'flex-direction': 'column',
+            'align-items': 'center',
+            'justify-content': 'center',
+            'text-align': 'left',
+            'position': 'relative',
+            'z-index': '0'
+        });
+
+        // Crear y aplicar el pseudo-elemento ::after
+        const style = document.createElement('style');
+        style.textContent = `
                 #dividerImgSeccion2::after {
                     content: '';
                     position: absolute;
@@ -94,134 +87,134 @@ document.addEventListener('DOMContentLoaded', function () {
                     z-index: 2;
                 }
             `;
-            document.head.appendChild(style);
+        document.head.appendChild(style);
 
-            return primerSlide;
-        }
+        return primerSlide;
+    }
 
-        // Función para mostrar slides
-        function mostrarSlide(numeroSlide) {
-            try {
-                // Ocultar todos los slides
-                $(".contentModule > div").hide().removeClass('current');
-                
-                // Si es el primer slide, recrearlo
-                if (numeroSlide === 1) {
-                    const primerSlide = crearPrimerSlide();
-                    primerSlide.show().addClass('current');
-                    
-                    // Forzar visibilidad de botones para slide 1
-                    $("#prev").css("display", "none");
-                    $("#pagIndex").css("display", "inline-block");
-                    // $("#prev").css('display', 'none !important');
-                    // $("#pagIndex").css('display', 'block !important');
-                } else {
-                    // Para otros slides, usar la lógica normal
-                    const slideActual = $(".contentModule > div").eq(numeroSlide - 1);
-                    if (!slideActual.length) {
-                        console.warn(`Slide ${numeroSlide} no encontrado`);
-                        return;
-                    }
-                    slideActual.show().addClass('current');
-                    
-                    // Forzar visibilidad de botones para slides 2 en adelante
-                    $("#prev").css("display", "inline-block");
-                    $("#pagIndex").css("display", "none");
-                    // $("#prev").css('display', 'block !important');
-                    // $("#pagIndex").css('display', 'none !important');
+    // Función para mostrar slides
+    function mostrarSlide(numeroSlide) {
+        try {
+            // Ocultar todos los slides
+            $(".contentModule > div").hide().removeClass('current');
+
+            // Si es el primer slide, recrearlo
+            if (numeroSlide === 1) {
+                const primerSlide = crearPrimerSlide();
+                primerSlide.show().addClass('current');
+
+                // Forzar visibilidad de botones para slide 1
+                $("#prev").css("display", "none");
+                $("#pagIndex").css("display", "inline-block");
+                // $("#prev").css('display', 'none !important');
+                // $("#pagIndex").css('display', 'block !important');
+            } else {
+                // Para otros slides, usar la lógica normal
+                const slideActual = $(".contentModule > div").eq(numeroSlide - 1);
+                if (!slideActual.length) {
+                    console.warn(`Slide ${numeroSlide} no encontrado`);
+                    return;
                 }
-                
-                // Actualizar el contador
-                $('#textProg').text(numeroSlide);
-                
-                // Actualizar la interfaz
-                actualizarInterfazProgreso(numeroSlide);
-            } catch (error) {
-                console.error('Error al mostrar slide:', error);
+                slideActual.show().addClass('current');
+
+                // Forzar visibilidad de botones para slides 2 en adelante
+                $("#prev").css("display", "inline-block");
+                $("#pagIndex").css("display", "none");
+                // $("#prev").css('display', 'block !important');
+                // $("#pagIndex").css('display', 'none !important');
             }
-        }
 
-        // Función para actualizar la interfaz de progreso
-        function actualizarInterfazProgreso(e) {
-            // Número de sliders
-            var sliders = $(".contentModule > div").length;
-            $('#nSlider2').html(sliders);
-            
-            // Actualizar la barra de progreso
-            var progressBar = Math.round((e / sliders) * 100);
-            $(".progBar > div").css("width", progressBar + "%");
-            $('#porcentajeProgreso').text(progressBar);
-        }
+            // Actualizar el contador
+            $('#textProg').text(numeroSlide);
 
-        // Función para inicializar la navegación móvil
-        function init() {
+            // Actualizar la interfaz
+            actualizarInterfazProgreso(numeroSlide);
+        } catch (error) {
+            console.error('Error al mostrar slide:', error);
+        }
+    }
+
+    // Función para actualizar la interfaz de progreso
+    function actualizarInterfazProgreso(e) {
+        // Número de sliders
+        var sliders = $(".contentModule > div").length;
+        $('#nSlider2').html(sliders);
+
+        // Actualizar la barra de progreso
+        var progressBar = Math.round((e / sliders) * 100);
+        $(".progBar > div").css("width", progressBar + "%");
+        $('#porcentajeProgreso').text(progressBar);
+    }
+
+    // Función para inicializar la navegación móvil
+    function init() {
+        if (!esDispositivoMovil()) return;
+
+        // Mostrar el primer slide al cargar
+        mostrarSlide(1);
+
+        // Manejar redimensionamiento de ventana
+        $(window).on('resize', function () {
             if (!esDispositivoMovil()) return;
 
-            // Mostrar el primer slide al cargar
-            mostrarSlide(1);
-            
-            // Manejar redimensionamiento de ventana
-            $(window).on('resize', function() {
-                if (!esDispositivoMovil()) return;
-                
-                const currentSlide = parseInt($('#textProg').text());
-                if (currentSlide === 1) {
-                    crearPrimerSlide();
-                    // Forzar visibilidad de botones para slide 1
-                    $("#prev").css('display', 'none !important');
-                    $("#pagIndex").css('display', 'block !important');
-                } else {
-                    // Forzar visibilidad de botones para otros slides
-                    $("#prev").css('display', 'block !important');
-                    $("#pagIndex").css('display', 'none !important');
-                }
-            });
+            const currentSlide = parseInt($('#textProg').text());
+            if (currentSlide === 1) {
+                crearPrimerSlide();
+                // Forzar visibilidad de botones para slide 1
+                $("#prev").css('display', 'none !important');
+                $("#pagIndex").css('display', 'block !important');
+            } else {
+                // Forzar visibilidad de botones para otros slides
+                $("#prev").css('display', 'block !important');
+                $("#pagIndex").css('display', 'none !important');
+            }
+        });
 
-            // Eventos de navegación
-            $("#next").off('click').on('click', function() {
-                if (!esDispositivoMovil()) return;
-                
-                const slideActual = parseInt($('#textProg').text());
-                const totalSlides = $(".contentModule > div").length;
-                
-                if (slideActual === totalSlides) {
-                    const path = location.pathname.split("/").slice(0, -1).join("/");
-                    window.location.href = path.replace("leccion2", "leccion2") + "/resumen_leccion2.html";
-                } else {
-                    mostrarSlide(slideActual + 1);
-                }
-            });
+        // Eventos de navegación
+        $("#next").off('click').on('click', function () {
+            if (!esDispositivoMovil()) return;
 
-            $("#prev").off('click').on('click', function() {
-                if (!esDispositivoMovil()) return;
-                
-                const slideActual = parseInt($('#textProg').text());
-                if (slideActual > 1) {
-                    mostrarSlide(slideActual - 1);
-                }
-            });
+            const slideActual = parseInt($('#textProg').text());
+            const totalSlides = $(".contentModule > div").length;
 
-            $("#pagIndex").off('click').on('click', function() {
-                if (!esDispositivoMovil()) return;
-                
-                const slideActual = parseInt($('#textProg').text());
-                if (slideActual === 1) {
-                    const path = location.pathname.split("/").slice(0, -1).join("/");
-                    window.location.href = path.replace("leccion2", "leccion1") + "/evaluacion_leccion1.html";
-                }
-            });
-        }
+            if (slideActual === totalSlides) {
+                const path = location.pathname.split("/").slice(0, -1).join("/");
+                window.location.href = path.replace("leccion2", "leccion2") + "/resumen_leccion2.html";
+            } else {
+                mostrarSlide(slideActual + 1);
+            }
+        });
 
-        // Retornar la interfaz pública
-        return {
-            init: init
-        };
-    })();
+        $("#prev").off('click').on('click', function () {
+            if (!esDispositivoMovil()) return;
 
-    // Inicializar cuando el documento esté listo
-    $(document).ready(function() {
-        MobileSlides.init();
-    });
+            const slideActual = parseInt($('#textProg').text());
+            if (slideActual > 1) {
+                mostrarSlide(slideActual - 1);
+            }
+        });
+
+        $("#pagIndex").off('click').on('click', function () {
+            if (!esDispositivoMovil()) return;
+
+            const slideActual = parseInt($('#textProg').text());
+            if (slideActual === 1) {
+                const path = location.pathname.split("/").slice(0, -1).join("/");
+                window.location.href = path.replace("leccion2", "leccion1") + "/evaluacion_leccion1.html";
+            }
+        });
+    }
+
+    // Retornar la interfaz pública
+    return {
+        init: init
+    };
+})();
+
+// Inicializar cuando el documento esté listo
+$(document).ready(function () {
+    MobileSlides.init();
+});
 
 $('#evaluacion').click(function () {
     window.location.href = 'quiz.html';
@@ -230,66 +223,17 @@ $('#evaluacion').click(function () {
 });
 
 var iframeConfig = {
-    "Slide2Web": {
-        src: "https://iframe.mediadelivery.net/embed/406826/bbaa5e3c-dd02-4015-aff8-0888e5e60063?autoplay=false&loop=false&muted=false&preload=true&responsive=true",
+    "Slide4L2Web": {
+        src: "https://iframe.mediadelivery.net/embed/450631/bae78faa-6f69-4a99-832d-afaaf94561ac?autoplay=false&loop=false&muted=false&preload=true&responsive=true",
         className: "iframe-web",
         style: "width: 20vw; height: 70vh;"
     },
-    "Slide2Mobile": {
-        src: "https://iframe.mediadelivery.net/embed/406826/bbaa5e3c-dd02-4015-aff8-0888e5e60063?autoplay=false&loop=false&muted=false&preload=true&responsive=true",
+
+    "Slide4L2Mobile": {
+        src: "https://iframe.mediadelivery.net/embed/450631/bae78faa-6f69-4a99-832d-afaaf94561ac?autoplay=false&loop=false&muted=false&preload=true&responsive=true",
         className: "iframe-mobile",
         style: "width: 80vw; height: 70vh;"
     },
-    "Slide12Web": {
-        src: "https://iframe.mediadelivery.net/embed/406826/318eec6b-0fc7-4078-8293-9ccae1f5e2c7?autoplay=false&loop=false&muted=false&preload=true&responsive=true",
-        className: "iframe-web",
-        style: "width: 40vw; height: 55vh;"
-    },
-    "Slide12Mobile": {
-        src: "https://iframe.mediadelivery.net/embed/406826/318eec6b-0fc7-4078-8293-9ccae1f5e2c7?autoplay=false&loop=false&muted=false&preload=true&responsive=true",
-        className: "iframe-mobile",
-        style: "width: 80vw; height: 30vh;"
-    },
-    "Slide14Web": {
-        src: "https://iframe.mediadelivery.net/embed/406826/3594c5dc-5f1e-499c-8239-533cb70dcd1e?autoplay=false&loop=false&muted=false&preload=true&responsive=true",
-        className: "iframe-web",
-        style: "width: 40vw; height: 55vh;"
-    },
-    "Slide14Mobile": {
-        src: "https://iframe.mediadelivery.net/embed/406826/3594c5dc-5f1e-499c-8239-533cb70dcd1e?autoplay=false&loop=false&muted=false&preload=true&responsive=true",
-        className: "iframe-mobile",
-        style: "width: 80vw; height: 30vh;"
-    },
-    "Slide16Web": {
-        src: "https://iframe.mediadelivery.net/embed/406826/7597b1fe-1b7c-4bd0-ad22-5c59a1a305e9?autoplay=false&loop=false&muted=false&preload=true&responsive=true",
-        className: "iframe-web",
-        style: "width: 40vw; height: 55vh;"
-    },
-    "Slide16Mobile": {
-        src: "https://iframe.mediadelivery.net/embed/406826/7597b1fe-1b7c-4bd0-ad22-5c59a1a305e9?autoplay=false&loop=false&muted=false&preload=true&responsive=true",
-        className: "iframe-mobile",
-        style: "width: 80vw; height: 30vh;"
-    },
-    "Slide19Web": {
-        src: "https://iframe.mediadelivery.net/embed/406826/2ea18e38-67de-4d78-aa27-75f21af832c2?autoplay=false&loop=false&muted=false&preload=true&responsive=true",
-        className: "iframe-web",
-        style: "width: 20vw; height: 70vh;"
-    },
-    "Slide19Mobile": {
-        src: "https://iframe.mediadelivery.net/embed/406826/2ea18e38-67de-4d78-aa27-75f21af832c2?autoplay=false&loop=false&muted=false&preload=true&responsive=true",
-        className: "iframe-mobile",
-        style: "width: 80vw; height: 70vh;"
-    },
-    "Slide20Web": {
-        src: "https://iframe.mediadelivery.net/embed/406826/23e208ec-6eef-4b23-ab88-ef917f9c8d06?autoplay=false&loop=false&muted=false&preload=true&responsive=true",
-        className: "iframe-web",
-        style: "width: 20vw; height: 70vh;"
-    },
-    "Slide20Mobile": {
-        src: "https://iframe.mediadelivery.net/embed/406826/23e208ec-6eef-4b23-ab88-ef917f9c8d06?autoplay=false&loop=false&muted=false&preload=true&responsive=true",
-        className: "iframe-mobile",
-        style: "width: 80vw; height: 70vh;"
-    }
 }
 
 function reloadIframe(id) {
@@ -328,34 +272,14 @@ function reloadAllIframes() {
 
 $("#prev").on('click', function () {
     console.log("1");
-    reloadIframe("Slide2Web");
-    reloadIframe("Slide2Mobile");
-    reloadIframe("Slide12Web");
-    reloadIframe("Slide12Mobile");
-    reloadIframe("Slide14Web");
-    reloadIframe("Slide14Mobile");
-    reloadIframe("Slide16Web");
-    reloadIframe("Slide16Mobile");
-    reloadIframe("Slide19Web");
-    reloadIframe("Slide19Mobile");
-    reloadIframe("Slide20Web");
-    reloadIframe("Slide20Mobile");
+    reloadIframe("Slide4L2Web");
+    reloadIframe("Slide4L2Mobile");
 });
 
 $("#next").on('click', function () {
     console.log("2");
-    reloadIframe("Slide2Web");
-    reloadIframe("Slide2Mobile");
-    reloadIframe("Slide12Web");
-    reloadIframe("Slide12Mobile");
-    reloadIframe("Slide14Web");
-    reloadIframe("Slide14Mobile");
-    reloadIframe("Slide16Web");
-    reloadIframe("Slide16Mobile");
-    reloadIframe("Slide19Web");
-    reloadIframe("Slide19Mobile");
-    reloadIframe("Slide20Web");
-    reloadIframe("Slide20Mobile");
+    reloadIframe("Slide4L2Web");
+    reloadIframe("Slide4L2Mobile");
 });
 
 createCirclesMovil();
@@ -413,7 +337,7 @@ function aniSl19(e) {
     });
 
     var breadcrumbMap = {
-        'miga_titulo_curso': 'Lección 2: Conozcamos las Medidas Preventivas y Protección de las Manos',
+        'miga_titulo_curso': 'Lección 2: Buenos hábitos de Manejo Defensivo',
     };
 
     $('#breadcrumb').html(
@@ -468,126 +392,126 @@ function aniSl19(e) {
     }
 }
 
-        
+
 //---------------------------------//
 //SLIDER 2 LECCION 2 - SECCION DE CAMBIOS
 document.addEventListener("DOMContentLoaded", function () {
-  // Configuración de URLs de videos
-  const videoUrls = {
-    modal: 'https://iframe.mediadelivery.net/embed/386695/f1d9bf8d-9755-4764-8d6f-08c3764a3db2?autoplay=false&loop=false&muted=false&preload=true&responsive=true'
-  };
+    // Configuración de URLs de videos
+    const videoUrls = {
+        modal: 'https://iframe.mediadelivery.net/embed/386695/f1d9bf8d-9755-4764-8d6f-08c3764a3db2?autoplay=false&loop=false&muted=false&preload=true&responsive=true'
+    };
 
-  // Elementos de la caja de cambios
-  const gears = document.querySelectorAll(".gear");
-  const boxes = document.querySelectorAll(".box-cambio");
-  const audios = document.querySelectorAll(".track-element");
-  
-  // Elementos del modal de video
-  const videoModal = document.getElementById("sld22-video-vial");
-  const videoContainers = {
-    web: document.getElementById("Slide23Web"),
-    mobile: document.getElementById("Slide23Mobile")
-  };
-  let currentAudio = null;
+    // Elementos de la caja de cambios
+    const gears = document.querySelectorAll(".gear");
+    const boxes = document.querySelectorAll(".box-cambio");
+    const audios = document.querySelectorAll(".track-element");
 
-  // Función para destruir y recrear iframes de forma agresiva
-  function hardRefreshIframe(container, url, className) {
-    if (!container) return;
-    
-    // 1. Detener completamente el iframe existente
-    const iframe = container.querySelector('iframe');
-    if (iframe) {
-      iframe.src = '';
-      iframe.remove();
-      container.innerHTML = '';
-    }
-    
-    // 2. Recrear el iframe después de un breve retraso
-    setTimeout(() => {
-      container.innerHTML = `
+    // Elementos del modal de video
+    const videoModal = document.getElementById("sld22-video-vial");
+    const videoContainers = {
+        web: document.getElementById("Slide23Web"),
+        mobile: document.getElementById("Slide23Mobile")
+    };
+    let currentAudio = null;
+
+    // Función para destruir y recrear iframes de forma agresiva
+    function hardRefreshIframe(container, url, className) {
+        if (!container) return;
+
+        // 1. Detener completamente el iframe existente
+        const iframe = container.querySelector('iframe');
+        if (iframe) {
+            iframe.src = '';
+            iframe.remove();
+            container.innerHTML = '';
+        }
+
+        // 2. Recrear el iframe después de un breve retraso
+        setTimeout(() => {
+            container.innerHTML = `
         <iframe class="${className}" 
                 src="${url}" 
                 loading="lazy"
                 allow="accelerometer; gyroscope; autoplay; encrypted-media; picture-in-picture" 
                 allowfullscreen></iframe>`;
-    }, 50);
-  }
+        }, 50);
+    }
 
-  // Control de la caja de cambios
-  gears.forEach((gear) => {
-    gear.addEventListener("click", function () {
-      const gearNumber = this.getAttribute("data-gear");
-      const audioId = `audio${gearNumber}_factor`;
-      const boxToHighlight = document.getElementById(`box${gearNumber}`);
+    // Control de la caja de cambios
+    gears.forEach((gear) => {
+        gear.addEventListener("click", function () {
+            const gearNumber = this.getAttribute("data-gear");
+            const audioId = `audio${gearNumber}_factor`;
+            const boxToHighlight = document.getElementById(`box${gearNumber}`);
 
-      // Detener audio actual
-      if (currentAudio) {
-        currentAudio.pause();
-        currentAudio.currentTime = 0;
-      }
+            // Detener audio actual
+            if (currentAudio) {
+                currentAudio.pause();
+                currentAudio.currentTime = 0;
+            }
 
-      // Reproducir nuevo audio
-      currentAudio = document.getElementById(audioId);
-      if (currentAudio) {
-        currentAudio.currentTime = 0;
-        currentAudio.play().catch(e => console.log("Error al reproducir audio:", e));
-      }
+            // Reproducir nuevo audio
+            currentAudio = document.getElementById(audioId);
+            if (currentAudio) {
+                currentAudio.currentTime = 0;
+                currentAudio.play().catch(e => console.log("Error al reproducir audio:", e));
+            }
 
-      // Resaltar box
-      boxes.forEach((box) => {
-        box.classList.remove("active");
-        const p = box.querySelector("p");
-        if (p) p.style.color = "";
-      });
-      
-      if (boxToHighlight) {
-        boxToHighlight.classList.add("active");
-        const p = boxToHighlight.querySelector("p");
-        if (p) p.style.color = "#000";
-      }
+            // Resaltar box
+            boxes.forEach((box) => {
+                box.classList.remove("active");
+                const p = box.querySelector("p");
+                if (p) p.style.color = "";
+            });
 
-      // Actualizar engranaje activo
-      gears.forEach(g => g.classList.remove("active"));
-      this.classList.add("active");
+            if (boxToHighlight) {
+                boxToHighlight.classList.add("active");
+                const p = boxToHighlight.querySelector("p");
+                if (p) p.style.color = "#000";
+            }
+
+            // Actualizar engranaje activo
+            gears.forEach(g => g.classList.remove("active"));
+            this.classList.add("active");
+        });
     });
-  });
 
-  // Eventos del modal
-  videoModal.addEventListener("show.bs.modal", function () {
-    // Pausar todos los audios
-    audios.forEach(audio => {
-      audio.pause();
-      audio.currentTime = 0;
+    // Eventos del modal
+    videoModal.addEventListener("show.bs.modal", function () {
+        // Pausar todos los audios
+        audios.forEach(audio => {
+            audio.pause();
+            audio.currentTime = 0;
+        });
+        currentAudio = null;
+
+        // Preparar los iframes del modal (web y mobile)
+        hardRefreshIframe(videoContainers.web, videoUrls.modal, 'iframe-video-horizontal-web');
+        hardRefreshIframe(videoContainers.mobile, videoUrls.modal, 'iframe-video-horizontal-mobile');
     });
-    currentAudio = null;
 
-    // Preparar los iframes del modal (web y mobile)
-    hardRefreshIframe(videoContainers.web, videoUrls.modal, 'iframe-video-horizontal-web');
-    hardRefreshIframe(videoContainers.mobile, videoUrls.modal, 'iframe-video-horizontal-mobile');
-  });
+    videoModal.addEventListener("hidden.bs.modal", function () {
+        // Reiniciar completamente los iframes al cerrar el modal
+        hardRefreshIframe(videoContainers.web, videoUrls.modal, 'iframe-video-horizontal-web');
+        hardRefreshIframe(videoContainers.mobile, videoUrls.modal, 'iframe-video-horizontal-mobile');
+    });
 
-  videoModal.addEventListener("hidden.bs.modal", function () {
-    // Reiniciar completamente los iframes al cerrar el modal
-    hardRefreshIframe(videoContainers.web, videoUrls.modal, 'iframe-video-horizontal-web');
-    hardRefreshIframe(videoContainers.mobile, videoUrls.modal, 'iframe-video-horizontal-mobile');
-  });
-
-  // Precargar los iframes después de un retraso
-  setTimeout(() => {
-    hardRefreshIframe(videoContainers.web, videoUrls.modal, 'iframe-video-horizontal-web');
-    hardRefreshIframe(videoContainers.mobile, videoUrls.modal, 'iframe-video-horizontal-mobile');
-  }, 500);
+    // Precargar los iframes después de un retraso
+    setTimeout(() => {
+        hardRefreshIframe(videoContainers.web, videoUrls.modal, 'iframe-video-horizontal-web');
+        hardRefreshIframe(videoContainers.mobile, videoUrls.modal, 'iframe-video-horizontal-mobile');
+    }, 500);
 });
 
 //---------------------------------//
 //SLIDER 3 LECCION 2//
 document.addEventListener("DOMContentLoaded", () => {
     const audios = [
-      { title: "1. Atención y Visión Periférica", src: "../../assets/audio/L2-slide_3_factor_1.mp3" },
-      { title: "2. Anticipación y Predecibilidad", src: "../../assets/audio/L2-slide_3_factor_2.mp3" },
-      { title: "3. Uso de Tecnología para la Seguridad", src: "../../assets/audio/L2-slide_3_factor_3.mp3" }
+        { title: "1. Atención y Visión Periférica", src: "../../assets/audio/L2-slide_3_factor_1.mp3" },
+        { title: "2. Anticipación y Predecibilidad", src: "../../assets/audio/L2-slide_3_factor_2.mp3" },
+        { title: "3. Uso de Tecnología para la Seguridad", src: "../../assets/audio/L2-slide_3_factor_3.mp3" }
     ];
-  
+
     let currentAudioIndex = 0;
     const audioPlayer = document.getElementById("myAudio");
     const audioSource = document.getElementById("audioSource_sld9");
@@ -596,66 +520,66 @@ document.addEventListener("DOMContentLoaded", () => {
     const audioControls = document.getElementById("audioControls");
     const prevButton = document.getElementById("prevAudio_sld9");
     const nextButton = document.getElementById("nextAudio_sld9");
-  
+
     function updateAudio() {
-      audioSource.src = audios[currentAudioIndex].src;
-      audioTitle.textContent = audios[currentAudioIndex].title;
-      audioPlayer.load(); // Carga el nuevo audio
-      audioPlayer.play().then(() => {
-        console.log("Reproducción iniciada correctamente.");
-      }).catch(error => {
-        console.error("Error al reproducir el audio:", error);
-      });
-  
-      // Mostrar/Ocultar botones "Anterior" y "Siguiente" según el índice actual
-      if (currentAudioIndex === 0) {
-        prevButton.style.display = 'none';
-        nextButton.style.display = 'inline-block';
-      } else if (currentAudioIndex === audios.length - 1) {
-        prevButton.style.display = 'inline-block';
-        nextButton.style.display = 'none';
-      } else {
-        prevButton.style.display = 'inline-block';
-        nextButton.style.display = 'inline-block';
-      }
+        audioSource.src = audios[currentAudioIndex].src;
+        audioTitle.textContent = audios[currentAudioIndex].title;
+        audioPlayer.load(); // Carga el nuevo audio
+        audioPlayer.play().then(() => {
+            console.log("Reproducción iniciada correctamente.");
+        }).catch(error => {
+            console.error("Error al reproducir el audio:", error);
+        });
+
+        // Mostrar/Ocultar botones "Anterior" y "Siguiente" según el índice actual
+        if (currentAudioIndex === 0) {
+            prevButton.style.display = 'none';
+            nextButton.style.display = 'inline-block';
+        } else if (currentAudioIndex === audios.length - 1) {
+            prevButton.style.display = 'inline-block';
+            nextButton.style.display = 'none';
+        } else {
+            prevButton.style.display = 'inline-block';
+            nextButton.style.display = 'inline-block';
+        }
     }
-  
+
     startButton.addEventListener("click", () => {
-      startButton.style.display = 'none';
-      audioControls.style.display = 'block';
-      updateAudio();
+        startButton.style.display = 'none';
+        audioControls.style.display = 'block';
+        updateAudio();
     });
-  
+
     prevButton.addEventListener("click", () => {
-      if (currentAudioIndex > 0) {
-        currentAudioIndex--;
-        updateAudio();
-      }
+        if (currentAudioIndex > 0) {
+            currentAudioIndex--;
+            updateAudio();
+        }
     });
-  
+
     nextButton.addEventListener("click", () => {
-      if (currentAudioIndex < audios.length - 1) {
-        currentAudioIndex++;
-        updateAudio();
-      }
+        if (currentAudioIndex < audios.length - 1) {
+            currentAudioIndex++;
+            updateAudio();
+        }
     });
-  
+
     // No configures el primer audio al cargar la página
     // updateAudio(); // El primer audio se configurará solo cuando el usuario haga clic en "Iniciar"
-  });
+});
 
 //---------------------------------//
 //SLIDER 6 LECCION 2//
-document.addEventListener('DOMContentLoaded', function() {
+document.addEventListener('DOMContentLoaded', function () {
     // URLs de los videos
     const videoUrls = {
         enVia: {
-            web: 'https://iframe.mediadelivery.net/embed/424470/ab772b78-9c1f-485e-a4ff-32ff28b67713?autoplay=false&loop=false&muted=false&preload=true&responsive=true',
-            mobile: 'https://iframe.mediadelivery.net/embed/424470/ab772b78-9c1f-485e-a4ff-32ff28b67713?autoplay=false&loop=false&muted=false&preload=true&responsive=true'
+            web: 'https://iframe.mediadelivery.net/embed/450631/1570698c-827d-4269-bf1f-643e878e66a2?autoplay=false&loop=false&muted=false&preload=true&responsive=true',
+            mobile: 'https://iframe.mediadelivery.net/embed/450631/1570698c-827d-4269-bf1f-643e878e66a2?autoplay=false&loop=false&muted=false&preload=true&responsive=true'
         },
         volcamientos: {
-            web: 'https://iframe.mediadelivery.net/embed/406826/fcef4b2b-4078-4ed9-b2fb-9e3d18cd5bc3?autoplay=false&loop=false&muted=false&preload=true&responsive=true',
-            mobile: 'https://iframe.mediadelivery.net/embed/406826/fcef4b2b-4078-4ed9-b2fb-9e3d18cd5bc3?autoplay=false&loop=false&muted=false&preload=true&responsive=true'
+            web: 'https://iframe.mediadelivery.net/embed/450631/215496f8-81ae-4bd5-8a62-ca91a7c03602?autoplay=false&loop=false&muted=false&preload=true&responsive=true',
+            mobile: 'https://iframe.mediadelivery.net/embed/450631/215496f8-81ae-4bd5-8a62-ca91a7c03602?autoplay=false&loop=false&muted=false&preload=true&responsive=true'
         }
     };
 
@@ -667,33 +591,33 @@ document.addEventListener('DOMContentLoaded', function() {
 
     // Selectores de video
     const videoSelectors = document.querySelectorAll('.btn-video-selector');
-    
+
     // Cargar el primer video al inicio
     loadVideo('enVia');
-    
+
     videoSelectors.forEach(selector => {
-        selector.addEventListener('click', function() {
+        selector.addEventListener('click', function () {
             // Solo hacer cambios si no es el botón activo actual
             if (!this.classList.contains('active')) {
                 // Detener y destruir los iframes actuales antes de cambiar
                 destroyCurrentIframes();
-                
+
                 // Remover clase active de todos los botones
                 videoSelectors.forEach(btn => btn.classList.remove('active'));
-                
+
                 // Añadir clase active al botón clickeado
                 this.classList.add('active');
-                
+
                 // Determinar qué video cargar
                 const target = this.getAttribute('data-target');
                 const videoType = target === 'videoEnVia' ? 'enVia' : 'volcamientos';
-                
+
                 // Cargar el video seleccionado
                 loadVideo(videoType);
             }
         });
     });
-    
+
     // Función para destruir los iframes actuales
     function destroyCurrentIframes() {
         // Pausar y eliminar iframe web
@@ -706,7 +630,7 @@ document.addEventListener('DOMContentLoaded', function() {
             }
             currentIframes.web = null;
         }
-        
+
         // Pausar y eliminar iframe mobile
         if (currentIframes.mobile) {
             try {
@@ -718,40 +642,40 @@ document.addEventListener('DOMContentLoaded', function() {
             currentIframes.mobile = null;
         }
     }
-    
+
     // Función para cargar un video específico
     function loadVideo(videoType) {
         // Ocultar todos los contenedores de video primero
         document.querySelectorAll('.video-container').forEach(container => {
             container.style.display = 'none';
         });
-        
+
         // Mostrar el contenedor correspondiente
         const containerId = videoType === 'enVia' ? 'videoEnVia' : 'videoVolcamientos';
         const container = document.getElementById(containerId);
         container.style.display = 'block';
-        
+
         // Construir iframes para web y móvil
         buildIframe('web', videoType);
         buildIframe('mobile', videoType);
     }
-    
+
     // Función para construir un iframe
     function buildIframe(device, videoType) {
-        const containerId = videoType === 'enVia' ? 
-            `containerEnVia${device.charAt(0).toUpperCase() + device.slice(1)}` : 
+        const containerId = videoType === 'enVia' ?
+            `containerEnVia${device.charAt(0).toUpperCase() + device.slice(1)}` :
             `containerVolcamientos${device.charAt(0).toUpperCase() + device.slice(1)}`;
-            
-        const iframeId = videoType === 'enVia' ? 
-            `${device}IframeSlider6L2Via` : 
+
+        const iframeId = videoType === 'enVia' ?
+            `${device}IframeSlider6L2Via` :
             `${device}IframeSlider6L2Volc`;
-        
+
         const container = document.getElementById(containerId);
-        
+
         // Mostrar loader mientras carga
         const loader = container.querySelector('.loader');
         if (loader) loader.style.display = 'flex';
-        
+
         // Crear nuevo iframe
         const iframe = document.createElement('iframe');
         iframe.id = iframeId;
@@ -761,21 +685,21 @@ document.addEventListener('DOMContentLoaded', function() {
         iframe.allow = 'accelerometer; gyroscope; autoplay; encrypted-media; picture-in-picture;';
         iframe.allowFullscreen = true;
         iframe.style.pointerEvents = 'none';
-        
+
         // Evento para ocultar loader cuando el iframe cargue
-        iframe.addEventListener('load', function() {
+        iframe.addEventListener('load', function () {
             if (loader) loader.style.display = 'none';
-            
+
             // Guardar referencia al iframe actual
             currentIframes[device] = iframe;
         });
-        
+
         // Limpiar solo el iframe si existe, manteniendo el botón de play
         const existingIframe = container.querySelector('iframe');
         if (existingIframe) {
             container.removeChild(existingIframe);
         }
-        
+
         // Insertar el iframe después del loader
         const loaderElement = container.querySelector('.loader');
         if (loaderElement) {
@@ -783,21 +707,24 @@ document.addEventListener('DOMContentLoaded', function() {
         } else {
             container.appendChild(iframe);
         }
-        
+
         // Configurar el botón de play
         const playButton = container.querySelector('.video-button-control-audio');
         if (playButton) {
+            // Añadir la clase personalizada
+            playButton.classList.add('video-button-custom-2');
+
             // Asegurarnos de que el botón de play permanezca visible
             playButton.style.display = 'block';
-            
+
             // Configurar el evento click para reproducir el video
-            playButton.onclick = function() {
+            playButton.onclick = function () {
                 // Habilitar temporalmente los eventos de puntero
                 iframe.style.pointerEvents = 'auto';
-                
+
                 // Enviar comando de play al iframe
                 iframe.contentWindow.postMessage('{"event":"command","func":"playVideo","args":""}', '*');
-                
+
                 // Después de 1 segundo, volver a deshabilitar los eventos de puntero
                 setTimeout(() => {
                     iframe.style.pointerEvents = 'none';

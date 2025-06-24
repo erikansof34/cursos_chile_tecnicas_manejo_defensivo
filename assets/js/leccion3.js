@@ -17,66 +17,60 @@ document.addEventListener('DOMContentLoaded', function () {
         });
     });
 });
-    // Módulo para manejar la navegación móvil
-    const MobileSlides = (function() {
-        // Función para verificar si es un dispositivo móvil
-        function esDispositivoMovil() {
-            return window.innerWidth <= 768; // Consideramos móvil si el ancho es menor o igual a 768px
-        }
+// Módulo para manejar la navegación móvil
+const MobileSlides = (function () {
+    // Función para verificar si es un dispositivo móvil
+    function esDispositivoMovil() {
+        return window.innerWidth <= 768; // Consideramos móvil si el ancho es menor o igual a 768px
+    }
 
-        // Función para crear el primer slide dinámicamente
-        function crearPrimerSlide() {
-            // Eliminar el primer slide existente si existe
-            $(".contentModule > div").first().remove();
-            
-            // Crear el nuevo primer slide
-            const primerSlide = $(`
+    // Función para crear el primer slide dinámicamente
+    function crearPrimerSlide() {
+        // Eliminar el primer slide existente si existe
+        $(".contentModule > div").first().remove();
+
+        // Crear el nuevo primer slide
+        const primerSlide = $(`
                 <div class="container dividerImgSeccion3 miga_titulo_curso" id="dividerImgSeccion3">
                     <div class="row">
                         <div class="pl-seccion">
                             <div class="col-lg-8 col-md-12">
-                                <h1 class="tituloseccion">3-Equipos y técnicas de 
-                                    <span class="yellow">seguridad</span> para trabajo en
-                                    <span class="yellow">alturas</span>
+                                <h1 class="tituloseccion">3-Factores para evitar
+                                    <span class="yellow">Accidentes</span>
+                                    <span class="yellow">de Tránsito</span>
                                 </h1>
                                 <hr class="hr-50">
-                                <h1 class="subtituloseccion white">En esta lección aprenderás a:
-                                    <ul>
-                                        <li>Emplear técnicas de atención primaria en un incidente laboral asociado a las
-                                            manos.</li>
-                                    </ul>
-                                </h1>
                             </div>
                         </div>
                     </div>
                 </div>
             `);
-            
-            // Insertar el nuevo slide al principio del contenedor
-            $(".contentModule").prepend(primerSlide);
 
-            // Determinar la imagen según el dispositivo
-            const bgImage = esDispositivoMovil() 
-                ? 'url(../../assets/img/momento2_mobile.webp)' 
-                : 'url(../../assets/img/momento2_web.webp)';
+        // Insertar el nuevo slide al principio del contenedor
+        $(".contentModule").prepend(primerSlide);
 
-            // Aplicar estilos directamente
-            primerSlide.css({
-                'background': bgImage + 'no-repeat center center',
-                'background-size': 'cover',
-                'height': '100vh',
-                'display': 'flex',
-                'flex-direction': 'column',
-                'align-items': 'center',
-                'justify-content': 'center',
-                'text-align': 'left',
-                'position': 'relative',
-                'z-index': '0'
-            });
-            
-            // Crear y aplicar el pseudo-elemento ::after
-            const style = document.createElement('style');
-            style.textContent = `
+        // Determinar la imagen según el dispositivo
+        const bgImage = esDispositivoMovil()
+            ? 'url(../../assets/img/momento2_mobile.webp)'
+            : 'url(../../assets/img/momento2_web.webp)';
+
+        // Aplicar estilos directamente
+        primerSlide.css({
+            'background': bgImage + 'no-repeat center center',
+            'background-size': 'cover',
+            'height': '100vh',
+            'display': 'flex',
+            'flex-direction': 'column',
+            'align-items': 'center',
+            'justify-content': 'center',
+            'text-align': 'left',
+            'position': 'relative',
+            'z-index': '0'
+        });
+
+        // Crear y aplicar el pseudo-elemento ::after
+        const style = document.createElement('style');
+        style.textContent = `
                 #dividerImgSeccion3::after {
                     content: '';
                     position: absolute;
@@ -93,134 +87,134 @@ document.addEventListener('DOMContentLoaded', function () {
                     z-index: 2;
                 }
             `;
-            document.head.appendChild(style);
+        document.head.appendChild(style);
 
-            return primerSlide;
-        }
+        return primerSlide;
+    }
 
-        // Función para mostrar slides
-        function mostrarSlide(numeroSlide) {
-            try {
-                // Ocultar todos los slides
-                $(".contentModule > div").hide().removeClass('current');
-                
-                // Si es el primer slide, recrearlo
-                if (numeroSlide === 1) {
-                    const primerSlide = crearPrimerSlide();
-                    primerSlide.show().addClass('current');
-                    
-                    // Forzar visibilidad de botones para slide 1
-                    $("#prev").css("display", "none");
-                    $("#pagIndex").css("display", "inline-block");
-                    // $("#prev").css('display', 'none !important');
-                    // $("#pagIndex").css('display', 'block !important');
-                } else {
-                    // Para otros slides, usar la lógica normal
-                    const slideActual = $(".contentModule > div").eq(numeroSlide - 1);
-                    if (!slideActual.length) {
-                        console.warn(`Slide ${numeroSlide} no encontrado`);
-                        return;
-                    }
-                    slideActual.show().addClass('current');
-                    
-                    // Forzar visibilidad de botones para slides 2 en adelante
-                    $("#prev").css("display", "inline-block");
-                    $("#pagIndex").css("display", "none");
-                    // $("#prev").css('display', 'block !important');
-                    // $("#pagIndex").css('display', 'none !important');
+    // Función para mostrar slides
+    function mostrarSlide(numeroSlide) {
+        try {
+            // Ocultar todos los slides
+            $(".contentModule > div").hide().removeClass('current');
+
+            // Si es el primer slide, recrearlo
+            if (numeroSlide === 1) {
+                const primerSlide = crearPrimerSlide();
+                primerSlide.show().addClass('current');
+
+                // Forzar visibilidad de botones para slide 1
+                $("#prev").css("display", "none");
+                $("#pagIndex").css("display", "inline-block");
+                // $("#prev").css('display', 'none !important');
+                // $("#pagIndex").css('display', 'block !important');
+            } else {
+                // Para otros slides, usar la lógica normal
+                const slideActual = $(".contentModule > div").eq(numeroSlide - 1);
+                if (!slideActual.length) {
+                    console.warn(`Slide ${numeroSlide} no encontrado`);
+                    return;
                 }
-                
-                // Actualizar el contador
-                $('#textProg').text(numeroSlide);
-                
-                // Actualizar la interfaz
-                actualizarInterfazProgreso(numeroSlide);
-            } catch (error) {
-                console.error('Error al mostrar slide:', error);
+                slideActual.show().addClass('current');
+
+                // Forzar visibilidad de botones para slides 2 en adelante
+                $("#prev").css("display", "inline-block");
+                $("#pagIndex").css("display", "none");
+                // $("#prev").css('display', 'block !important');
+                // $("#pagIndex").css('display', 'none !important');
             }
-        }
 
-        // Función para actualizar la interfaz de progreso
-        function actualizarInterfazProgreso(e) {
-            // Número de sliders
-            var sliders = $(".contentModule > div").length;
-            $('#nSlider2').html(sliders);
-            
-            // Actualizar la barra de progreso
-            var progressBar = Math.round((e / sliders) * 100);
-            $(".progBar > div").css("width", progressBar + "%");
-            $('#porcentajeProgreso').text(progressBar);
-        }
+            // Actualizar el contador
+            $('#textProg').text(numeroSlide);
 
-        // Función para inicializar la navegación móvil
-        function init() {
+            // Actualizar la interfaz
+            actualizarInterfazProgreso(numeroSlide);
+        } catch (error) {
+            console.error('Error al mostrar slide:', error);
+        }
+    }
+
+    // Función para actualizar la interfaz de progreso
+    function actualizarInterfazProgreso(e) {
+        // Número de sliders
+        var sliders = $(".contentModule > div").length;
+        $('#nSlider2').html(sliders);
+
+        // Actualizar la barra de progreso
+        var progressBar = Math.round((e / sliders) * 100);
+        $(".progBar > div").css("width", progressBar + "%");
+        $('#porcentajeProgreso').text(progressBar);
+    }
+
+    // Función para inicializar la navegación móvil
+    function init() {
+        if (!esDispositivoMovil()) return;
+
+        // Mostrar el primer slide al cargar
+        mostrarSlide(1);
+
+        // Manejar redimensionamiento de ventana
+        $(window).on('resize', function () {
             if (!esDispositivoMovil()) return;
 
-            // Mostrar el primer slide al cargar
-            mostrarSlide(1);
-            
-            // Manejar redimensionamiento de ventana
-            $(window).on('resize', function() {
-                if (!esDispositivoMovil()) return;
-                
-                const currentSlide = parseInt($('#textProg').text());
-                if (currentSlide === 1) {
-                    crearPrimerSlide();
-                    // Forzar visibilidad de botones para slide 1
-                    $("#prev").css('display', 'none !important');
-                    $("#pagIndex").css('display', 'block !important');
-                } else {
-                    // Forzar visibilidad de botones para otros slides
-                    $("#prev").css('display', 'block !important');
-                    $("#pagIndex").css('display', 'none !important');
-                }
-            });
+            const currentSlide = parseInt($('#textProg').text());
+            if (currentSlide === 1) {
+                crearPrimerSlide();
+                // Forzar visibilidad de botones para slide 1
+                $("#prev").css('display', 'none !important');
+                $("#pagIndex").css('display', 'block !important');
+            } else {
+                // Forzar visibilidad de botones para otros slides
+                $("#prev").css('display', 'block !important');
+                $("#pagIndex").css('display', 'none !important');
+            }
+        });
 
-            // Eventos de navegación
-            $("#next").off('click').on('click', function() {
-                if (!esDispositivoMovil()) return;
-                
-                const slideActual = parseInt($('#textProg').text());
-                const totalSlides = $(".contentModule > div").length;
-                
-                if (slideActual === totalSlides) {
-                    const path = location.pathname.split("/").slice(0, -1).join("/");
-                    window.location.href = path.replace("leccion3", "leccion3") + "/resumen_leccion3.html";
-                } else {
-                    mostrarSlide(slideActual + 1);
-                }
-            });
+        // Eventos de navegación
+        $("#next").off('click').on('click', function () {
+            if (!esDispositivoMovil()) return;
 
-            $("#prev").off('click').on('click', function() {
-                if (!esDispositivoMovil()) return;
-                
-                const slideActual = parseInt($('#textProg').text());
-                if (slideActual > 1) {
-                    mostrarSlide(slideActual - 1);
-                }
-            });
+            const slideActual = parseInt($('#textProg').text());
+            const totalSlides = $(".contentModule > div").length;
 
-            $("#pagIndex").off('click').on('click', function() {
-                if (!esDispositivoMovil()) return;
-                
-                const slideActual = parseInt($('#textProg').text());
-                if (slideActual === 1) {
-                    const path = location.pathname.split("/").slice(0, -1).join("/");
-                    window.location.href = path.replace("leccion3", "leccion2") + "/evaluacion_leccion2.html";
-                }
-            });
-        }
+            if (slideActual === totalSlides) {
+                const path = location.pathname.split("/").slice(0, -1).join("/");
+                window.location.href = path.replace("leccion3", "leccion3") + "/resumen_leccion3.html";
+            } else {
+                mostrarSlide(slideActual + 1);
+            }
+        });
 
-        // Retornar la interfaz pública
-        return {
-            init: init
-        };
-    })();
+        $("#prev").off('click').on('click', function () {
+            if (!esDispositivoMovil()) return;
 
-    // Inicializar cuando el documento esté listo
-    $(document).ready(function() {
-        MobileSlides.init();
-    });
+            const slideActual = parseInt($('#textProg').text());
+            if (slideActual > 1) {
+                mostrarSlide(slideActual - 1);
+            }
+        });
+
+        $("#pagIndex").off('click').on('click', function () {
+            if (!esDispositivoMovil()) return;
+
+            const slideActual = parseInt($('#textProg').text());
+            if (slideActual === 1) {
+                const path = location.pathname.split("/").slice(0, -1).join("/");
+                window.location.href = path.replace("leccion3", "leccion2") + "/evaluacion_leccion2.html";
+            }
+        });
+    }
+
+    // Retornar la interfaz pública
+    return {
+        init: init
+    };
+})();
+
+// Inicializar cuando el documento esté listo
+$(document).ready(function () {
+    MobileSlides.init();
+});
 
 $('#evaluacion').click(function () {
     // window.location.href = 'quiz.html';
@@ -229,66 +223,28 @@ $('#evaluacion').click(function () {
 });
 
 var iframeConfig = {
-    "Slide2Web": {
-        src: "https://iframe.mediadelivery.net/embed/406826/bbaa5e3c-dd02-4015-aff8-0888e5e60063?autoplay=false&loop=false&muted=false&preload=true&responsive=true",
+    "Slide3L3Web": {
+        src: "https://iframe.mediadelivery.net/embed/450631/0fef6c4b-ae8b-4052-abc9-86be5b38c229?autoplay=false&loop=false&muted=false&preload=true&responsive=true",
         className: "iframe-web",
         style: "width: 20vw; height: 70vh;"
     },
-    "Slide2Mobile": {
-        src: "https://iframe.mediadelivery.net/embed/406826/bbaa5e3c-dd02-4015-aff8-0888e5e60063?autoplay=false&loop=false&muted=false&preload=true&responsive=true",
+
+    "Slide3L3Mobile": {
+        src: "https://iframe.mediadelivery.net/embed/450631/0fef6c4b-ae8b-4052-abc9-86be5b38c229?autoplay=false&loop=false&muted=false&preload=true&responsive=true",
         className: "iframe-mobile",
         style: "width: 80vw; height: 70vh;"
     },
-    "Slide12Web": {
-        src: "https://iframe.mediadelivery.net/embed/406826/47f04557-9ab4-4f48-afb1-e1a82789394a?autoplay=false&loop=false&muted=false&preload=true&responsive=true",
+    "Slide7L3Web": {
+        src: "https://iframe.mediadelivery.net/embed/450631/c26f352e-961c-4ca4-b1c7-82f8bfb00e88?autoplay=false&loop=false&muted=false&preload=true&responsive=true",
         className: "iframe-web",
         style: "width: 40vw; height: 55vh;"
     },
-    "Slide12Mobile": {
-        src: "https://iframe.mediadelivery.net/embed/406826/47f04557-9ab4-4f48-afb1-e1a82789394a?autoplay=false&loop=false&muted=false&preload=true&responsive=true",
+
+    "Slide7L3Mobile": {
+        src: "https://iframe.mediadelivery.net/embed/450631/c26f352e-961c-4ca4-b1c7-82f8bfb00e88?autoplay=false&loop=false&muted=false&preload=true&responsive=true",
         className: "iframe-mobile",
         style: "width: 80vw; height: 30vh;"
     },
-    "Slide14Web": {
-        src: "https://iframe.mediadelivery.net/embed/406826/a35e703b-5011-4357-adea-f371a4f4905f?autoplay=false&loop=false&muted=false&preload=true&responsive=true",
-        className: "iframe-web",
-        style: "width: 40vw; height: 55vh;"
-    },
-    "Slide14Mobile": {
-        src: "https://iframe.mediadelivery.net/embed/406826/a35e703b-5011-4357-adea-f371a4f4905f?autoplay=false&loop=false&muted=false&preload=true&responsive=true",
-        className: "iframe-mobile",
-        style: "width: 80vw; height: 30vh;"
-    },
-    "Slide16Web": {
-        src: "https://iframe.mediadelivery.net/embed/342326/c6e38e16-4ed5-4910-abce-ad063751b1fc?autoplay=false&loop=false&muted=false&preload=true&responsive=true",
-        className: "iframe-web",
-        style: "width: 40vw; height: 55vh;"
-    },
-    "Slide16Mobile": {
-        src: "https://iframe.mediadelivery.net/embed/342326/c6e38e16-4ed5-4910-abce-ad063751b1fc?autoplay=false&loop=false&muted=false&preload=true&responsive=true",
-        className: "iframe-mobile",
-        style: "width: 80vw; height: 30vh;"
-    },
-    "Slide19Web": {
-        src: "https://iframe.mediadelivery.net/embed/406826/997d3e1c-faa9-4918-8581-6b6fb53560ed?autoplay=false&loop=false&muted=false&preload=true&responsive=true",
-        className: "iframe-web",
-        style: "width: 20vw; height: 70vh;"
-    },
-    "Slide19Mobile": {
-        src: "https://iframe.mediadelivery.net/embed/406826/997d3e1c-faa9-4918-8581-6b6fb53560ed?autoplay=false&loop=false&muted=false&preload=true&responsive=true",
-        className: "iframe-mobile",
-        style: "width: 80vw; height: 70vh;"
-    },
-    "Slide20Web": {
-        src: "https://iframe.mediadelivery.net/embed/406826/b851e339-b5e5-49e3-b68f-2f7c5f6a1316?autoplay=false&loop=false&muted=false&preload=true&responsive=true",
-        className: "iframe-web",
-        style: "width: 20vw; height: 70vh;"
-    },
-    "Slide20Mobile": {
-        src: "https://iframe.mediadelivery.net/embed/406826/b851e339-b5e5-49e3-b68f-2f7c5f6a1316?autoplay=false&loop=false&muted=false&preload=true&responsive=true",
-        className: "iframe-mobile",
-        style: "width: 80vw; height: 70vh;"
-    }
 }
 
 function reloadIframe(id) {
@@ -325,46 +281,20 @@ function reloadAllIframes() {
     });
 }
 
-// $("#prev").on('click', function () {
-//     // var sliders = $(".contentModule > div").length;
-//     // var $items = $('.contentModule').children();
-//     // var $current = $items.filter('.current');
-//     // var index = $current.index();
-//     // var newIndex = index; 
-//     console.log("1");
-//     reloadIframe("Slide2Web");
-//     reloadIframe("Slide2Mobile");
-//     reloadIframe("Slide12Web");
-//     reloadIframe("Slide12Mobile");
-//     reloadIframe("Slide14Web");
-//     reloadIframe("Slide14Mobile");
-//     reloadIframe("Slide16Web");
-//     reloadIframe("Slide16Mobile");
-//     reloadIframe("Slide19Web");
-//     reloadIframe("Slide19Mobile");
-//     reloadIframe("Slide20Web");
-//     reloadIframe("Slide20Mobile");
-// });
+$("#prev").on('click', function () {
+    console.log("1");
+    reloadIframe("Slide3L3Web");
+    reloadIframe("Slide3L3Mobile");
+    reloadIframe("Slide7L3Web");
+    reloadIframe("Slide7L3Mobile");
+});
 
 $("#next").on('click', function () {
-    // var sliders = $(".contentModule > div").length;
-    // var $items = $('.contentModule').children();
-    // var $current = $items.filter('.current');
-    // var index = $current.index();
-    // var newIndex = index+2; 
     console.log("2");
-    reloadIframe("Slide2Web");
-    reloadIframe("Slide2Mobile");
-    reloadIframe("Slide12Web");
-    reloadIframe("Slide12Mobile");
-    reloadIframe("Slide14Web");
-    reloadIframe("Slide14Mobile");
-    reloadIframe("Slide16Web");
-    reloadIframe("Slide16Mobile");
-    reloadIframe("Slide19Web");
-    reloadIframe("Slide19Mobile");
-    reloadIframe("Slide20Web");
-    reloadIframe("Slide20Mobile");
+    reloadIframe("Slide3L3Web");
+    reloadIframe("Slide3L3Mobile");
+    reloadIframe("Slide7L3Web");
+    reloadIframe("Slide7L3Mobile");
 });
 
 createCirclesMovil();
@@ -425,7 +355,7 @@ function aniSl19(e) {
     });
 
     var breadcrumbMap = {
-        'miga_titulo_curso': 'Lección 3 > Equipos y técnicas de seguridad para trabajo en alturas',
+        'miga_titulo_curso': 'Lección 3 > Factores para evitar Accidentes de Tránsito',
     };
 
     $('#breadcrumb').html(

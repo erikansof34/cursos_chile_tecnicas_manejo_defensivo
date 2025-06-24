@@ -16,6 +16,7 @@
     <link rel="stylesheet" type="text/css" href="../assets/css/style_resumen.css">
     <link rel="stylesheet" type="text/css" href="../assets/css/style_personalizado.css">
     <link rel="stylesheet" type="text/css" href="../assets/css/style.css">
+    <link rel="stylesheet" type="text/css" href="../assets/css/transcripcion.css">
 
     <!--Montserrat-->
     <link href="https://fonts.googleapis.com/css2?family=Montserrat:wght@400;500;700&display=swap" rel="stylesheet">
@@ -24,7 +25,7 @@
     <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.0.0-beta3/css/all.min.css">
 
     <!-- Estilos del widget -->
-   <link rel="stylesheet" href="../assetsWidget/css/widget.css">
+    <link rel="stylesheet" href="../assetsWidget/css/widget.css">
 
 </head>
 
@@ -45,16 +46,52 @@
                         <div class="col-lg-3 col-md-12">
                             <div class="ml-4">
                                 <h1 class="titulo text-center white">Resumen <span class="purple">Lección 3</span></h1>
+                                <img src="../assets/gif/avatar_mujer_carpeta_brazos.gif" alt="avatar" class="img-100">
+                                <div class="instruccion-center p-5rem">
+                                    <i class="instruccion-bg-dark">Haz clic para escuchar el audio <span
+                                            class="icono-inst">
+                                            <i class="fa-solid fa-arrow-turn-down"></i></span> </i>
+                                </div>
+                                <div class="audio-center p-5rem">
+                                    <audio class="audio-con-transcripcion audio-reducido-v2" controls
+                                        data-transcripcion='[
+                                            {"end":3.06,"start":0,"text":"La selección adecuada de equipos de protección personal,"},
+                                            {"end":8.32,"start":3.06,"text":"EPP, escrucial para garantizar la seguridad en trabajos en alturas."},
+                                            {"end":12.04,"start":8.32,"text":"Esta selección debe basarse en los riesgos identificados y valorados"},
+                                            {"end":15.24,"start":12.04,"text":"en el sistema de gestión de seguridad y salud en el trabajo,"},
+                                            {"end":19.08,"start":15.24,"text":"considerando el entorno, los riesgos asociados y las condiciones"},
+                                            {"end":21.64,"start":19.08,"text":"fisiológicas del trabajador."},
+                                            {"end":25.44,"start":21.64,"text":"Los EPP deben contar con certificaciones, documentación,"},
+                                            {"end":28.64,"start":25.44,"text":"registro de inspección preuso, ficha técnica,"},
+                                            {"end":31.76,"start":28.64,"text":"hoja de vida y certificado de conformidad."},
+                                            {"end":35.24,"start":31.76,"text":"El uso correcto de los EPP es fundamental."},
+                                            {"end":39.04,"start":35.24,"text":"Por ejemplo, el arnés debe ajustarse correctamente al cuerpo,"},
+                                            {"end":42.96,"start":39.04,"text":"la línea de vida debe estar asegurada a una anclaje certificado,"},
+                                            {"end":46.44,"start":42.96,"text":"la bandola o mosquetón debe estar bien conectada y cerrada,"},
+                                            {"end":50.28,"start":46.44,"text":"y el casco debe ajustarse a la cabeza con el barbuquejo."},
+                                            {"end":53.52,"start":50.28,"text":"Además de los EPP, se utilizan equipos de protección"},
+                                            {"end":55.56,"start":53.52,"text":"colectiva como redes de seguridad,"},
+                                            {"end":60.4,"start":55.56,"text":"barandillas y plataformas elevadoras para reducir el riesgo de caídas."},
+                                            {"end":64.04,"start":60.4,"text":"En situaciones de emergencia, la seguridad es la prioridad,"},
+                                            {"end":68.92,"start":64.04,"text":"pero la velocidad y la comunicación efectiva son igualmente importantes."},
+                                            {"end":72.72,"start":68.92,"text":"Las operaciones de rescate en alturas incluyen asegurar el área,"},
+                                            {"end":76.32,"start":72.72,"text":"evaluar y planificar el rescate, acceder al accidentado,"},
+                                            {"end":78.84,"start":76.32,"text":"realizar el rescate y estabilización,"},
+                                            {"end":82.84,"start":78.84,"text":"evaluar la maniobra y verificar la condición del rescatista."}
+                                            ]'>
+                                        <source src="../assets/audio/resumen_leccion3.mp3" type="audio/mp3">
+                                    </audio>
+                                    <i class="transcription-toggle fas fa-closed-captioning audio-estilos"></i>
+                                </div>
                             </div>
-                            <img src="../assets/gif/avatar_mujer_carpeta_brazos.gif" alt="avatar" class="img-100">
                         </div>
                         <div class="col-lg-9 col-md-12">
                             <div class="m-4rem">
                                 <p class="white">¡Bien hecho! Has terminado la Lección 3</p>
                                 <p class="white">¡Revisemos este resumen de lo visto en esta lección!</p>
-                                <embed src="../assets/doc/resumen_leccion_3.pdf" type="application/pdf"
+                                <embed src="../assets/doc/resumen_leccion3.pdf" type="application/pdf"
                                     class="visualizador-pdf">
-                                <a href="../assets/doc/resumen_leccion_3.pdf" download="Resumen-Leccion-3.pdf"
+                                <a href="../assets/doc/resumen_leccion3.pdf" download="Resumen-Leccion-3.pdf"
                                     class="btn">
                                     <i class="fas fa-hand-pointer"></i> Descargar PDF
                                 </a>
@@ -80,11 +117,13 @@
             <i class="fas fa-angle-right"></i>
         </button>
     </div>
-
+    <div id="transcripcion-global">
+    </div>
     <!--library javascript-->
     <script src="../assets/js/jquery-3.3.1.js"></script>
     <!-- Script del Widget -->
     <script src="../assetsWidget/js/widget.js"></script>
+    <script src="../assets/js/transcripcion.js"></script>
     <script>
 
         // Función para volver atrás
