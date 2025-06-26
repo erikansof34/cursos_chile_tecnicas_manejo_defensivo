@@ -1,18 +1,6 @@
 //CURSO ACTUAL TRABAJO SEGURO EN ALTURAS
 
 
-//----------------------------------------------//
-//LECCION 1 SLIDER 3
-let currentIndex_sld3_lec1 = 0;
-const slides_sld3_lec1 = document.querySelectorAll('.slide-sld3_lec1');
-
-function showNextSlide_sld3_lec1() {
-    slides_sld3_lec1[currentIndex_sld3_lec1].classList.remove('active-sld3_lec1');
-    currentIndex_sld3_lec1 = (currentIndex_sld3_lec1 + 1) % slides_sld3_lec1.length;
-    slides_sld3_lec1[currentIndex_sld3_lec1].classList.add('active-sld3_lec1');
-}
-
-setInterval(showNextSlide_sld3_lec1, 3000); // cambia cada 3 segundos
 
 
 //----------------------------------------------//

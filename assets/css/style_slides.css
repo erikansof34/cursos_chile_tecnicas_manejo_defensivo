@@ -29,7 +29,7 @@
   flex-direction: column;
   justify-content: center;
   align-items: center;
-  background-image: url('/assets/img/caja_cambios.png');
+  background-image: url('../../assets/img/caja_cambios.png');
   background-size: contain;
   background-position: center;
   background-repeat: no-repeat;
@@ -361,45 +361,6 @@
 }
 
 
-/*SLIDER 03 -LECCION1 */
-.slider-sld3_lec1 {
-  position: relative;
-  width: 100%;
-  height: 100vh;
-  overflow: hidden;
-  margin: 0%;
-  padding: 0%;
-}
-
-.slide-sld3_lec1 {
-  position: absolute;
-  width: 100%;
-  height: 100%;
-  opacity: 0;
-  transition: opacity 1s ease-in-out;
-}
-
-.slide-sld3_lec1 img {
-  width: 100%;
-  height: 100%;
-  object-fit: cover;
-}
-
-.active-sld3_lec1 {
-  opacity: 1;
-}
-
-@media (max-width: 768px) {
-  .slider-sld3_lec1 {
-    position: relative;
-    width: 100%;
-    height: 40vh;
-    overflow: hidden;
-    margin: 0%;
-    padding: 0%;
-    background-repeat: no-repeat;
-  }
-}
 
 /*SLIDER 06 -LECCION1 */
 .container_card_sld7_lec1 {
