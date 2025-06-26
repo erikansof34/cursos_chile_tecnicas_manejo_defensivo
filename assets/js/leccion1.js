@@ -199,13 +199,13 @@ $(document).ready(function () {
 
 var iframeConfig = {
     "Slide2L1Web": {
-        src: "https://iframe.mediadelivery.net/embed/450631/24821a5f-efa6-4786-8f66-b8a6ec872b61?autoplay=false&loop=false&muted=false&preload=true&responsive=true",
+        src: "https://iframe.mediadelivery.net/embed/448139/a038a34a-4f38-436b-b321-dccfa015c3af?autoplay=false&loop=false&muted=false&preload=true&responsive=true",
         className: "iframe-web",
         style: "width: 40vw; height: 55vh;"
     },
 
     "Slide2L1Mobile": {
-        src: "https://iframe.mediadelivery.net/embed/450631/24821a5f-efa6-4786-8f66-b8a6ec872b61?autoplay=false&loop=false&muted=false&preload=true&responsive=true",
+        src: "https://iframe.mediadelivery.net/embed/448139/a038a34a-4f38-436b-b321-dccfa015c3af?autoplay=false&loop=false&muted=false&preload=true&responsive=true",
         className: "iframe-mobile",
         style: "width: 80vw; height: 70vh;"
     },
@@ -217,17 +217,6 @@ var iframeConfig = {
 
     "Slide4L1Mobile": {
         src: "https://iframe.mediadelivery.net/embed/450631/198d8d1c-cbcf-483f-a030-cd94e9893671?autoplay=false&loop=false&muted=false&preload=true&responsive=true",
-        className: "iframe-mobile",
-        style: "width: 80vw; height: 70vh;"
-    },
-    "Slide5L1Web": {
-        src: "https://iframe.mediadelivery.net/embed/450631/3415c5f2-0b27-4f7a-98a1-b589dbc549c4?autoplay=false&loop=false&muted=false&preload=true&responsive=true",
-        className: "iframe-web",
-        style: "width: 20vw; height: 70vh;"
-    },
-
-    "Slide5L1Mobile": {
-        src: "https://iframe.mediadelivery.net/embed/450631/3415c5f2-0b27-4f7a-98a1-b589dbc549c4?autoplay=false&loop=false&muted=false&preload=true&responsive=true",
         className: "iframe-mobile",
         style: "width: 80vw; height: 70vh;"
     },
@@ -329,7 +318,7 @@ function aniSl19(e) {
         }
 
         // Nueva condición para redirigir al resumen si e es 8
-        if (e === 7) {
+        if (e === 6) {
             const path = location.pathname.split("/").slice(0, -1).join("/");
             window.location.href = path.replace("leccion1", "leccion1") + "/resumen_leccion1.html";
             return; // Salir de la función para evitar más lógica

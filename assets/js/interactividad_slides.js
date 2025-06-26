@@ -7,9 +7,9 @@ let currentIndex_sld3_lec1 = 0;
 const slides_sld3_lec1 = document.querySelectorAll('.slide-sld3_lec1');
 
 function showNextSlide_sld3_lec1() {
-  slides_sld3_lec1[currentIndex_sld3_lec1].classList.remove('active-sld3_lec1');
-  currentIndex_sld3_lec1 = (currentIndex_sld3_lec1 + 1) % slides_sld3_lec1.length;
-  slides_sld3_lec1[currentIndex_sld3_lec1].classList.add('active-sld3_lec1');
+    slides_sld3_lec1[currentIndex_sld3_lec1].classList.remove('active-sld3_lec1');
+    currentIndex_sld3_lec1 = (currentIndex_sld3_lec1 + 1) % slides_sld3_lec1.length;
+    slides_sld3_lec1[currentIndex_sld3_lec1].classList.add('active-sld3_lec1');
 }
 
 setInterval(showNextSlide_sld3_lec1, 3000); // cambia cada 3 segundos
@@ -38,13 +38,13 @@ function showAudioWithTranscription_sld15epp(button, message, event) {
     // 2. Crear el reproductor de audio completo
     let audioContainer = document.createElement('div');
     audioContainer.className = 'audio-container-slider';
-    
+
     let audioElement = document.createElement('audio');
     audioElement.className = 'audio-con-transcripcion slider-audio audio-reducido-modal';
     audioElement.controls = true;
     audioElement.setAttribute('data-transcripcion', button.getAttribute('data-transcripcion'));
     audioElement.innerHTML = `<source src="${button.getAttribute('data-audio')}" type="audio/mp3">`;
-    
+
     let toggleButton = document.createElement('i');
     toggleButton.className = 'transcription-toggle-slider fas fa-closed-captioning';
     toggleButton.setAttribute('title', 'Activar subtítulos');
@@ -71,13 +71,15 @@ function showAudioWithTranscription_sld15epp(button, message, event) {
         messageBox_sld15epp.style.left = `${buttonRect_sld15epp.left - containerRect_sld15epp.left + buttonRect_sld15epp.width / 2}px`;
     }
 
+
+
     document.querySelector('.image-sld15epp').appendChild(messageBox_sld15epp);
     messageBox_sld15epp.style.display = 'block';
     document.getElementById('imageContainer_sld15epp').classList.add('darkened_sld15epp');
 
     // 5. Inicializar eventos y autoplay
     initSliderAudioTranscription(audioElement, toggleButton);
-    
+
     // Autoplay con manejo de errores
     const playPromise = audioElement.play();
     if (playPromise !== undefined) {
@@ -94,7 +96,7 @@ function showAudioWithTranscription_sld15epp(button, message, event) {
 function initSliderAudioTranscription(audioElement, toggleButton) {
     const transcripcionGlobal = document.getElementById('transcripcion-global');
     let textos = [];
-    
+
     try {
         textos = JSON.parse(audioElement.getAttribute('data-transcripcion'));
     } catch (e) {
@@ -105,7 +107,7 @@ function initSliderAudioTranscription(audioElement, toggleButton) {
     // Función de actualización
     function updateTranscripcion() {
         if (!audioElement || audioElement.readyState === 0) return;
-        
+
         const tiempoActual = audioElement.currentTime;
         const textoActual = textos.find(item => tiempoActual >= item.start && tiempoActual <= item.end);
 
@@ -120,10 +122,10 @@ function initSliderAudioTranscription(audioElement, toggleButton) {
     }
 
     // Eventos del botón de transcripción
-    toggleButton.addEventListener('click', function() {
+    toggleButton.addEventListener('click', function () {
         this.classList.toggle('active');
         this.style.color = this.classList.contains('active') ? '#2a7fba' : '#666';
-        
+
         if (this.classList.contains('active')) {
             updateTranscripcion();
         } else {
@@ -175,7 +177,7 @@ function closeMessage_sld15epp() {
                 audioElement.removeEventListener(event, handler);
             });
         }
-        
+
         messageBox_sld15epp.remove();
     }
 
@@ -193,8 +195,8 @@ function closeMessage_sld15epp() {
 // Listener para clics fuera del mensaje
 function outsideClickListener_sld15epp(event) {
     let messageBox_sld15epp = document.querySelector('.message-box_sld15epp');
-    if (messageBox_sld15epp && 
-        !messageBox_sld15epp.contains(event.target) && 
+    if (messageBox_sld15epp &&
+        !messageBox_sld15epp.contains(event.target) &&
         !event.target.classList.contains('circle-button_sld15epp')) {
         closeMessage_sld15epp();
     }

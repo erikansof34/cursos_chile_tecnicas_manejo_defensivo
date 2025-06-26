@@ -223,14 +223,47 @@ $('#evaluacion').click(function () {
 });
 
 var iframeConfig = {
-    "Slide4L2Web": {
+    "Slide3L2Web": {
+        src: "https://iframe.mediadelivery.net/embed/450631/3415c5f2-0b27-4f7a-98a1-b589dbc549c4?autoplay=false&loop=false&muted=false&preload=true&responsive=true",
+        className: "iframe-web",
+        style: "width: 20vw; height: 70vh;"
+    },
+
+    "Slide3L2Mobile": {
+        src: "https://iframe.mediadelivery.net/embed/450631/3415c5f2-0b27-4f7a-98a1-b589dbc549c4?autoplay=false&loop=false&muted=false&preload=true&responsive=true",
+        className: "iframe-mobile",
+        style: "width: 80vw; height: 70vh;"
+    },
+    "Slide5L2Web": {
         src: "https://iframe.mediadelivery.net/embed/450631/bae78faa-6f69-4a99-832d-afaaf94561ac?autoplay=false&loop=false&muted=false&preload=true&responsive=true",
         className: "iframe-web",
         style: "width: 20vw; height: 70vh;"
     },
 
-    "Slide4L2Mobile": {
+    "Slide5L2Mobile": {
         src: "https://iframe.mediadelivery.net/embed/450631/bae78faa-6f69-4a99-832d-afaaf94561ac?autoplay=false&loop=false&muted=false&preload=true&responsive=true",
+        className: "iframe-mobile",
+        style: "width: 80vw; height: 70vh;"
+    },
+    "Slide6L2Web": {
+        src: "https://iframe.mediadelivery.net/embed/448139/f5071e8d-3360-4f8e-ae86-514791b14169?autoplay=false&loop=false&muted=false&preload=true&responsive=true",
+        className: "iframe-web",
+        style: "width: 20vw; height: 70vh;"
+    },
+
+    "Slide6L2Mobile": {
+        src: "https://iframe.mediadelivery.net/embed/448139/f5071e8d-3360-4f8e-ae86-514791b14169?autoplay=false&loop=false&muted=false&preload=true&responsive=true",
+        className: "iframe-mobile",
+        style: "width: 80vw; height: 70vh;"
+    },
+    "Slide8L2Web": {
+        src: "https://iframe.mediadelivery.net/embed/448139/5dd3a881-335b-4f0b-8d3b-8b8e5ed66aff?autoplay=false&loop=false&muted=false&preload=true&responsive=true",
+        className: "iframe-web",
+        style: "width: 20vw; height: 70vh;"
+    },
+
+    "Slide8L2Mobile": {
+        src: "https://iframe.mediadelivery.net/embed/448139/5dd3a881-335b-4f0b-8d3b-8b8e5ed66aff?autoplay=false&loop=false&muted=false&preload=true&responsive=true",
         className: "iframe-mobile",
         style: "width: 80vw; height: 70vh;"
     },
@@ -272,14 +305,26 @@ function reloadAllIframes() {
 
 $("#prev").on('click', function () {
     console.log("1");
-    reloadIframe("Slide4L2Web");
-    reloadIframe("Slide4L2Mobile");
+    reloadIframe("Slide3L2Web");
+    reloadIframe("Slide3L2Mobile");
+    reloadIframe("Slide5L2Web");
+    reloadIframe("Slide5L2Mobile");
+    reloadIframe("Slide6L2Web");
+    reloadIframe("Slide6L2Mobile");
+    reloadIframe("Slide8L2Web");
+    reloadIframe("Slide8L2Mobile");
 });
 
 $("#next").on('click', function () {
     console.log("2");
-    reloadIframe("Slide4L2Web");
-    reloadIframe("Slide4L2Mobile");
+    reloadIframe("Slide3L2Web");
+    reloadIframe("Slide3L2Mobile");
+    reloadIframe("Slide5L2Web");
+    reloadIframe("Slide5L2Mobile");
+    reloadIframe("Slide6L2Web");
+    reloadIframe("Slide6L2Mobile");
+    reloadIframe("Slide8L2Web");
+    reloadIframe("Slide8L2Mobile");
 });
 
 createCirclesMovil();
@@ -392,50 +437,47 @@ function aniSl19(e) {
     }
 }
 
-
 //---------------------------------//
-//SLIDER 2 LECCION 2 - SECCION DE CAMBIOS
-document.addEventListener("DOMContentLoaded", function () {
-    // Configuración de URLs de videos
+// SLIDER 2 LECCION 2 - SCRIPT MEJORADO
+document.addEventListener('DOMContentLoaded', function () {
+    // URLs de los videos
     const videoUrls = {
-        modal: 'https://iframe.mediadelivery.net/embed/386695/f1d9bf8d-9755-4764-8d6f-08c3764a3db2?autoplay=false&loop=false&muted=false&preload=true&responsive=true'
+        convivencia: 'https://iframe.mediadelivery.net/embed/448139/d18bef2e-7c89-41eb-b60f-cedb112e6e7a?autoplay=false&loop=false&muted=false&preload=true&responsive=true',
+        vial: 'https://iframe.mediadelivery.net/embed/386695/f1d9bf8d-9755-4764-8d6f-08c3764a3db2?autoplay=false&loop=false&muted=false&preload=true&responsive=true'
     };
+
+    // Variables para controlar los iframes
+    let currentIframeWeb = null;
+    let currentIframeMobile = null;
+    let currentAudio = null;
 
     // Elementos de la caja de cambios
     const gears = document.querySelectorAll(".gear");
     const boxes = document.querySelectorAll(".box-cambio");
-    const audios = document.querySelectorAll(".track-element");
+    const audios = document.querySelectorAll(".audio-con-transcripcion");
 
-    // Elementos del modal de video
-    const videoModal = document.getElementById("sld22-video-vial");
-    const videoContainers = {
-        web: document.getElementById("Slide23Web"),
-        mobile: document.getElementById("Slide23Mobile")
-    };
-    let currentAudio = null;
+    // Referencia al modal
+    const videoModal = document.getElementById('sld22-video-convivencia-social');
 
-    // Función para destruir y recrear iframes de forma agresiva
-    function hardRefreshIframe(container, url, className) {
-        if (!container) return;
+    // Eventos del modal
+    videoModal.addEventListener('show.bs.modal', function () {
+        // Pausar todos los audios
+        audios.forEach(audio => {
+            audio.pause();
+            audio.currentTime = 0;
+        });
+        currentAudio = null;
 
-        // 1. Detener completamente el iframe existente
-        const iframe = container.querySelector('iframe');
-        if (iframe) {
-            iframe.src = '';
-            iframe.remove();
-            container.innerHTML = '';
-        }
+        // Construir iframes cuando se abre el modal
+        buildIframe('web', videoUrls.convivencia);
+        buildIframe('mobile', videoUrls.convivencia);
+    });
 
-        // 2. Recrear el iframe después de un breve retraso
-        setTimeout(() => {
-            container.innerHTML = `
-        <iframe class="${className}" 
-                src="${url}" 
-                loading="lazy"
-                allow="accelerometer; gyroscope; autoplay; encrypted-media; picture-in-picture" 
-                allowfullscreen></iframe>`;
-        }, 50);
-    }
+    videoModal.addEventListener('hidden.bs.modal', function () {
+        // Destruir iframes cuando se cierra el modal
+        destroyIframe('web');
+        destroyIframe('mobile');
+    });
 
     // Control de la caja de cambios
     gears.forEach((gear) => {
@@ -476,32 +518,91 @@ document.addEventListener("DOMContentLoaded", function () {
         });
     });
 
-    // Eventos del modal
-    videoModal.addEventListener("show.bs.modal", function () {
-        // Pausar todos los audios
-        audios.forEach(audio => {
-            audio.pause();
-            audio.currentTime = 0;
+    // Función para construir un iframe
+    function buildIframe(device, url) {
+        const containerId = device === 'web' ? 'Slide2L2Web' : 'Slide2L2Mobile';
+        const iframeId = device === 'web' ? 'webIframeSlider2L2' : 'mobileIframeSlider2L2';
+        const container = document.getElementById(containerId);
+
+        // Mostrar loader mientras carga
+        const loader = container.querySelector('.loader');
+        const playButton = container.querySelector('.permanent-play-button');
+
+        if (loader) loader.style.display = 'flex';
+        if (playButton) {
+            playButton.style.display = 'block'; // Siempre visible
+            playButton.style.pointerEvents = 'auto'; // Siempre interactivo
+        }
+
+        // Crear nuevo iframe
+        const iframe = document.createElement('iframe');
+        iframe.id = iframeId;
+        iframe.className = device === 'web' ? 'iframe-video-horizontal-web' : 'iframe-video-vertical-mobile';
+        iframe.src = url;
+        iframe.loading = 'lazy';
+        iframe.allow = 'accelerometer; gyroscope; autoplay; encrypted-media; picture-in-picture;';
+        iframe.allowFullscreen = true;
+        iframe.style.pointerEvents = 'auto'; // Siempre interactivo en el modal
+
+        // Evento para cuando el iframe cargue
+        iframe.addEventListener('load', function () {
+            if (loader) loader.style.display = 'none';
+
+            // Guardar referencia al iframe actual
+            if (device === 'web') {
+                currentIframeWeb = iframe;
+            } else {
+                currentIframeMobile = iframe;
+            }
         });
-        currentAudio = null;
 
-        // Preparar los iframes del modal (web y mobile)
-        hardRefreshIframe(videoContainers.web, videoUrls.modal, 'iframe-video-horizontal-web');
-        hardRefreshIframe(videoContainers.mobile, videoUrls.modal, 'iframe-video-horizontal-mobile');
-    });
+        // Limpiar solo el iframe si existe, manteniendo el botón de play
+        const existingIframe = container.querySelector('iframe');
+        if (existingIframe) {
+            container.removeChild(existingIframe);
+        }
 
-    videoModal.addEventListener("hidden.bs.modal", function () {
-        // Reiniciar completamente los iframes al cerrar el modal
-        hardRefreshIframe(videoContainers.web, videoUrls.modal, 'iframe-video-horizontal-web');
-        hardRefreshIframe(videoContainers.mobile, videoUrls.modal, 'iframe-video-horizontal-mobile');
-    });
+        // Insertar el iframe después del loader
+        const loaderElement = container.querySelector('.loader');
+        if (loaderElement) {
+            loaderElement.insertAdjacentElement('afterend', iframe);
+        } else {
+            container.appendChild(iframe);
+        }
 
-    // Precargar los iframes después de un retraso
-    setTimeout(() => {
-        hardRefreshIframe(videoContainers.web, videoUrls.modal, 'iframe-video-horizontal-web');
-        hardRefreshIframe(videoContainers.mobile, videoUrls.modal, 'iframe-video-horizontal-mobile');
-    }, 500);
+        // Configurar el botón de play
+        if (playButton) {
+            playButton.onclick = function () {
+                // Enviar comando de play al iframe
+                iframe.contentWindow.postMessage('{"event":"command","func":"playVideo","args":""}', '*');
+            };
+        }
+    }
+
+    // Función para destruir un iframe
+    function destroyIframe(device) {
+        const iframe = device === 'web' ? currentIframeWeb : currentIframeMobile;
+
+        if (iframe) {
+            try {
+                // Pausar el video antes de eliminar el iframe
+                iframe.contentWindow.postMessage('{"event":"command","func":"pauseVideo","args":""}', '*');
+                iframe.remove();
+            } catch (e) {
+                console.log(`Error al pausar iframe ${device}:`, e);
+            }
+
+            // Limpiar referencia
+            if (device === 'web') {
+                currentIframeWeb = null;
+            } else {
+                currentIframeMobile = null;
+            }
+        }
+    }
 });
+
+
 
 //---------------------------------//
 //SLIDER 3 LECCION 2//
@@ -568,168 +669,3 @@ document.addEventListener("DOMContentLoaded", () => {
     // updateAudio(); // El primer audio se configurará solo cuando el usuario haga clic en "Iniciar"
 });
 
-//---------------------------------//
-//SLIDER 6 LECCION 2//
-document.addEventListener('DOMContentLoaded', function () {
-    // URLs de los videos
-    const videoUrls = {
-        enVia: {
-            web: 'https://iframe.mediadelivery.net/embed/450631/1570698c-827d-4269-bf1f-643e878e66a2?autoplay=false&loop=false&muted=false&preload=true&responsive=true',
-            mobile: 'https://iframe.mediadelivery.net/embed/450631/1570698c-827d-4269-bf1f-643e878e66a2?autoplay=false&loop=false&muted=false&preload=true&responsive=true'
-        },
-        volcamientos: {
-            web: 'https://iframe.mediadelivery.net/embed/450631/215496f8-81ae-4bd5-8a62-ca91a7c03602?autoplay=false&loop=false&muted=false&preload=true&responsive=true',
-            mobile: 'https://iframe.mediadelivery.net/embed/450631/215496f8-81ae-4bd5-8a62-ca91a7c03602?autoplay=false&loop=false&muted=false&preload=true&responsive=true'
-        }
-    };
-
-    // Variables para controlar los iframes actuales
-    let currentIframes = {
-        web: null,
-        mobile: null
-    };
-
-    // Selectores de video
-    const videoSelectors = document.querySelectorAll('.btn-video-selector');
-
-    // Cargar el primer video al inicio
-    loadVideo('enVia');
-
-    videoSelectors.forEach(selector => {
-        selector.addEventListener('click', function () {
-            // Solo hacer cambios si no es el botón activo actual
-            if (!this.classList.contains('active')) {
-                // Detener y destruir los iframes actuales antes de cambiar
-                destroyCurrentIframes();
-
-                // Remover clase active de todos los botones
-                videoSelectors.forEach(btn => btn.classList.remove('active'));
-
-                // Añadir clase active al botón clickeado
-                this.classList.add('active');
-
-                // Determinar qué video cargar
-                const target = this.getAttribute('data-target');
-                const videoType = target === 'videoEnVia' ? 'enVia' : 'volcamientos';
-
-                // Cargar el video seleccionado
-                loadVideo(videoType);
-            }
-        });
-    });
-
-    // Función para destruir los iframes actuales
-    function destroyCurrentIframes() {
-        // Pausar y eliminar iframe web
-        if (currentIframes.web) {
-            try {
-                currentIframes.web.contentWindow.postMessage('{"event":"command","func":"pauseVideo","args":""}', '*');
-                currentIframes.web.remove();
-            } catch (e) {
-                console.log("Error al pausar iframe web:", e);
-            }
-            currentIframes.web = null;
-        }
-
-        // Pausar y eliminar iframe mobile
-        if (currentIframes.mobile) {
-            try {
-                currentIframes.mobile.contentWindow.postMessage('{"event":"command","func":"pauseVideo","args":""}', '*');
-                currentIframes.mobile.remove();
-            } catch (e) {
-                console.log("Error al pausar iframe mobile:", e);
-            }
-            currentIframes.mobile = null;
-        }
-    }
-
-    // Función para cargar un video específico
-    function loadVideo(videoType) {
-        // Ocultar todos los contenedores de video primero
-        document.querySelectorAll('.video-container').forEach(container => {
-            container.style.display = 'none';
-        });
-
-        // Mostrar el contenedor correspondiente
-        const containerId = videoType === 'enVia' ? 'videoEnVia' : 'videoVolcamientos';
-        const container = document.getElementById(containerId);
-        container.style.display = 'block';
-
-        // Construir iframes para web y móvil
-        buildIframe('web', videoType);
-        buildIframe('mobile', videoType);
-    }
-
-    // Función para construir un iframe
-    function buildIframe(device, videoType) {
-        const containerId = videoType === 'enVia' ?
-            `containerEnVia${device.charAt(0).toUpperCase() + device.slice(1)}` :
-            `containerVolcamientos${device.charAt(0).toUpperCase() + device.slice(1)}`;
-
-        const iframeId = videoType === 'enVia' ?
-            `${device}IframeSlider6L2Via` :
-            `${device}IframeSlider6L2Volc`;
-
-        const container = document.getElementById(containerId);
-
-        // Mostrar loader mientras carga
-        const loader = container.querySelector('.loader');
-        if (loader) loader.style.display = 'flex';
-
-        // Crear nuevo iframe
-        const iframe = document.createElement('iframe');
-        iframe.id = iframeId;
-        iframe.className = device === 'web' ? 'iframe-video-horizontal-web' : 'iframe-video-horizontal-mobile';
-        iframe.src = videoUrls[videoType][device];
-        iframe.loading = 'lazy';
-        iframe.allow = 'accelerometer; gyroscope; autoplay; encrypted-media; picture-in-picture;';
-        iframe.allowFullscreen = true;
-        iframe.style.pointerEvents = 'none';
-
-        // Evento para ocultar loader cuando el iframe cargue
-        iframe.addEventListener('load', function () {
-            if (loader) loader.style.display = 'none';
-
-            // Guardar referencia al iframe actual
-            currentIframes[device] = iframe;
-        });
-
-        // Limpiar solo el iframe si existe, manteniendo el botón de play
-        const existingIframe = container.querySelector('iframe');
-        if (existingIframe) {
-            container.removeChild(existingIframe);
-        }
-
-        // Insertar el iframe después del loader
-        const loaderElement = container.querySelector('.loader');
-        if (loaderElement) {
-            loaderElement.insertAdjacentElement('afterend', iframe);
-        } else {
-            container.appendChild(iframe);
-        }
-
-        // Configurar el botón de play
-        const playButton = container.querySelector('.video-button-control-audio');
-        if (playButton) {
-            // Añadir la clase personalizada
-            playButton.classList.add('video-button-custom-2');
-
-            // Asegurarnos de que el botón de play permanezca visible
-            playButton.style.display = 'block';
-
-            // Configurar el evento click para reproducir el video
-            playButton.onclick = function () {
-                // Habilitar temporalmente los eventos de puntero
-                iframe.style.pointerEvents = 'auto';
-
-                // Enviar comando de play al iframe
-                iframe.contentWindow.postMessage('{"event":"command","func":"playVideo","args":""}', '*');
-
-                // Después de 1 segundo, volver a deshabilitar los eventos de puntero
-                setTimeout(() => {
-                    iframe.style.pointerEvents = 'none';
-                }, 1000);
-            };
-        }
-    }
-});
