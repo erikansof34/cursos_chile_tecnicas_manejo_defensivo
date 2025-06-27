@@ -34,9 +34,9 @@ const MobileSlides = (function () {
                     <div class="row">
                         <div class="pl-seccion">
                             <div class="col-lg-8 col-md-12">
-                                <h1 class="tituloseccion">2- Buenos hábitos
-                                    <span class="yellow">de Manejo</span>
-                                    <span class="yellow">Defensivo</span>
+                                <h1 class="tituloseccion">2- Afiancemos nuestras buenas prácticas
+                                    <span class="yellow">en el manejo</span>
+                                    <span class="yellow">defensivo</span>
                                 </h1>
                                 <hr class="hr-50">
                             </div>
@@ -608,9 +608,9 @@ document.addEventListener('DOMContentLoaded', function () {
 //SLIDER 3 LECCION 2//
 document.addEventListener("DOMContentLoaded", () => {
     const audios = [
-        { title: "1. Atención y Visión Periférica", src: "../../assets/audio/L2-slide_3_factor_1.mp3" },
-        { title: "2. Anticipación y Predecibilidad", src: "../../assets/audio/L2-slide_3_factor_2.mp3" },
-        { title: "3. Uso de Tecnología para la Seguridad", src: "../../assets/audio/L2-slide_3_factor_3.mp3" }
+        { title: "1. Atención y Visión Periférica", src: "../assets/audio/L2-slide_3_factor_1.mp3" },
+        { title: "2. Anticipación y Predecibilidad", src: "../assets/audio/L2-slide_3_factor_2.mp3" },
+        { title: "3. Uso de Tecnología para la Seguridad", src: "../assets/audio/L2-slide_3_factor_3.mp3" }
     ];
 
     let currentAudioIndex = 0;

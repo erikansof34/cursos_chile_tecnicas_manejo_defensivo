@@ -30,8 +30,8 @@ const MobileSlides = (function () {
                 <div class="row">
                     <div class="pl-seccion">
                         <div class="col-lg-8 col-md-12">
-                            <h1 class="tituloseccion">1-Teoría del
-                                <span class="yellow">Manejo Defensivo</span>
+                            <h1 class="tituloseccion">1- Recordemos conceptos clave del manejo defensivo
+                                <span class="yellow">y sus implicaciones para nuestro rol de conductores</span>
                             </h1>
                             <hr class="hr-50">
                         </div>
@@ -318,7 +318,7 @@ function aniSl19(e) {
         }
 
         // Nueva condición para redirigir al resumen si e es 8
-        if (e === 6) {
+        if (e === 5) {
             const path = location.pathname.split("/").slice(0, -1).join("/");
             window.location.href = path.replace("leccion1", "leccion1") + "/resumen_leccion1.html";
             return; // Salir de la función para evitar más lógica
