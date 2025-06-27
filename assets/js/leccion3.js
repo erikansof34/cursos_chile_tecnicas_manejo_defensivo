@@ -35,9 +35,9 @@ const MobileSlides = (function () {
                     <div class="row">
                         <div class="pl-seccion">
                             <div class="col-lg-8 col-md-12">
-                                <h1 class="tituloseccion">3-Factores para evitar
-                                    <span class="yellow">Accidentes</span>
-                                    <span class="yellow">de Tránsito</span>
+                                <h1 class="tituloseccion">3- Profundicemos en los factores clave
+                                    <span class="yellow">para evitar accidentes</span>
+                                    <span class="yellow">de tránsito</span>
                                 </h1>
                                 <hr class="hr-50">
                             </div>
