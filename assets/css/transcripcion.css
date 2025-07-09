@@ -73,6 +73,10 @@ body {
     /* Espacio para el icono */
 }
 
+.audio-cuadro {
+    padding-right: 40px !important;
+}
+
 @media (max-width: 768px) {
     .audio-center {
         position: relative;
